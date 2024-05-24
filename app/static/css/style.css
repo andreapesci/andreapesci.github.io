@@ -1,0 +1,226 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --font-stack: Helvetica, sans-serif;
+    --background-color: #f4f4f4;
+    --button-padding: 12px 20px;
+    --button-font-size: 16px;
+    --button-margin: 4px 4px;
+    --button-border-radius: 4px;
+}
+
+body {
+    font-family: var(--font-stack);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: var(--button-padding);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--button-font-size);
+    margin: var(--button-margin);
+    cursor: pointer;
+    border-radius: var(--button-border-radius);
+}
+
+#message {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1200px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upper-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.upper-section img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.upper-text {
+    text-align: center;
+}
+
+.upper-text h2 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.lower-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.lower-section p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.lower-left {
+    color: var(--secondary-color);
+}
+
+.lower-right {
+    color: var(--primary-color);
+}
+
+.see-more {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: var(--button-padding);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--button-font-size);
+    margin: var(--button-margin);
+    cursor: pointer;
+    border-radius: var(--button-border-radius);
+}
+
+/* Responsive design */
+@media (min-width: 600px) {
+    .upper-section {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .upper-section img {
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .upper-text {
+        text-align: left;
+    }
+}
+
+@media (min-width: 900px) {
+    .portfolio {
+        padding: 40px;
+    }
+
+    .portfolio-item {
+        max-width: 600px;
+    }
+}
+
+#portfolio,
+#blog {
+    padding: 20px;
+    /* Aggiunge spazio interno alla sezione */
+    margin: 0 auto;
+    /* Centra la sezione nel layout */
+    max-width: 1200px;
+    /* Limita la larghezza massima della sezione */
+    box-sizing: border-box;
+    /* Include il padding e il bordo nella larghezza totale della sezione */
+}
+
+@media (max-width: 768px) {
+
+    #portfolio,
+    #blog {
+        padding: 20px 10px;
+        /* Riduce lo spazio interno sui lati */
+    }
+}
+
+
+.blog-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.blog-card {
+    position: relative;
+    width: calc(30% - 20px);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px 8px 0 0;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    color: white;
+    text-align: center;
+}
+
+.overlay h2,
+.overlay p {
+    margin: 0;
+}
+
+.overlay p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Aggiungi al file CSS esistente o crea un nuovo file CSS */
+
+@media (max-width: 768px) {
+
+    /* Cambia il valore in base alle tue esigenze di breakpoint */
+    .blog-cards {
+        flex-direction: column;
+        /* Organizza le card in una colonna su schermi piccoli */
+    }
+
+    .blog-card {
+        width: 100%;
+        /* Imposta la larghezza delle card al 100% su schermi piccoli */
+    }
+}
