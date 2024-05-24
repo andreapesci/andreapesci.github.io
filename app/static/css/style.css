@@ -7,6 +7,9 @@
     --button-font-size: 16px;
     --button-margin: 4px 4px;
     --button-border-radius: 4px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --container-padding: 20px;
+    --max-width: 1200px;
 }
 
 body {
@@ -41,11 +44,19 @@ button {
     font-size: 18px;
 }
 
+.portfolio,
+#portfolio,
+#blog {
+    padding: var(--container-padding);
+    margin: 0 auto;
+    max-width: var(--max-width);
+    box-sizing: border-box;
+}
+
 .portfolio {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
 }
 
 .portfolio-item {
@@ -53,11 +64,11 @@ button {
     flex-direction: column;
     margin-bottom: 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 600px;
     background: white;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 .upper-section {
@@ -116,7 +127,6 @@ button {
     border-radius: var(--button-border-radius);
 }
 
-/* Responsive design */
 @media (min-width: 600px) {
     .upper-section {
         flex-direction: row;
@@ -143,27 +153,13 @@ button {
     }
 }
 
-#portfolio,
-#blog {
-    padding: 20px;
-    /* Aggiunge spazio interno alla sezione */
-    margin: 0 auto;
-    /* Centra la sezione nel layout */
-    max-width: 1200px;
-    /* Limita la larghezza massima della sezione */
-    box-sizing: border-box;
-    /* Include il padding e il bordo nella larghezza totale della sezione */
-}
-
 @media (max-width: 768px) {
 
     #portfolio,
     #blog {
         padding: 20px 10px;
-        /* Riduce lo spazio interno sui lati */
     }
 }
-
 
 .blog-cards {
     display: flex;
@@ -177,7 +173,7 @@ button {
     margin-bottom: 20px;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 .blog-card img {
@@ -209,18 +205,113 @@ button {
     white-space: nowrap;
 }
 
-/* Aggiungi al file CSS esistente o crea un nuovo file CSS */
-
 @media (max-width: 768px) {
-
-    /* Cambia il valore in base alle tue esigenze di breakpoint */
     .blog-cards {
         flex-direction: column;
-        /* Organizza le card in una colonna su schermi piccoli */
     }
 
     .blog-card {
         width: 100%;
-        /* Imposta la larghezza delle card al 100% su schermi piccoli */
+    }
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #ccc;
+}
+
+.about-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: var(--container-padding);
+    max-width: 800px;
+    margin: 20px auto;
+    /* Centra la sezione orizzontalmente e aggiunge margine verticale */
+}
+
+.profile-pic {
+    flex: 0 0 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.profile-pic img {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.about-details {
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.title {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-links a img {
+    width: 24px;
+    height: 24px;
+}
+
+@media (max-width: 600px) {
+    .about-me {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-pic {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .social-links {
+        justify-content: center;
     }
 }

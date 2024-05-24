@@ -17,94 +17,58 @@
     <script src="https://unpkg.com/htmx.org@1.9.12"
         integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
         crossorigin="anonymous"></script>
+
+    <style>
+        #about {
+            padding: 80px 40px; /* Spazio per evitare la sovrapposizione con la navbar */
+        }
+    </style>
 </head>
 
 <body>
     <nav>
-        <ul>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#blog">Blog</a></li>
-        </ul>
+        <button hx-get="/home" hx-target="#content" hx-swap="innerHTML">Home</button>
+        <button id="partner-btn" hx-get="/home" hx-target="#content" hx-swap="innerHTML" hx-trigger="click"
+            data-scroll="portfolio">Portfolio</button>
+        <button id="partner-btn" hx-get="/home" hx-target="#content" hx-swap="innerHTML" hx-trigger="click"
+            data-scroll="blog">Blog</button>
+        <button hx-get="/resume" hx-target="#content" hx-swap="innerHTML">Resume</button>
     </nav>
 
-    <!-- <h1>Welcome to HTMX with FastAPI</h1>
-    <button hx-get="/hello" hx-target="#message" hx-swap="innerHTML">Say Hello</button>
-    <div id="message"></div> -->
-
-    <section id="portfolio">
-        <h1>Portfolio</h1>
-    <div class="portfolio">
-        <div class="portfolio-item">
-            <div class="upper-section">
-                <img src="https://via.placeholder.com/150" alt="Project 1">
-                <div class="upper-text">
-                    <h2>Project 1</h2>
-                    <p>Short description of Project 1.</p>
-                </div>
-            </div>
-            <div class="lower-section">
-                <p class="lower-left">Detail 1</p>
-                <p class="lower-right">Detail 2</p>
-            </div>
+    <section id="about" class="about-me">
+        <div class="profile-pic">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture">
         </div>
-        <div class="portfolio-item">
-            <div class="upper-section">
-                <img src="https://via.placeholder.com/150" alt="Project 2">
-                <div class="upper-text">
-                    <h2>Project 2</h2>
-                    <p>Short description of Project 2.</p>
-                </div>
-            </div>
-            <div class="lower-section">
-                <p class="lower-left">Detail 1</p>
-                <p class="lower-right">Detail 2</p>
-            </div>
-        </div>
-        <div class="portfolio-item">
-            <div class="upper-section">
-                <img src="https://via.placeholder.com/150" alt="Project 3">
-                <div class="upper-text">
-                    <h2>Project 3</h2>
-                    <p>Short description of Project 3.</p>
-                </div>
-            </div>
-            <div class="lower-section">
-                <p class="lower-left">Detail 1</p>
-                <p class="lower-right">Detail 2</p>
-            </div>
-        </div>
-        <button class="see-more">See More</button>
-    </div>
-
-    </div>
-    </section>
-
-    <section id="blog">
-        <h1>Blog</h1>
-        <div class="blog-cards">
-            <div class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post 1">
-                <div class="overlay">
-                    <h2>Titolo del Post 1</h2>
-                    <p>Descrizione breve del post 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post 2">
-                <div class="overlay">
-                    <h2>Titolo del Post 2</h2>
-                    <p>Descrizione breve del post 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="blog-card">
-                <img src="https://via.placeholder.com/600x400" alt="Blog Post 3">
-                <div class="overlay">
-                    <h2>Titolo del Post 3</h2>
-                    <p>Descrizione breve del post 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
+        <div class="about-details">
+            <div class="name">John Doe</div>
+            <div class="title">Software Engineer</div>
+            <div class="social-links">
+                <a href="#"><img src="https://via.placeholder.com/16" alt="Icon 1"></a>
+                <a href="#"><img src="https://via.placeholder.com/16" alt="Icon 2"></a>
+                <a href="#"><img src="https://via.placeholder.com/16" alt="Icon 3"></a>
             </div>
         </div>
     </section>
+    
+    <div id="content">
+        {% include 'home.html' %}
+    </div>
+
+    <script>
+        document.addEventListener('htmx:afterSwap', function (event) {
+            const triggerElement = event.detail.requestConfig.elt;
+            const scrollTarget = triggerElement.getAttribute('data-scroll');
+            if (scrollTarget) {
+                const targetElement = document.getElementById(scrollTarget);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                // Scroll to the top of the page
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    </script>
 
 </body>
 
