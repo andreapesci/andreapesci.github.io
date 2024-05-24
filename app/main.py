@@ -11,7 +11,8 @@ templates = Jinja2Templates(directory="app/templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    project_name = 'pippo'
+    return templates.TemplateResponse("index.html", {"request": request, "project_name": project_name})
 
 @app.get("/resume", response_class=HTMLResponse)
 async def read_about(request: Request):
@@ -19,7 +20,8 @@ async def read_about(request: Request):
 
 @app.get("/home", response_class=HTMLResponse)
 async def read_contact(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request})
+    project_name = 'pippo'
+    return templates.TemplateResponse("home.html", {"request": request, "project_name": project_name})
 
 
 
