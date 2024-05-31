@@ -10,3 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', theme);
     });
 });
+
+document.addEventListener('htmx:afterSwap', function (event) {
+        const triggerElement = event.detail.requestConfig.elt;
+        const scrollTarget = triggerElement.getAttribute('data-scroll');
+        if (scrollTarget) {
+            const targetElement = document.getElementById(scrollTarget);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            // Scroll to the top of the page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
