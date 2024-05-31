@@ -5,6 +5,7 @@
         "description": "Little Koala",
         "detail1": "Code Features",
         "detail2": "Gameplay Features",
+        "image": "https://via.placeholder.com/600x400",
         "cover": "https://via.placeholder.com/150",
         "tags": "game jam",
         "category": "third person"
@@ -15,6 +16,7 @@
         "description": "Little Koala2",
         "detail1": "Code Features2",
         "detail2": "Gameplay Features2",
+        "image": "https://via.placeholder.com/600x400",
         "cover": "https://via.placeholder.com/150",
         "tags": "game jam",
         "category": "third person"
@@ -25,6 +27,29 @@
         "description": "Little Koala3",
         "detail1": "Code Features3",
         "detail2": "Gameplay Features3",
+        "image": "https://via.placeholder.com/600x400",
+        "cover": "https://via.placeholder.com/150",
+        "tags": "game jam",
+        "category": "third person"
+    },
+    {
+        "id": "nsghrehsrn",
+        "title": "Koala4",
+        "description": "Little Koala4",
+        "detail1": "Code Features4",
+        "detail2": "Gameplay Features4",
+        "image": "https://via.placeholder.com/600x400",
+        "cover": "https://via.placeholder.com/150",
+        "tags": "game jam",
+        "category": "third person"
+    },
+    {
+        "id": "4wjqsherwshsdPtj2QY",
+        "title": "Koala5",
+        "description": "Little Koala5",
+        "detail1": "Code Features5",
+        "detail2": "Gameplay Features5",
+        "image": "https://via.placeholder.com/600x400",
         "cover": "https://via.placeholder.com/150",
         "tags": "game jam",
         "category": "third person"

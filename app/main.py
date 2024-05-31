@@ -19,15 +19,15 @@ jinja_partials.register_starlette_extensions(templates)
 async def read_root(request: Request):
     portfolio = all_projects()
     blog = all_blogs()
-    return templates.TemplateResponse("home/index.html", {"request": request, "portfolio": portfolio, "blog":blog})
+    return templates.TemplateResponse("home/index.html", {"request": request, "portfolio": portfolio})
 
-@app.get("/resume", response_class=HTMLResponse)
-async def read_about(request: Request):
-    return templates.TemplateResponse("resume.html", {"request": request})
+# @app.get("/resume", response_class=HTMLResponse)
+# async def read_about(request: Request):
+#     return templates.TemplateResponse("resume.html", {"request": request})
 
-@app.get("/home", response_class=HTMLResponse)
-async def read_contact(request: Request):
-    portfolio = all_projects()
-    blog = all_blogs()
-    return templates.TemplateResponse("home/index.html", {"request": request, "portfolio": portfolio, "blog":blog})
+# @app.get("/home", response_class=HTMLResponse)
+# async def read_contact(request: Request):
+#     portfolio = all_projects()
+#     blog = all_blogs()
+#     return templates.TemplateResponse("home/index.html", {"request": request, "portfolio": portfolio, "blog":blog})
 

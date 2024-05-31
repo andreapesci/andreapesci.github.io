@@ -8,5 +8,6 @@ class Project(BaseModel):
     detail1: str
     detail2: str
     cover: str
+    image: str
     tags: Optional[str] = None
     category: Optional[str] = None
