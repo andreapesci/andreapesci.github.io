@@ -120,7 +120,8 @@ button {
     padding: var(--button-padding);
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block; /* Assicurati che sia un blocco per occupare l'intera larghezza disponibile */
+    margin: 0 auto; /* Centra il bottone */
     font-size: var(--button-font-size);
     margin: var(--button-margin);
     cursor: pointer;

@@ -5,7 +5,7 @@ from app.models.blog_model import Post
 from pydantic.tools import parse_obj_as
 
 def load_data():
-    file = Path(__file__).parent.parent / 'db' / 'portfolio.json'
+    file = Path(__file__).parent.parent / 'db' / 'blog.json'
     with open(file, 'r') as fin:
         data = json.load(fin)
     return data
