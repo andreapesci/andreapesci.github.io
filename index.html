@@ -1,21 +1,75 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTMX e JavaScript</title>
-    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
-    <script src="Javascript/script.js"></script>
-</head>
-<body>
-<button id="my-button" hx-trigger="click" hx-target="#some-div">Click me</button>
-<div id="some-div">Old</div>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Andrea Pesci</title>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="Static/style.css">
 
-<script>
-    document.getElementById('my-button').addEventListener('click', function(event) {
-        myFunction(); // Chiamare la funzione JavaScript
-        updateContent(); // Aggiornare il contenuto del div
-    });
-</script>
-</body>
+        <script src="https://unpkg.com/htmx.org@1.9.12"
+                integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+                crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src="Database/portfolio.js"></script>
+        <script src="Javascript/script.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const themeToggle = document.getElementById("theme-toggle");
+                const currentTheme = localStorage.getItem("theme") || "dark";
+
+                document.documentElement.setAttribute("data-theme", currentTheme);
+
+                themeToggle.addEventListener("click", function () {
+                    console.log("PIPPPOOOO");
+                    const theme =
+                        document.documentElement.getAttribute("data-theme") === "dark" ?
+                        "light" :
+                        "dark";
+                    document.documentElement.setAttribute("data-theme", theme);
+                    localStorage.setItem("theme", theme);
+                });
+            });
+
+            document.addEventListener('htmx:load', function(evt) {
+                generateProjectHTML();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="about">
+                <div class="profile-section">
+                    <div class="profile-section-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Profile Picture"/>
+                    </div>
+                    <div class="profile-section-name">ANDREA PESCI</div>
+                    <div class="profile-section-description">Game Programmer</div>
+                </div>
+                <div class="profile-description"></div>
+                <div class="profile-skills"></div>
+                <div class="profile-footer">
+                    <div class="profile-information"></div>
+                    <div class="profile-links"></div>
+                    <div class="profile-cv"></div>
+                </div>
+            </div>
+            <div class="content">
+                <div id=swap-content class="swap-content" hx-trigger="load" hx-on="htmx:load">
+                </div>
+                <div class="footer"></div>
+            </div>
+            <div class="nav">
+                <div class="nav-upper-section">
+                    <button class="nav-button"></button>
+                </div>
+                <div class="nav-lower-section">
+                    <button id="theme-toggle" class="nav-button"></button>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
+
+
