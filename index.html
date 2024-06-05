@@ -1,1 +1,21 @@
-Hello World
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX e JavaScript</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <script src="Javascript/script.js"></script>
+</head>
+<body>
+<button id="my-button" hx-trigger="click" hx-target="#some-div">Click me</button>
+<div id="some-div">Old</div>
+
+<script>
+    document.getElementById('my-button').addEventListener('click', function(event) {
+        myFunction(); // Chiamare la funzione JavaScript
+        updateContent(); // Aggiornare il contenuto del div
+    });
+</script>
+</body>
+</html>
