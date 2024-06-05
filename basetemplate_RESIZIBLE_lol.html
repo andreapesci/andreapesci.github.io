@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <title>HTMX with FastAPI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+    :root {
+        --background-lighter: #24242e;
+        --background-normal: #20202a;
+        --background-darker: #1e1e28;
+        --text-color: #ffffff;
+    }
+
+    [data-theme="dark"] {
+        --background-lighter: #24242e;
+        --background-normal: #20202a;
+        --background-darker: #1e1e28;
+        --text-color: #ffffff;
+    }
+
+    [data-theme="light"] {
+        --background-lighter: #f5f5f5;
+        --background-normal: #ffffff;
+        --background-darker: #e0e0e0;
+        --text-color: #000000;
+    }
+
+    body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        background-color: var(--background-darker);
+        color: var(--text-color);
+        font-family: "Merriweather", serif;
+        font-size: 16px;
+    }
+
+    .container {
+        display: flex;
+        width: 98vw;
+        height: 98%;
+        gap: 1rem;
+    }
+
+    .about {
+        flex: 2.5;
+        border-radius: 0.25rem;
+        background-color: var(--background-lighter);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content {
+        flex: 11;
+        border-radius: 0.25rem;
+        background-color: var(--background-lighter);
+        padding: 1rem 1rem;
+        overflow-y: auto;
+    }
+
+    .swap-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1rem;
+    }
+
+    .nav {
+        flex: 0.5;
+        border-radius: 0.25rem;
+        background-color: var(--background-lighter);
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 0.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .project {
+        flex: 1;
+        background-color: var(--background-darker);
+        border-radius: 0.25rem;
+        min-height: 20rem;
+        display: flex;
+        padding: 0.5rem;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .project-image-div {
+        flex: 2;
+        border-radius: 0.25rem;
+        border: 1px solid green;
+    }
+
+    .project-image {
+        object-fit: contain;
+    }
+
+    .project-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        border: 1px solid yellow;
+    }
+
+    .project-text-description {
+        border: 1px solid green;
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-text-information {
+        border: 1px solid blue;
+        flex: 1;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .project-text-information p {
+        margin: 0;
+    }
+
+    .project-text-information-paragraph {
+        flex: 1;
+    }
+
+    .project-text-information-paragraph-subject {
+        font-weight: bold;
+    }
+
+    .project-text-information-paragraph-object {}
+
+    .footer {
+        min-height: 2rem;
+        border: 1px solid red;
+    }
+
+    .profile-section {
+        padding-top: 0.5rem;
+        flex: 0.5;
+        background-color: var(--background-lighter);
+        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-section-image img {
+        width: 6.25rem;
+        /* Adjust the size as needed */
+        height: 6.25rem;
+        /* Adjust the size as needed */
+        object-fit: cover;
+        border-radius: 50%;
+        border: 0.125rem solid var(--text-color);
+    }
+
+    .profile-section-name {
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .profile-section-description {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .profile-description {
+        flex: 1;
+        border: 1px solid blue;
+    }
+
+    .profile-skills {
+        flex: 1;
+        border: 1px solid green;
+    }
+
+    .profile-footer {
+        padding-bottom: 0.5rem;
+        flex: 0.5;
+        border: 1px solid purple;
+    }
+
+    .nav-upper-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-lower-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .nav-button {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    </style>
+    <style type="text/css">
+    /* FLAUBERT MORTAFIX */
+    .project-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        max-height: 26rem;
+    }
+
+    .project-text {
+        flex-wrap: wrap;
+        margin-block: 0.5rem;
+    }
+
+    .project-text-description {
+        display: block;
+    }
+
+    .project-text-description-title {
+        margin-top: 0;
+    }
+
+    .project-text-information {
+        gap: 0.5rem;
+    }
+
+    @media only screen and (max-width: 1100px) {
+        .project {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .project-text {
+            margin: 0;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .project-text-description {
+            justify-content: space-between;
+            flex: 1.5;
+        }
+
+        .project-text-description-title,
+        .project-text-description-plot {
+            margin: 0;
+        }
+    }
+    </style>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const themeToggle = document.getElementById("theme-toggle");
+        const currentTheme = localStorage.getItem("theme") || "dark";
+
+        document.documentElement.setAttribute("data-theme", currentTheme);
+
+        themeToggle.addEventListener("click", function() {
+            console.log("PIPPPOOOO");
+            const theme =
+                document.documentElement.getAttribute("data-theme") === "dark" ?
+                "light" :
+                "dark";
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="about">
+            <div class="profile-section">
+                <div class="profile-section-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Profile Picture" />
+                </div>
+                <div class="profile-section-name">ANDREA PESCI</div>
+                <div class="profile-section-description">Game Programmer</div>
+            </div>
+            <div class="profile-description"></div>
+            <div class="profile-skills"></div>
+            <div class="profile-footer">
+                <div class="profile-information"></div>
+                <div class="profile-links"></div>
+                <div class="profile-cv"></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="swap-content">
+                <div class="project">
+                    <div class="project-image-div">
+                        <img class="project-image" src="https://via.placeholder.com/600x400" alt="Project Picture" />
+                    </div>
+                    <div class="project-text">
+                        <div class="project-text-description">
+                            <h2 class="project-text-description-title">TITOLO</h2>
+                            <p class="project-text-description-plot">
+                                A trivia game that tests your knowledge for the timeline of
+                                events. Arrange the oncoming events on the timeline.
+                            </p>
+                        </div>
+                        <div class="project-text-information">
+                            <div class="project-text-information-paragraph">
+                                <p class="project-text-information-paragraph-subject">
+                                    Tools/Technology
+                                </p>
+                                <p class="project-text-information-paragraph-object">
+                                    Unreal, Houdini, Maximo
+                                </p>
+                            </div>
+                            <div class="project-text-information-paragraph">
+                                <p class="project-text-information-paragraph-subject">Year</p>
+                                <p class="project-text-information-paragraph-object">
+                                    2022 - 2023
+                                </p>
+                            </div>
+                            <div class="project-text-information-paragraph">
+                                <p class="project-text-information-paragraph-subject">
+                                    Roles
+                                </p>
+                                <p class="project-text-information-paragraph-object">
+                                    Gameplay Programmer, Game Designer
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project"></div>
+                <div class="project"></div>
+                <div class="project"></div>
+            </div>
+            <div class="footer"></div>
+        </div>
+        <div class="nav">
+            <div class="nav-upper-section">
+                <button class="nav-button"></button>
+            </div>
+            <div class="nav-lower-section">
+                <button id="theme-toggle" class="nav-button"></button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
