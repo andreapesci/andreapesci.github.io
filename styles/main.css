@@ -1,0 +1,184 @@
+:root {
+    --background-lighter: #24242e;
+    --background-normal: #20202a;
+    --background-darker: #1e1e28;
+    --text-color: #ffffff;
+}
+
+[data-theme="dark"] {
+    --background-lighter: #24242e;
+    --background-normal: #20202a;
+    --background-darker: #1e1e28;
+    --text-color: #ffffff;
+}
+
+[data-theme="light"] {
+    --background-lighter: #f5f5f5;
+    --background-normal: #ffffff;
+    --background-darker: #e0e0e0;
+    --text-color: #000000;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--background-darker);
+    color: var(--text-color);
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    width: 98vw;
+    height: 98%;
+    gap: 1rem;
+}
+
+.about {
+    flex: 2.5;
+    border-radius: 0.25rem;
+    background-color: var(--background-lighter);
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 11;
+    border-radius: 0.25rem;
+    background-color: var(--background-lighter);
+    padding: 1rem 1rem;
+    overflow-y: auto;
+}
+
+.swap-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1rem;
+}
+
+.nav {
+    flex: 0.5;
+    border-radius: 0.25rem;
+    background-color: var(--background-lighter);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.nav-upper-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-lower-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.nav-button {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.collapsable-section {
+    cursor: pointer;
+    padding: 1rem;
+    border: 1px solid var(--background-normal);
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.collapsable-section h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.collapsable-content {
+    display: none;
+    padding: 1rem;
+    border-top: 1px solid var(--background-normal);
+}
+
+.collapsable-content.active {
+    display: block;
+}
+
+button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: var(--background-normal);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+button:focus, button:hover {
+    background-color: var(--background-darker);
+}
+
+pre {
+    background-color: var(--background-darker);
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+}
+
+.footer, .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #717171;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #bbb;
+}
+
+.snippet-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.snippet-content {
+    background-color: var(--background-darker);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+}
+
+.snippet-tabs button {
+    background-color: var(--background-normal);
+    color: var(--text-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.snippet-tabs button.active {
+    background-color: var(--background-darker);
+}

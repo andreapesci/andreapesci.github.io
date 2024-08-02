@@ -1,0 +1,32 @@
+{
+    "title": "Progetto 1",
+    "description": "Descrizione del progetto 1.",
+    "image": "data/project1/project_image.jpg",
+    "sections": [
+        {
+            "title": "Sezione 1",
+            "content": "Testo della sezione 1.",
+            "images": [""],
+            "codeSnippets": [
+                {
+                    "language": "C++ Header",
+                    "file": "data/project1/snippet1.h"
+                },
+                {
+                    "language": "C++ Source",
+                    "file": "data/project1/snippet1.cpp"
+                }
+            ]
+        },
+        {
+            "title": "Sezione 2",
+            "content": "Testo della sezione 2.",
+            "codeSnippets": [
+                {
+                    "language": "python",
+                    "file": "data/project1/snippet2.py"
+                }
+            ]
+        }
+    ]
+}

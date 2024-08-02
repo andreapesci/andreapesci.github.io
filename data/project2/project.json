@@ -1,0 +1,28 @@
+{
+    "title": "Progetto 2",
+    "description": "Descrizione del progetto 2.",
+    "image": "data/project2/project_image.jpg",
+    "sections": [
+        {
+            "title": "Sezione 1",
+            "content": "Testo della sezione 1.",
+            "images": [""],
+            "codeSnippets": [
+                {
+                    "language": "javascript",
+                    "file": "data/project2/snippet1.js"
+                }
+            ]
+        },
+        {
+            "title": "Sezione 2",
+            "content": "Testo della sezione 2.",
+            "codeSnippets": [
+                {
+                    "language": "python",
+                    "file": "data/project2/snippet2.py"
+                }
+            ]
+        }
+    ]
+}
