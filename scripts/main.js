@@ -27,6 +27,23 @@ function mainData() {
     return {
         currentPage: 'portfolio',
         loading: true,
+        aboutData: {
+            name: '',
+            profession: '',
+            brieflyMe: '',
+            skills: [],
+            info: {
+                residence: '',
+                city: '',
+                age: ''
+            },
+            socials: {
+                github: '',
+                linkedin: '',
+                email: ''
+            },
+            cv: ''
+        },
         content: null,
         activeSnippet: null,
         activeIndex: null,
@@ -64,7 +81,11 @@ function mainData() {
                     fetch(snippet.file)
                         .then(response => response.text())
                         .then(code => {
-                            snippet.code = hljs.highlightAuto(code).value; // Highlight the code
+                            if (typeof hljs !== 'undefined') {
+                                snippet.code = hljs.highlightAuto(code).value; // Highlight the code
+                            } else {
+                                snippet.code = code;
+                            }
                         })
                         .catch(error => console.error('Error loading snippet:', error));
                 });
@@ -97,6 +118,14 @@ function mainData() {
                 this.loading = false;
             }
         },
+        fetchAboutData() {
+            fetch('data/about.json')
+                .then(response => response.json())
+                .then(data => {
+                    this.aboutData = data;
+                })
+                .catch(error => console.error('Error loading about data:', error));
+        },
         init() {
             this.loadProjects();
         }
@@ -105,4 +134,3 @@ function mainData() {
 
 // Assicurati che mainData sia disponibile globalmente per Alpine.js
 window.mainData = mainData;
-

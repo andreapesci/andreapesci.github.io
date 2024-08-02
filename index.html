@@ -19,20 +19,45 @@
 
 <body>
     <div class="container" x-data="mainData()" x-cloak>
-        <div class="about" x-show="!loading">
+        <div class="about">
             <div class="profile-section">
                 <div class="profile-section-image">
                     <img src="assets/profile.jpg" alt="Profile Picture" />
                 </div>
-                <div class="profile-section-name">MARIO ROSSI</div>
-                <div class="profile-section-description">PIPPO BAUDO</div>
-            </div>
-            <div class="profile-description"></div>
-            <div class="profile-skills"></div>
-            <div class="profile-footer">
-                <div class="profile-information"></div>
-                <div class="profile-links"></div>
-                <div class="profile-cv"></div>
+                <div class="profile-section-name" x-text="aboutData.name"></div>
+                <div class="profile-section-description" x-text="aboutData.profession"></div>
+                <h3>Briefly Me</h3>
+                <p x-text="aboutData.brieflyMe"></p>
+                <hr>
+                <h3>My Information / Skills</h3>
+                <ul class="skills-list">
+                    <template x-for="skill in aboutData.skills" :key="skill">
+                        <li x-text="skill"></li>
+                    </template>
+                </ul>
+                <hr>
+                <div class="info-section">
+                    <div class="info-item">
+                        <h4>Residenza</h4>
+                        <p x-text="aboutData.info.residence"></p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Città</h4>
+                        <p x-text="aboutData.info.city"></p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Età</h4>
+                        <p x-text="aboutData.info.age"></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="social-icons">
+                    <a :href="aboutData.socials.github" target="_blank">GitHub</a>
+                    <a :href="aboutData.socials.linkedin" target="_blank">LinkedIn</a>
+                    <a :href="aboutData.socials.email">Email</a>
+                </div>
+                <hr>
+                <a :href="aboutData.cv" download class="cv-download">Scarica il CV</a>
             </div>
         </div>
         <div class="content">
@@ -64,11 +89,11 @@
                                                 <img :src="img" :class="{ 'hidden': currentImageIndex !== index }"
                                                     alt="Section Image">
                                             </template>
-                                            <button
-                                                @click="currentImageIndex = (currentImageIndex - 1 + section.images.length) % section.images.length"
+                                            <button <blade
+                                                click|%3D%26%2334%3BcurrentImageIndex%20%3D%20(currentImageIndex%20-%201%20%2B%20section.images.length)%20%25%20section.images.length%26%2334%3B>
                                                 class="image-nav prev">❮</button>
-                                            <button
-                                                @click="currentImageIndex = (currentImageIndex + 1) % section.images.length"
+                                            <button <blade
+                                                click|%3D%26%2334%3BcurrentImageIndex%20%3D%20(currentImageIndex%20%2B%201)%20%25%20section.images.length%26%2334%3B>
                                                 class="image-nav next">❯</button>
                                         </div>
                                         <div class="snippet-tabs">
