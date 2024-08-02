@@ -6,89 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrea Pesci</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles/main.css">
     <link id="highlight-light" rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css" disabled>
     <link id="highlight-dark" rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="styles/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="scripts/main.js" defer></script>
-    <script>
-        function contentData() {
-            return {
-                content: null,
-                activeSnippet: null,
-                activeIndex: null,
-                projectIndex: 0,
-                projects: [], // Lista dinamica dei progetti
-                toggleSection(title) {
-                    this.content.sections.forEach(section => {
-                        if (section.title === title) {
-                            section.isOpen = !section.isOpen;
-                        }
-                    });
-                },
-                nextProject() {
-                    this.projectIndex = (this.projectIndex + 1) % this.projects.length;
-                    this.loadProject();
-                },
-                prevProject() {
-                    this.projectIndex = (this.projectIndex - 1 + this.projects.length) % this.projects.length;
-                    this.loadProject();
-                },
-                loadProject() {
-                    const project = this.projects[this.projectIndex];
-                    fetch(`data/${project}/project.json`)
-                        .then(response => response.json())
-                        .then(data => {
-                            this.content = data;
-                            this.loadSnippets(data.sections);
-                        })
-                        .catch(error => console.error('Error loading content:', error));
-                },
-                loadSnippets(sections) {
-                    sections.forEach(section => {
-                        section.codeSnippets.forEach(snippet => {
-                            fetch(snippet.file)
-                                .then(response => response.text())
-                                .then(code => {
-                                    snippet.code = hljs.highlightAuto(code)
-                                    .value; // Highlight the code
-                                })
-                                .catch(error => console.error('Error loading snippet:', error));
-                        });
-                    });
-                },
-                toggleSnippet(snippet, index) {
-                    if (this.activeSnippet === snippet.code) {
-                        this.activeSnippet = null;
-                        this.activeIndex = null;
-                    } else {
-                        this.activeSnippet = snippet.code;
-                        this.activeIndex = index;
-                    }
-                },
-                loadProjects() {
-                    fetch('data/projects.json') // Carica la lista dei progetti da un file JSON
-                        .then(response => response.json())
-                        .then(data => {
-                            this.projects = data.projects;
-                            this.loadProject(); // Carica il primo progetto dopo aver caricato la lista dei progetti
-                        })
-                        .catch(error => console.error('Error loading projects:', error));
-                },
-                init() {
-                    this.loadProjects();
-                }
-            };
-        }
-    </script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 </head>
 
 <body>
-    <div class="container" x-data="contentData()">
-        <div class="about">
+    <div class="container" x-data="mainData()" x-cloak>
+        <div class="about" x-show="!loading">
             <div class="profile-section">
                 <div class="profile-section-image">
                     <img src="assets/profile.jpg" alt="Profile Picture" />
@@ -105,56 +36,84 @@
             </div>
         </div>
         <div class="content">
-            <div class="navigation">
-                <button @click="prevProject()">&#9664;</button>
-                <template x-for="(project, index) in projects" :key="project">
-                    <span :class="{'active': index === projectIndex}" class="dot"></span>
-                </template>
-                <button @click="nextProject()">&#9654;</button>
+            <div class="loading" x-show="loading">
+                Loading...
             </div>
-            <div id="swap-content" class="swap-content">
-                <template x-if="content">
-                    <div>
-                        <img :src="content.image" alt="Project Image">
-                        <h1 x-text="content.title"></h1>
-                        <p x-text="content.description"></p>
-                        <template x-for="section in content.sections" :key="section.title">
-                            <div>
-                                <h2 x-text="section.title" @click="toggleSection(section.title)"></h2>
-                                <div x-show="section.isOpen">
-                                    <p x-text="section.content"></p>
-                                    <template x-for="img in section.images" :key="img">
-                                        <img :src="img" alt="Section Image">
-                                    </template>
-                                    <div class="snippet-tabs">
-                                        <template x-for="(snippet, index) in section.codeSnippets" :key="snippet.file">
-                                            <button @click="toggleSnippet(snippet, index)"
-                                                :class="{'active': activeIndex === index}"
-                                                x-text="snippet.language"></button>
-                                        </template>
-                                    </div>
-                                    <div class="snippet-content" x-show="activeSnippet">
-                                        <pre><code x-html="activeSnippet" class="hljs"></code></pre>
+            <div x-show="currentPage === 'portfolio' && !loading">
+
+                <div class="navigation">
+                    <button @click="prevProject()">&#9664;</button>
+                    <template x-for="(project, index) in projects" :key="project">
+                        <span :class="{'active': index === projectIndex}" class="dot"></span>
+                    </template>
+                    <button @click="nextProject()">&#9654;</button>
+                </div>
+                <div id="swap-content" class="swap-content">
+                    <template x-if="content">
+                        <div>
+                            <img :src="content.image" alt="Project Image">
+                            <h1 x-text="content.title"></h1>
+                            <p x-text="content.description"></p>
+                            <template x-for="section in content.sections" :key="section.title">
+                                <div>
+                                    <h2 x-text="section.title" @click="toggleSection(section.title)"></h2>
+                                    <div x-show="section.isOpen">
+                                        <p x-text="section.content"></p>
+                                        <div class="image-container" x-data="{ currentImageIndex: 0 }">
+                                            <template x-for="(img, index) in section.images" :key="img">
+                                                <img :src="img" :class="{ 'hidden': currentImageIndex !== index }"
+                                                    alt="Section Image">
+                                            </template>
+                                            <button
+                                                @click="currentImageIndex = (currentImageIndex - 1 + section.images.length) % section.images.length"
+                                                class="image-nav prev">❮</button>
+                                            <button
+                                                @click="currentImageIndex = (currentImageIndex + 1) % section.images.length"
+                                                class="image-nav next">❯</button>
+                                        </div>
+                                        <div class="snippet-tabs">
+                                            <template x-for="(snippet, index) in section.codeSnippets"
+                                                :key="snippet.file">
+                                                <button @click="toggleSnippet(snippet, index)"
+                                                    :class="{'active': activeIndex === index}"
+                                                    x-text="snippet.language"></button>
+                                            </template>
+                                        </div>
+                                        <div class="snippet-content" x-show="activeSnippet">
+                                            <pre><code x-html="activeSnippet" class="hljs"></code></pre>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </template>
+                            </template>
 
-
-                    </div>
-                </template>
+                        </div>
+                    </template>
+                </div>
+                <div class="footer">
+                    <button @click="prevProject()">&#9664;</button>
+                    <template x-for="(project, index) in projects" :key="project">
+                        <span :class="{'active': index === projectIndex}" class="dot"></span>
+                    </template>
+                    <button @click="nextProject()">&#9654;</button>
+                </div>
             </div>
-            <div class="footer">
-                <button @click="prevProject()">&#9664;</button>
-                <template x-for="(project, index) in projects" :key="project">
-                    <span :class="{'active': index === projectIndex}" class="dot"></span>
-                </template>
-                <button @click="nextProject()">&#9654;</button>
+            <div x-show="currentPage === 'form' && !loading">
+                <h1>Compila il Form</h1>
+                <form>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name"><br><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"><br><br>
+                    <label for="message">Messaggio:</label>
+                    <textarea id="message" name="message"></textarea><br><br>
+                    <input type="submit" value="Invia">
+                </form>
             </div>
         </div>
-        <div class="nav">
+        <div class="nav" x-show="!loading">
             <div class="nav-upper-section">
-                <!-- Pulsanti di navigazione -->
+                <button class="nav-button" @click="switchPage('portfolio')">🏠</button>
+                <button class="nav-button" @click="switchPage('form')">📝</button>
             </div>
             <div class="nav-lower-section">
                 <button id="theme-toggle" class="nav-button">Toggle Theme</button>

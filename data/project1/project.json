@@ -6,7 +6,9 @@
         {
             "title": "Sezione 1",
             "content": "Testo della sezione 1.",
-            "images": [""],
+            "images": [
+                "data/project1/project_image_1.jpg", "data/project1/project_image_2.jpg"
+            ],
             "codeSnippets": [
                 {
                     "language": "C++ Header",
@@ -15,16 +17,6 @@
                 {
                     "language": "C++ Source",
                     "file": "data/project1/snippet1.cpp"
-                }
-            ]
-        },
-        {
-            "title": "Sezione 2",
-            "content": "Testo della sezione 2.",
-            "codeSnippets": [
-                {
-                    "language": "python",
-                    "file": "data/project1/snippet2.py"
                 }
             ]
         }
