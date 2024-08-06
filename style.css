@@ -1,0 +1,114 @@
+:root {
+    --background-lighter: #24242e;
+    --background-normal: #20202a;
+    --background-darker: #1e1e28;
+    --text-color: #ffffff;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-darker);
+}
+
+.container {
+    width: calc(100vmin * 1.5);
+    height: 95%;
+    max-width: 95%; /* Dimensione fissa del quadrato */
+    box-sizing: border-box;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.about {
+    flex: 2.5;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.25rem;
+    background-color: var(--background-lighter);
+}
+
+.content {
+    flex: 11;
+    border-radius: 0.25rem;
+    background-color: var(--background-lighter);
+    padding: 1rem 1rem;
+    overflow-y: auto;
+}
+
+.nav {
+    flex: 0.5;
+    border-radius: 0.25rem;
+    background-color: var(--background-lighter);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+@media (max-width: 1000px) {
+    .about, .nav {
+        position: fixed;
+        top: 0;
+        height: 95%;
+        z-index: 1000;
+        background-color: var(--background-lighter);
+        overflow-y: auto;
+        box-shadow: var(--text-color) 0px 0px 5px;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        visibility: hidden;
+        margin: 2.5%;
+    }
+
+    .about {
+        left: 0;
+        transform: translateX(-100%);
+        width: 30%;
+
+    }
+
+    .nav {
+        right: 0;
+        transform: translateX(100%);
+        width: 10%;
+
+    }
+
+    .about.show, .nav.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .about-icon {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: var(--background-lighter);
+        border-radius: 50%;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 1001;
+        box-shadow: var(--text-color) 0px 0px 5px;
+    }
+
+    .about-icon::before {
+        content: '\2630'; /* Unicode for hamburger menu icon */
+        font-size: 24px;
+        color: var(--text-color);
+    }
+}
