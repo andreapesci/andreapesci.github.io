@@ -4,10 +4,28 @@ function switchHighlightTheme(theme) {
     if (theme === 'light') {
         highlightLight.disabled = false;
         highlightDark.disabled = true;
+        removeWhitePngClass();
     } else {
         highlightLight.disabled = true;
         highlightDark.disabled = false;
+        addWhitePngClass();
     }
+}
+
+function addWhitePngClass() {
+    // Seleziona tutte le immagini con ID che iniziano con "togglable-image"
+    const icons = document.querySelectorAll('.nav-icon');
+    icons.forEach(img => {
+        img.classList.add('white-png');
+    });
+}
+
+function removeWhitePngClass() {
+    // Seleziona tutte le immagini con ID che iniziano con "togglable-image"
+    const icons = document.querySelectorAll('.nav-icon');
+    icons.forEach(img => {
+        img.classList.remove('white-png');
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,27 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
 function mainData() {
     return {
         currentPage: 'portfolio',
         loading: true,
-        aboutData: {
-            name: '',
-            profession: '',
-            brieflyMe: '',
-            skills: [],
-            info: {
-                residence: '',
-                city: '',
-                age: ''
-            },
-            socials: {
-                github: '',
-                linkedin: '',
-                email: ''
-            },
-            cv: ''
-        },
+        aboutData: null,
         content: null,
         activeSnippet: null,
         activeIndex: null,
@@ -56,12 +59,12 @@ function mainData() {
                 }
             });
         },
-        nextProject() {
-            this.projectIndex = (this.projectIndex + 1) % this.projects.length;
-            this.loadProject();
-        },
-        prevProject() {
-            this.projectIndex = (this.projectIndex - 1 + this.projects.length) % this.projects.length;
+        navigateProject(direction) {
+            if (direction === 'prev') {
+                this.projectIndex = (this.projectIndex - 1 + this.projects.length) % this.projects.length;
+            } else if (direction === 'next') {
+                this.projectIndex = (this.projectIndex + 1) % this.projects.length;
+        }
             this.loadProject();
         },
         loadProject() {
@@ -122,15 +125,19 @@ function mainData() {
             fetch('data/about.json')
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data);
                     this.aboutData = data;
                 })
                 .catch(error => console.error('Error loading about data:', error));
         },
         init() {
             this.loadProjects();
+            this.fetchAboutData();
         }
     };
 }
+
+
 
 // Assicurati che mainData sia disponibile globalmente per Alpine.js
 window.mainData = mainData;

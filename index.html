@@ -18,40 +18,40 @@
 </head>
 
 <body>
-    <div class="container" x-data="mainData()" x-cloak>
+    <div class="container" x-data="mainData()" x-init="init()" x-cloak>
         <div class="about">
-            <div class="profile-section">
-                <div class="profile-section-image">
-                    <img src="assets/profile.jpg" alt="Profile Picture" />
+            <div class="about-upper-section">
+                <div class="photo-name-title">
+                    <img class="profile-img" src="assets/profile.jpg" alt="Profile Picture" />
+                    <h3 x-text="aboutData.name"></h3>
+                    <h5 x-text="aboutData.profession"></h5>
                 </div>
-                <div class="profile-section-name" x-text="aboutData.name"></div>
-                <div class="profile-section-description" x-text="aboutData.profession"></div>
-                <h3>Briefly Me</h3>
-                <p x-text="aboutData.brieflyMe"></p>
+
+                <h4 style="margin-bottom: 0px;">Briefly Me</h4>
+                <p class="personal-description" x-text="aboutData.brieflyMe"></p>
+
+            </div>
+            <div class="about-lower-section">
                 <hr>
-                <h3>My Information / Skills</h3>
-                <ul class="skills-list">
-                    <template x-for="skill in aboutData.skills" :key="skill">
-                        <li x-text="skill"></li>
-                    </template>
-                </ul>
-                <hr>
-                <div class="info-section">
-                    <div class="info-item">
-                        <h4>Residenza</h4>
-                        <p x-text="aboutData.info.residence"></p>
+                <div class="personal-informations">
+
+                    <div>
+                        <p>Residence</p>
+                        <p style="opacity: 0.75" x-text="aboutData.info.residence"></p>
                     </div>
-                    <div class="info-item">
-                        <h4>Città</h4>
-                        <p x-text="aboutData.info.city"></p>
+                    <div>
+                        <p>City</p>
+                        <p style="opacity: 0.75" x-text="aboutData.info.city"></p>
                     </div>
-                    <div class="info-item">
-                        <h4>Età</h4>
-                        <p x-text="aboutData.info.age"></p>
+                    <div>
+                        <p>Age</p>
+                        <p style="opacity: 0.75" x-text="aboutData.info.age"></p>
                     </div>
+
                 </div>
+
                 <hr>
-                <div class="social-icons">
+                <div class="social-links">
                     <a :href="aboutData.socials.github" target="_blank">GitHub</a>
                     <a :href="aboutData.socials.linkedin" target="_blank">LinkedIn</a>
                     <a :href="aboutData.socials.email">Email</a>
@@ -60,6 +60,14 @@
                 <a :href="aboutData.cv" download class="cv-download">Scarica il CV</a>
             </div>
         </div>
+
+
+
+
+
+
+
+
         <div class="content">
             <div class="loading" x-show="loading">
                 Loading...
@@ -67,21 +75,32 @@
             <div x-show="currentPage === 'portfolio' && !loading">
 
                 <div class="navigation">
-                    <button @click="prevProject()">&#9664;</button>
+                    <button @click="navigateProject('prev')">&#9664;</button>
                     <template x-for="(project, index) in projects" :key="project">
                         <span :class="{'active': index === projectIndex}" class="dot"></span>
                     </template>
-                    <button @click="nextProject()">&#9654;</button>
+                    <button @click="navigateProject('next')">&#9654;</button>
                 </div>
                 <div id="swap-content" class="swap-content">
                     <template x-if="content">
-                        <div>
-                            <img :src="content.image" alt="Project Image">
-                            <h1 x-text="content.title"></h1>
-                            <p x-text="content.description"></p>
+                        <div class="project">
+                            <img class="project-img" :src="content.image" alt="Project Image">
+                            <div class="project-title">
+                                <h3 x-text="content.title"></h3>
+                                <div class="tags">
+                                    <span class="tag">UNREAL ENGINE 5</span>
+                                    <span class="tag">GROUP PROJECT</span>
+                                    <span class="tag">GAMEPLAY/AI PROGRAMMER</span>
+                                </div>
+                            </div>
+                            <p style="opacity: 0.8;" x-text="content.description"></p>
                             <template x-for="section in content.sections" :key="section.title">
                                 <div>
-                                    <h2 x-text="section.title" @click="toggleSection(section.title)"></h2>
+                                    <div class="rectangle">
+                                        <span x-text="section.title" @click="toggleSection(section.title)"
+                                            class="rectangle-text"></span>
+                                        <span class="rectangle-icon">🔍</span>
+                                    </div>
                                     <div x-show="section.isOpen">
                                         <p x-text="section.content"></p>
                                         <div class="image-container" x-data="{ currentImageIndex: 0 }">
@@ -89,12 +108,12 @@
                                                 <img :src="img" :class="{ 'hidden': currentImageIndex !== index }"
                                                     alt="Section Image">
                                             </template>
-                                            <button <blade
+                                            <button class="image-nav prev" <blade
                                                 click|%3D%26%2334%3BcurrentImageIndex%20%3D%20(currentImageIndex%20-%201%20%2B%20section.images.length)%20%25%20section.images.length%26%2334%3B>
-                                                class="image-nav prev">❮</button>
-                                            <button <blade
+                                                ❮</button>
+                                            <button class="image-nav next" <blade
                                                 click|%3D%26%2334%3BcurrentImageIndex%20%3D%20(currentImageIndex%20%2B%201)%20%25%20section.images.length%26%2334%3B>
-                                                class="image-nav next">❯</button>
+                                                ❯</button>
                                         </div>
                                         <div class="snippet-tabs">
                                             <template x-for="(snippet, index) in section.codeSnippets"
@@ -111,15 +130,18 @@
                                 </div>
                             </template>
 
+
                         </div>
+
                     </template>
+
                 </div>
                 <div class="footer">
-                    <button @click="prevProject()">&#9664;</button>
+                    <button @click="navigateProject('prev')">&#9664;</button>
                     <template x-for="(project, index) in projects" :key="project">
                         <span :class="{'active': index === projectIndex}" class="dot"></span>
                     </template>
-                    <button @click="nextProject()">&#9654;</button>
+                    <button @click="navigateProject('next')">&#9654;</button>
                 </div>
             </div>
             <div x-show="currentPage === 'form' && !loading">
@@ -137,11 +159,26 @@
         </div>
         <div class="nav" x-show="!loading">
             <div class="nav-upper-section">
-                <button class="nav-button" @click="switchPage('portfolio')">🏠</button>
-                <button class="nav-button" @click="switchPage('form')">📝</button>
+                <div class="icon-wrapper">
+                    <i class="icon" @click="switchPage('portfolio')">
+                        <img class="nav-icon" src="assets/portfolio.png" alt="My Happy SVG" />
+                    </i>
+                    <span class="tooltip">PORTFOLIO</span>
+                </div>
+                <div class="icon-wrapper">
+                    <i class="icon" @click="switchPage('form')">
+                        <img class="nav-icon" src="assets/contact.png" alt="My Happy SVG" />
+                    </i>
+                    <span class="tooltip">CONTACT ME</span>
+                </div>
             </div>
             <div class="nav-lower-section">
-                <button id="theme-toggle" class="nav-button">Toggle Theme</button>
+                <div class="icon-wrapper">
+                    <i id="theme-toggle" class="icon">
+                        <img class="nav-icon" src="assets/darkmode.png" alt="Toggle Dark/Light Mode" />
+                    </i>
+                    <span class="tooltip">TOGGLE THEME</span>
+                </div>
             </div>
         </div>
     </div>
