@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                             <p style="opacity: 0.8;" x-text="content.description"></p>
-                            <template x-for="section in content.sections" :key="section.title">
+                            <template x-for="(section, sectionIndex) in content.sections" :key="section.title">
                                 <div>
                                     <div class="rectangle">
                                         <span x-text="section.title" @click="toggleSection(section.title)"
@@ -117,16 +117,13 @@
                                                     <template x-if="mediaItem.type === 'video'">
                                                         <iframe :src="mediaItem.src"
                                                             :class="{ 'hidden': currentMediaIndex !== index }"
-                                                            class="video-container" alt="Section Video"
-                                                            title="YouTube video player" frameborder="0"
+                                                            class="video-container" title="YouTube video player"
+                                                            frameborder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                            referrerpolicy="strict-origin-when-cross-origin"
                                                             allowfullscreen></iframe>
-
                                                     </template>
                                                 </div>
                                             </template>
-
                                             <button class="image-nav prev" @click="prevMedia">❮</button>
                                             <button class="image-nav next" @click="nextMedia">❯</button>
                                         </div>
@@ -135,19 +132,21 @@
                                             <template x-for="(snippet, index) in section.codeSnippets"
                                                 :key="snippet.file">
                                                 <div class="rectangle">
-                                                    <span @click="toggleSnippet(snippet, index)"
-                                                        :class="{'active': activeIndex === index}"
+                                                    <span @click="toggleSnippet(sectionIndex, snippet, index)"
+                                                        :class="{'active': section.activeIndex === index}"
                                                         x-text="snippet.language" class="rectangle-text"></span>
                                                     <span class="rectangle-icon">🔍</span>
                                                 </div>
                                             </template>
                                         </div>
-                                        <div class="snippet-content" x-show="activeSnippet" x-transition.duration.500ms>
-                                            <pre><code x-html="activeSnippet" class="hljs"></code></pre>
+                                        <div class="snippet-content" x-show="section.activeSnippet"
+                                            x-transition.duration.500ms>
+                                            <pre><code x-html="section.activeSnippet" class="hljs"></code></pre>
                                         </div>
                                     </div>
-
                                 </div>
+                            </template>
+
                         </div>
                     </template>
 

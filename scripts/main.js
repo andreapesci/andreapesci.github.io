@@ -132,12 +132,14 @@ function mainData() {
         },
         loadSnippets(sections) {
             sections.forEach(section => {
+                section.activeSnippet = null;
+                section.activeIndex = null;
                 section.codeSnippets.forEach(snippet => {
                     fetch(snippet.file)
                         .then(response => response.text())
                         .then(code => {
                             if (typeof hljs !== 'undefined') {
-                                snippet.code = hljs.highlightAuto(code).value; // Highlight the code
+                                snippet.code = hljs.highlightAuto(code).value; // Evidenzia il codice
                             } else {
                                 snippet.code = code;
                             }
@@ -146,14 +148,21 @@ function mainData() {
                 });
             });
         },
-        toggleSnippet(snippet, index) {
-            if (this.activeSnippet === snippet.code) {
-                this.activeSnippet = null;
-                this.activeIndex = null;
-            } else {
-                this.activeSnippet = snippet.code;
-                this.activeIndex = index;
-            }
+        toggleSnippet(sectionIndex, snippet, index) {
+            this.content.sections.forEach((section, sIndex) => {
+                if (sIndex === sectionIndex) {
+                    if (section.activeSnippet === snippet.code) {
+                        section.activeSnippet = null;
+                        section.activeIndex = null;
+                    } else {
+                        section.activeSnippet = snippet.code;
+                        section.activeIndex = index;
+                    }
+                } else {
+                    section.activeSnippet = null;
+                    section.activeIndex = null;
+                }
+            });
         },
         loadProjects() {
             fetch('data/projects.json') // Carica la lista dei progetti da un file JSON

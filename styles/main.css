@@ -240,6 +240,12 @@ hr {
     gap: 1rem;
     padding: 1.5rem;
 }
+.section-details {
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+
 
 .nav {
     flex: 0.5;
