@@ -52,7 +52,7 @@ body {
 }
 
 .about {
-    flex: 2.5;
+    flex: 3;
     padding: 1rem;
     display: flex;
     flex-direction: column;

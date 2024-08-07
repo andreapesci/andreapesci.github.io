@@ -8,19 +8,31 @@
             "title": "Creature AI Behavior",
             "content": "In the game, I developed an AI-controlled creature inspired by the \"Slender\" game, implementing complex behaviors and interactions with the player. The creature spawns at a variable distance from the player based on the danger level, which changes according to the player's location and playtime. The spawn area is dynamically adjusted, with the creature appearing only within a certain angle behind the player at low danger levels, expanding to 360 degrees as the danger increases. The creature can spawn in the area between two concentric circles around the player and will despawn if the player moves beyond a maximum distance or after a set time. Additionally, the creature triggers various effects such as sounds and visual distortions when the player looks at it for a certain period, adding to the eerie atmosphere. These effects smoothly adjust based on proximity and danger level, ensuring a seamless and immersive experience.",
             "images": [
-                "data/project1/project_image_1.jpg", "data/project1/project_image_2.jpg"
+                "data/project1/project_image_1.jpg"
             ],
             "videos": [
-                "https://www.youtube-nocookie.com/embed/LdcPiDar9uw?si=ZQi0457yw0HrLG5x"
+
             ],
             "codeSnippets": [
                 {
                     "language": "C++ Header",
-                    "file": "data/project1/snippet1.h"
+                    "name": "Creature.h",
+                    "file": "data/project1/Creature.h"
                 },
                 {
                     "language": "C++ Source",
-                    "file": "data/project1/snippet1.cpp"
+                    "name": "Creature.cpp",
+                    "file": "data/project1/Creature.cpp"
+                },
+                {
+                    "language": "C++ Header",
+                    "name": "CreatureManager.h",
+                    "file": "data/project1/CreatureManager.h"
+                },
+                {
+                    "language": "C++ Source",
+                    "name": "CreatureManager.cpp",
+                    "file": "data/project1/CreatureManager.cpp"
                 }
             ]
         },
@@ -31,8 +43,24 @@
             "videos": [],
             "codeSnippets": [
                 {
+                    "language": "C++ Header",
+                    "name": "HuntZone.h",
+                    "file": "data/project1/HuntZone.h"
+                },
+                {
                     "language": "C++ Source",
-                    "file": "data/project1/snippet1.cpp"
+                    "name": "HuntZone.cpp",
+                    "file": "data/project1/HuntZone.cpp"
+                },
+                {
+                    "language": "C++ Header",
+                    "name": "HuntZoneManager.h",
+                    "file": "data/project1/HuntZoneManager.h"
+                },
+                {
+                    "language": "C++ Source",
+                    "name": "HuntZoneManager.cpp",
+                    "file": "data/project1/HuntZoneManager.cpp"
                 }
             ]
         }

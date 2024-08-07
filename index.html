@@ -9,11 +9,12 @@
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link id="highlight-light" rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css" disabled>
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/default.min.css" disabled>
     <link id="highlight-dark" rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="styles/main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/cpp.min.js"></script>
     <script src="scripts/main.js" defer></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
@@ -29,8 +30,8 @@
                     <h4 x-text="aboutData.profession"></h4>
                 </div>
 
-                <h4 style="margin-bottom: 0px;">Briefly Me</h4>
-                <p class="personal-description" x-text="aboutData.brieflyMe"></p>
+                <h4 style="margin-bottom: 0px;">About me</h4>
+                <p class="personal-description" x-html="aboutData.brieflyMe"></p>
 
             </div>
             <div class="about-lower-section">
@@ -134,7 +135,7 @@
                                                 <div class="rectangle">
                                                     <span @click="toggleSnippet(sectionIndex, snippet, index)"
                                                         :class="{'active': section.activeIndex === index}"
-                                                        x-text="snippet.language" class="rectangle-text"></span>
+                                                        x-text="snippet.name" class="rectangle-text"></span>
                                                     <span class="rectangle-icon">🔍</span>
                                                 </div>
                                             </template>
@@ -185,12 +186,12 @@
                     </i>
                     <span class="tooltip">PORTFOLIO</span>
                 </div>
-                <div class="icon-wrapper">
+                <!-- <div class="icon-wrapper">
                     <i class="icon" @click="switchPage('form')">
                         <img class="nav-icon" src="assets/contact.png" alt="My Happy SVG" />
                     </i>
                     <span class="tooltip">CONTACT ME</span>
-                </div>
+                </div> -->
             </div>
             <div class="nav-lower-section">
                 <div class="icon-wrapper">

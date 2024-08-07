@@ -10,10 +10,7 @@
             "images": [],
             "videos": [],
             "codeSnippets": [
-                {
-                    "language": "javascript",
-                    "file": "data/project2/snippet1.js"
-                }
+
             ]
         },
         {
@@ -22,10 +19,7 @@
             "images": [],
             "videos": [],
             "codeSnippets": [
-                {
-                    "language": "python",
-                    "file": "data/project2/snippet2.py"
-                }
+
             ]
         }
     ]
