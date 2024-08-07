@@ -4,9 +4,9 @@
     "brieflyMe": "Questo è un breve paragrafo su di me...",
     "skills": ["Skill 1", "Skill 2", "Skill 3"],
     "info": {
-        "residence": "Indirizzo",
-        "city": "Nome della città",
-        "age": "30 anni"
+        "residence": "Italy",
+        "city": "Milan",
+        "age": "30yo"
     },
     "socials": {
         "github": "https://github.com/username",
