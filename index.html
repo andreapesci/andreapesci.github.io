@@ -176,33 +176,34 @@
                 <input type="submit" value="Invia">
             </form>
         </div>
-    </div>
-    <div class="nav" x-show="!loading">
-        <div class="nav-upper-section">
-            <div class="icon-wrapper">
-                <i class="icon" @click="switchPage('portfolio')">
-                    <img class="nav-icon" src="assets/portfolio.png" alt="My Happy SVG" />
-                </i>
-                <span class="tooltip">PORTFOLIO</span>
+
+        <div class="nav" x-show="!loading">
+            <div class="nav-upper-section">
+                <div class="icon-wrapper">
+                    <i class="icon" @click="switchPage('portfolio')">
+                        <img class="nav-icon" src="assets/portfolio.png" alt="My Happy SVG" />
+                    </i>
+                    <span class="tooltip">PORTFOLIO</span>
+                </div>
+                <div class="icon-wrapper">
+                    <i class="icon" @click="switchPage('form')">
+                        <img class="nav-icon" src="assets/contact.png" alt="My Happy SVG" />
+                    </i>
+                    <span class="tooltip">CONTACT ME</span>
+                </div>
             </div>
-            <div class="icon-wrapper">
-                <i class="icon" @click="switchPage('form')">
-                    <img class="nav-icon" src="assets/contact.png" alt="My Happy SVG" />
-                </i>
-                <span class="tooltip">CONTACT ME</span>
+            <div class="nav-lower-section">
+                <div class="icon-wrapper">
+                    <i id="theme-toggle" class="icon">
+                        <img class="nav-icon" src="assets/darkmode.png" alt="Toggle Dark/Light Mode" />
+                    </i>
+                    <span class="tooltip">TOGGLE THEME</span>
+                </div>
             </div>
         </div>
-        <div class="nav-lower-section">
-            <div class="icon-wrapper">
-                <i id="theme-toggle" class="icon">
-                    <img class="nav-icon" src="assets/darkmode.png" alt="Toggle Dark/Light Mode" />
-                </i>
-                <span class="tooltip">TOGGLE THEME</span>
-            </div>
-        </div>
-    </div>
     </div>
     <div class="about-icon" onclick="toggleSections()"></div>
+    </div>
 </body>
 
 </html>

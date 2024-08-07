@@ -193,6 +193,7 @@ hr {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
     box-shadow: var(--text-color) 0px 0px 2px;
+    cursor:pointer;
 }
 
 .rectangle-text {
