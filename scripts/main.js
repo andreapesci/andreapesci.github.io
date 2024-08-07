@@ -68,20 +68,44 @@ document.addEventListener('transitionend', (event) => {
     }
 });
 
+function combineMedia(section) {
+    return [...section.images, ...section.videos].map((item, index) => ({ type: !item.includes('youtube') ? 'image' : 'video', src: item }));
+}
+
 
 function mainData() {
     return {
         currentPage: 'portfolio',
         loading: true,
-        aboutData: null,
+        aboutData: {
+            name: '',
+            profession: '',
+            brieflyMe: '',
+            skills: [],
+            info: {
+                residence: '',
+                city: '',
+                age: ''
+            },
+            socials: {
+                github: '',
+                linkedin: '',
+                email: ''
+            },
+            cv: ''
+        },
         content: null,
         activeSnippet: null,
         activeIndex: null,
+        sectionIndex: 0,
         projectIndex: 0,
         projects: [], // Lista dinamica dei progetti
+
         toggleSection(title) {
             this.content.sections.forEach(section => {
+
                 if (section.title === title) {
+
                     section.isOpen = !section.isOpen;
                 }
             });
@@ -102,6 +126,7 @@ function mainData() {
                     this.content = data;
                     this.loadSnippets(data.sections);
                     this.loading = false; // Nasconde lo spinner di caricamento quando i dati sono pronti
+
                 })
                 .catch(error => console.error('Error loading content:', error));
         },
@@ -152,14 +177,33 @@ function mainData() {
             fetch('data/about.json')
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     this.aboutData = data;
                 })
                 .catch(error => console.error('Error loading about data:', error));
         },
         init() {
-            this.loadProjects();
             this.fetchAboutData();
+            this.loadProjects();
+
+        }
+    };
+}
+
+function mediaNavigator(images, videos) {
+    // Combine images and videos into a single array with type indication
+    const combinedMedia = [
+        ...images.map(src => ({ type: 'image', src })),
+        ...videos.map(src => ({ type: 'video', src }))
+    ];
+
+    return {
+        combinedMedia: combinedMedia,
+        currentMediaIndex: 0,
+        prevMedia() {
+            this.currentMediaIndex = (this.currentMediaIndex - 1 + this.combinedMedia.length) % this.combinedMedia.length;
+        },
+        nextMedia() {
+            this.currentMediaIndex = (this.currentMediaIndex + 1) % this.combinedMedia.length;
         }
     };
 }
@@ -168,3 +212,4 @@ function mainData() {
 
 // Assicurati che mainData sia disponibile globalmente per Alpine.js
 window.mainData = mainData;
+window.mediaNavigator = mediaNavigator;

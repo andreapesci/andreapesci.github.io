@@ -1,17 +1,17 @@
 {
     "name": "ANDREA PESCI",
     "profession": "GAME PROGRAMMER",
-    "brieflyMe": "Questo è un breve paragrafo su di me...",
+    "brieflyMe": "Questo è un breve paragrafo su di me....",
     "skills": ["Skill 1", "Skill 2", "Skill 3"],
     "info": {
         "residence": "Italy",
         "city": "Milan",
-        "age": "30yo"
+        "age": "30"
     },
     "socials": {
-        "github": "https://github.com/username",
+        "github": "https://github.com/andreapesci",
         "linkedin": "https://linkedin.com/in/username",
-        "email": "mailto:email@example.com"
+        "email": "mailto:andrea.pesci.x3@gmail.com"
     },
     "cv": "assets/cv.pdf"
 }

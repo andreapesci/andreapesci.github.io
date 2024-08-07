@@ -53,7 +53,7 @@ body {
 
 .about {
     flex: 2.5;
-    padding: 0.5rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     border-radius: 0.25rem;
@@ -109,6 +109,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0px;
+    gap: 0.5rem
 }
 
 .personal-informations p {
@@ -246,7 +247,7 @@ hr {
     background-color: var(--background-lighter);
     display: flex;
     flex-direction: column;
-    padding: 0.5rem 0rem;
+    padding: 1rem 0.25rem;
 }
 
 .nav-upper-section {
@@ -349,9 +350,7 @@ pre {
     background-color: #717171;
 }
 
-[x-cloak] {
-    display: none;
-}
+[x-cloak] { display: none !important; }
 
 .loading {
     position: absolute;
@@ -363,20 +362,25 @@ pre {
     color: var(--text-color);
 }
 
-/* Aggiungi questo CSS per le frecce di navigazione */
 .image-container {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    position: relative;
 }
 
-.image-container img {
-
-    aspect-ratio: 16/9;
+.image-container img,
+.image-container iframe {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+}
+.video-container {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 
-.image-container img.hidden {
+.hidden {
     display: none;
 }
 
@@ -404,6 +408,9 @@ pre {
 .image-container:hover .image-nav {
     display: block;
 }
+
+
+
 
 
 .icon-wrapper {
@@ -466,7 +473,7 @@ pre {
     .about {
         left: 0;
         transform: translateX(-100%);
-        width: 30%;
+        width: 35%;
 
     }
 

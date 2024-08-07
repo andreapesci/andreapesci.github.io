@@ -1,13 +1,17 @@
 {
     "title": "Project Winter",
-    "description": "Embark on a chilling journey in our Survival Horror game, where you step into the shoes of a young child lost in a hostile, snow-covered mountain. Amidst relentless blizzards and treacherous terrain, you must scavenge for remnants of your childhood while evading a relentless, terrifying creature that stalks your every move. The atmosphere is thick with tension and anxiety as you navigate the haunting landscape, piecing together the story of your past. As you fight for survival, uncover hidden truths and face shocking revelations that will keep you on the edge of your seat.",
+    "description": "Embark on a chilling journey in our Survival Horror game...",
     "image": "data/project1/project_image.jpg",
+    "tags": ["UNREAL ENGINE 5", "GROUP PROJECT", "GAMEPLAY/AI PROGRAMMER"],
     "sections": [
         {
             "title": "Creature AI Behavior",
-            "content": "In the game, I developed an AI-controlled creature inspired by the \"Slender\" game, implementing complex behaviors and interactions with the player. The creature spawns at a variable distance from the player based on the danger level, which ranges from 0.00 to 1.00 and changes according to the player's location and playtime. The spawn area is dynamically adjusted, with the creature appearing only within a certain angle behind the player at low danger levels, expanding to 360 degrees as the danger increases. The creature can spawn in the area between two concentric circles around the player and will despawn if the player moves beyond a maximum distance or after a set time. Additionally, the creature triggers various effects such as sounds and visual distortions when the player looks at it for a certain period, adding to the eerie atmosphere. These effects smoothly adjust based on proximity and danger level, ensuring a seamless and immersive experience.",
+            "content": "In the game, I developed an AI-controlled creature inspired by the \"Slender\" game, implementing complex behaviors and interactions with the player. The creature spawns at a variable distance from the player based on the danger level, which changes according to the player's location and playtime. The spawn area is dynamically adjusted, with the creature appearing only within a certain angle behind the player at low danger levels, expanding to 360 degrees as the danger increases. The creature can spawn in the area between two concentric circles around the player and will despawn if the player moves beyond a maximum distance or after a set time. Additionally, the creature triggers various effects such as sounds and visual distortions when the player looks at it for a certain period, adding to the eerie atmosphere. These effects smoothly adjust based on proximity and danger level, ensuring a seamless and immersive experience.",
             "images": [
                 "data/project1/project_image_1.jpg", "data/project1/project_image_2.jpg"
+            ],
+            "videos": [
+                "https://www.youtube-nocookie.com/embed/LdcPiDar9uw?si=ZQi0457yw0HrLG5x"
             ],
             "codeSnippets": [
                 {
@@ -23,14 +27,9 @@
         {
             "title": "HuntZone",
             "content": "The HuntZone system consists of multiple trigger zones placed throughout the game map to define areas where the creature can spawn and interact with the player. These zones are managed by a singleton class, HuntZoneManager, which keeps track of active zones and ensures that the creature spawns only when the player enters these areas. Each zone has a specific danger level influencing the spawn mechanics and behavior of the creature. The system uses Unreal Engine's trigger volumes and custom trace channels to accurately detect the player's presence and manage the lifecycle of the creature. This setup allows for a flexible and scalable approach to defining and adjusting the hunting grounds, enhancing the dynamic and unpredictable nature of the game.",
-            "images": [
-                "data/project1/project_image_1.jpg", "data/project1/project_image_2.jpg"
-            ],
+            "images": [],
+            "videos": [],
             "codeSnippets": [
-                {
-                    "language": "C++ Header",
-                    "file": "data/project1/snippet1.h"
-                },
                 {
                     "language": "C++ Source",
                     "file": "data/project1/snippet1.cpp"

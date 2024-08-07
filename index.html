@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrea Pesci</title>
+    <title>Andrea's Portolio</title>
+    <link rel="icon" type="image/x-icon" href="/assets/Profile.jpg">
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link id="highlight-light" rel="stylesheet"
@@ -24,8 +25,8 @@
             <div class="about-upper-section">
                 <div class="photo-name-title">
                     <img class="profile-img" src="assets/profile.jpg" alt="Profile Picture" />
-                    <h3 x-text="aboutData.name"></h3>
-                    <h5 x-text="aboutData.profession"></h5>
+                    <h2 x-text="aboutData.name"></h2>
+                    <h4 x-text="aboutData.profession"></h4>
                 </div>
 
                 <h4 style="margin-bottom: 0px;">Briefly Me</h4>
@@ -89,9 +90,9 @@
                             <div class="project-title">
                                 <h3 x-text="content.title"></h3>
                                 <div class="tags">
-                                    <span class="tag">UNREAL ENGINE 5</span>
-                                    <span class="tag">GROUP PROJECT</span>
-                                    <span class="tag">GAMEPLAY/AI PROGRAMMER</span>
+                                    <template x-for="tag in content.tags" :key="tag">
+                                        <span class="tag" x-text="tag"></span>
+                                    </template>
                                 </div>
                             </div>
                             <p style="opacity: 0.8;" x-text="content.description"></p>
@@ -102,22 +103,34 @@
                                             class="rectangle-text"></span>
                                         <span class="rectangle-icon">🔍</span>
                                     </div>
-                                    <div x-show="section.isOpen" class="section-details">
+                                    <div x-show="section.isOpen" class="section-details" x-transition.duration.500ms>
                                         <p x-text="section.content"></p>
-                                        <div class="image-container" x-data="{ currentImageIndex: 0 }">
-                                            <template x-for="(img, index) in section.images" :key="img">
-                                                <img :src="img" :class="{ 'hidden': currentImageIndex !== index }"
-                                                    alt="Section Image">
+                                        <div class="image-container"
+                                            x-data="mediaNavigator(section.images, section.videos)">
+                                            <template x-for="(mediaItem, index) in combinedMedia" :key="index">
+                                                <div>
+                                                    <template x-if="mediaItem.type === 'image'">
+                                                        <img :src="mediaItem.src"
+                                                            :class="{ 'hidden': currentMediaIndex !== index }"
+                                                            alt="Section Media">
+                                                    </template>
+                                                    <template x-if="mediaItem.type === 'video'">
+                                                        <iframe :src="mediaItem.src"
+                                                            :class="{ 'hidden': currentMediaIndex !== index }"
+                                                            class="video-container" alt="Section Video"
+                                                            title="YouTube video player" frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                            referrerpolicy="strict-origin-when-cross-origin"
+                                                            allowfullscreen></iframe>
+
+                                                    </template>
+                                                </div>
                                             </template>
-                                            <button class="image-nav prev"
-                                                @click="currentImageIndex = (currentImageIndex - 1 + section.images.length) % section.images.length">
-                                                ❮
-                                            </button>
-                                            <button class="image-nav next"
-                                                @click="currentImageIndex = (currentImageIndex + 1) % section.images.length">
-                                                ❯
-                                            </button>
+
+                                            <button class="image-nav prev" @click="prevMedia">❮</button>
+                                            <button class="image-nav next" @click="nextMedia">❯</button>
                                         </div>
+
                                         <div class="snippet-tabs">
                                             <template x-for="(snippet, index) in section.codeSnippets"
                                                 :key="snippet.file">
@@ -129,64 +142,66 @@
                                                 </div>
                                             </template>
                                         </div>
-                                        <div class="snippet-content" x-show="activeSnippet">
+                                        <div class="snippet-content" x-show="activeSnippet" x-transition.duration.500ms>
                                             <pre><code x-html="activeSnippet" class="hljs"></code></pre>
                                         </div>
                                     </div>
+
                                 </div>
-                            </template>
-
-
                         </div>
-
                     </template>
 
+
                 </div>
-                <div class="footer">
-                    <button @click="navigateProject('prev')">&#9664;</button>
-                    <template x-for="(project, index) in projects" :key="project">
-                        <span :class="{'active': index === projectIndex}" class="dot"></span>
-                    </template>
-                    <button @click="navigateProject('next')">&#9654;</button>
-                </div>
+
+                </template>
+
             </div>
-            <div x-show="currentPage === 'form' && !loading">
-                <h1>Compila il Form</h1>
-                <form>
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name"><br><br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email"><br><br>
-                    <label for="message">Messaggio:</label>
-                    <textarea id="message" name="message"></textarea><br><br>
-                    <input type="submit" value="Invia">
-                </form>
+            <div class="footer">
+                <button @click="navigateProject('prev')">&#9664;</button>
+                <template x-for="(project, index) in projects" :key="project">
+                    <span :class="{'active': index === projectIndex}" class="dot"></span>
+                </template>
+                <button @click="navigateProject('next')">&#9654;</button>
             </div>
         </div>
-        <div class="nav" x-show="!loading">
-            <div class="nav-upper-section">
-                <div class="icon-wrapper">
-                    <i class="icon" @click="switchPage('portfolio')">
-                        <img class="nav-icon" src="assets/portfolio.png" alt="My Happy SVG" />
-                    </i>
-                    <span class="tooltip">PORTFOLIO</span>
-                </div>
-                <div class="icon-wrapper">
-                    <i class="icon" @click="switchPage('form')">
-                        <img class="nav-icon" src="assets/contact.png" alt="My Happy SVG" />
-                    </i>
-                    <span class="tooltip">CONTACT ME</span>
-                </div>
+        <div x-show="currentPage === 'form' && !loading">
+            <h1>Compila il Form</h1>
+            <form>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="message">Messaggio:</label>
+                <textarea id="message" name="message"></textarea><br><br>
+                <input type="submit" value="Invia">
+            </form>
+        </div>
+    </div>
+    <div class="nav" x-show="!loading">
+        <div class="nav-upper-section">
+            <div class="icon-wrapper">
+                <i class="icon" @click="switchPage('portfolio')">
+                    <img class="nav-icon" src="assets/portfolio.png" alt="My Happy SVG" />
+                </i>
+                <span class="tooltip">PORTFOLIO</span>
             </div>
-            <div class="nav-lower-section">
-                <div class="icon-wrapper">
-                    <i id="theme-toggle" class="icon">
-                        <img class="nav-icon" src="assets/darkmode.png" alt="Toggle Dark/Light Mode" />
-                    </i>
-                    <span class="tooltip">TOGGLE THEME</span>
-                </div>
+            <div class="icon-wrapper">
+                <i class="icon" @click="switchPage('form')">
+                    <img class="nav-icon" src="assets/contact.png" alt="My Happy SVG" />
+                </i>
+                <span class="tooltip">CONTACT ME</span>
             </div>
         </div>
+        <div class="nav-lower-section">
+            <div class="icon-wrapper">
+                <i id="theme-toggle" class="icon">
+                    <img class="nav-icon" src="assets/darkmode.png" alt="Toggle Dark/Light Mode" />
+                </i>
+                <span class="tooltip">TOGGLE THEME</span>
+            </div>
+        </div>
+    </div>
     </div>
     <div class="about-icon" onclick="toggleSections()"></div>
 </body>

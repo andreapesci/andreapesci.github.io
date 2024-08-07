@@ -2,11 +2,13 @@
     "title": "Captain Bushfire",
     "description": "Created during an intense game jam, this unique game puts you in the role of a brave koala tasked with defending its group of young koalas from the raging wildfires threatening their forest home. Navigate through the burning landscape, strategize to protect your family, and face the relentless flames with courage and determination. The game combines heart-pounding action with a touching story of survival and resilience, offering an unforgettable experience in the face of nature's fury.",
     "image": "data/project2/project_image.jpg",
+    "tags": ["UNREAL ENGINE 5", "GAME JAM", "GAMEPLAY PROGRAMMER"],
     "sections": [
         {
             "title": "Fire Mechanic",
             "content": "Testo della sezione 1.",
             "images": [],
+            "videos": [],
             "codeSnippets": [
                 {
                     "language": "javascript",
@@ -17,6 +19,8 @@
         {
             "title": "Character Movement (with Enhanced Input)",
             "content": "Testo della sezione 2.",
+            "images": [],
+            "videos": [],
             "codeSnippets": [
                 {
                     "language": "python",
