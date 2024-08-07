@@ -103,19 +103,20 @@
                                         <span class="rectangle-icon">🔍</span>
                                     </div>
                                     <div x-show="section.isOpen" class="section-details">
-
+                                        <p x-text="section.content"></p>
                                         <div class="image-container" x-data="{ currentImageIndex: 0 }">
-                                            <p x-text="section.content"></p>
                                             <template x-for="(img, index) in section.images" :key="img">
                                                 <img :src="img" :class="{ 'hidden': currentImageIndex !== index }"
                                                     alt="Section Image">
                                             </template>
-                                            <button class="image-nav prev" <blade
-                                                click|%3D%26%2334%3BcurrentImageIndex%20%3D%20(currentImageIndex%20-%201%20%2B%20section.images.length)%20%25%20section.images.length%26%2334%3B>
-                                                ❮</button>
-                                            <button class="image-nav next" <blade
-                                                click|%3D%26%2334%3BcurrentImageIndex%20%3D%20(currentImageIndex%20%2B%201)%20%25%20section.images.length%26%2334%3B>
-                                                ❯</button>
+                                            <button class="image-nav prev"
+                                                @click="currentImageIndex = (currentImageIndex - 1 + section.images.length) % section.images.length">
+                                                ❮
+                                            </button>
+                                            <button class="image-nav next"
+                                                @click="currentImageIndex = (currentImageIndex + 1) % section.images.length">
+                                                ❯
+                                            </button>
                                         </div>
                                         <div class="snippet-tabs">
                                             <template x-for="(snippet, index) in section.codeSnippets"
