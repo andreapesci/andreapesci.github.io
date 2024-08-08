@@ -13,6 +13,7 @@
     <link id="highlight-dark" rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="styles/main.css">
+    <script src="https://kit.fontawesome.com/a98bc9d578.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/cpp.min.js"></script>
     <script src="scripts/main.js" defer></script>
@@ -35,7 +36,7 @@
 
             </div>
             <div class="about-lower-section">
-                <hr>
+                <!-- <hr>
                 <div class="personal-informations">
 
                     <div>
@@ -51,16 +52,26 @@
                         <p style="opacity: 0.75" x-text="aboutData.info.age"></p>
                     </div>
 
-                </div>
+                </div> -->
 
                 <hr>
                 <div class="social-links">
-                    <a :href="aboutData.socials.github" target="_blank">GitHub</a>
-                    <a :href="aboutData.socials.linkedin" target="_blank">LinkedIn</a>
-                    <a :href="aboutData.socials.email">Email</a>
+                    <a :href="aboutData.socials.github" target="_blank">
+                        <i class="fa-brands fa-github-alt fa-lg" style="color: var(--text-color);"></i>
+
+                    </a>
+                    <a :href="aboutData.socials.linkedin" target="_blank">
+                        <i class="fa-brands fa-linkedin-in fa-lg" style="color: var(--text-color);"></i>
+                    </a>
+                    <a :href="aboutData.socials.email">
+                        <i class="fa-regular fa-paper-plane fa-lg" style="color: var(--text-color);"></i>
+                    </a>
+
+
                 </div>
                 <hr>
-                <a :href="aboutData.cv" download class="cv-download">Scarica il CV</a>
+
+                <a :href="aboutData.cv" download class="cv-download">DOWNLOAD CV</a>
             </div>
         </div>
 
@@ -102,7 +113,8 @@
                                     <div class="rectangle">
                                         <span x-text="section.title" @click="toggleSection(section.title)"
                                             class="rectangle-text"></span>
-                                        <span class="rectangle-icon">🔍</span>
+                                        <i class="fa-solid fa-chevron-down rectangle-icon"></i>
+
                                     </div>
                                     <div x-show="section.isOpen" class="section-details" x-transition.duration.500ms>
                                         <p x-text="section.content"></p>
@@ -132,11 +144,12 @@
                                         <div class="snippet-tabs">
                                             <template x-for="(snippet, index) in section.codeSnippets"
                                                 :key="snippet.file">
-                                                <div class="rectangle">
+                                                <div class="rectangle snippet-rectangle">
                                                     <span @click="toggleSnippet(sectionIndex, snippet, index)"
                                                         :class="{'active': section.activeIndex === index}"
                                                         x-text="snippet.name" class="rectangle-text"></span>
-                                                    <span class="rectangle-icon">🔍</span>
+                                                    <i class="fa-solid fa-code rectangle-icon"></i>
+
                                                 </div>
                                             </template>
                                         </div>
@@ -181,10 +194,13 @@
         <div class="nav" x-show="!loading">
             <div class="nav-upper-section">
                 <div class="icon-wrapper">
-                    <i class="icon" @click="switchPage('portfolio')">
-                        <img class="nav-icon" src="assets/portfolio.png" alt="My Happy SVG" />
-                    </i>
-                    <span class="tooltip">PORTFOLIO</span>
+                    <i class="fa-regular fa-address-card fa-lg" alt="Portfolio icon" style="color: var(--text-color);"
+                        @click="switchPage('portfolio')"></i>
+                        <span class="tooltip">PORTFOLIO</span>
+                </div>
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-blog fa-lg" alt="Blog" style="color: var(--text-color);"></i>
+                    <span class="tooltip">BLOG (work in progress)</span>
                 </div>
                 <!-- <div class="icon-wrapper">
                     <i class="icon" @click="switchPage('form')">
@@ -195,9 +211,9 @@
             </div>
             <div class="nav-lower-section">
                 <div class="icon-wrapper">
-                    <i id="theme-toggle" class="icon">
-                        <img class="nav-icon" src="assets/darkmode.png" alt="Toggle Dark/Light Mode" />
-                    </i>
+                    <i id="theme-toggle" class="fa-solid fa-circle-half-stroke fa-lg" alt="Toggle Dark/Light Mode"
+                        style="color: var(--text-color);"></i>
+
                     <span class="tooltip">TOGGLE THEME</span>
                 </div>
             </div>

@@ -1,8 +1,10 @@
 :root {
     --background-lighter: #24242e;
+    --background-lighter-rgb: 36, 36, 46;
     --background-normal: #20202a;
     --background-darker: #1e1e28;
     --text-color: #ffffff;
+    --text-color-rgb: 255, 255, 255;
     --accent: #443dff;
     font-family: Inter, sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1;
@@ -29,6 +31,8 @@
     --text-color: #000000;
     --accent: #8292b3;
 }
+
+
 
 html,
 body {
@@ -87,6 +91,7 @@ body {
 .photo-name-title * {
     margin: 0.25rem 0px 0.25rem 0px;
     align-self: center;
+    text-align: center;
 }
 
 .profile-img {
@@ -100,9 +105,25 @@ body {
 }
 
 .personal-description {
-    overflow: auto;
+    position: relative;
+    overflow: scroll;
     margin: 0.25rem 0px;
 }
+
+.personal-description::-webkit-scrollbar {
+    width: 0.25rem;
+    background: rgba(var(--background-lighter-rgb),0.1);
+}
+
+.personal-description::-webkit-scrollbar-thumb {
+    background: rgba(var(--text-color-rgb),0.1);
+    border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(var(--background-lighter-rgb),0);
+}
+
 
 .personal-informations {
     width: 100%;
@@ -126,6 +147,8 @@ body {
     display: flex;
     justify-content: space-around;
 }
+
+
 
 .button-fake-icon {
     width: 1.5rem;
@@ -154,6 +177,8 @@ hr {
     color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
+    font-size: small;
+
 }
 
 .cv-download:hover {
@@ -314,6 +339,12 @@ pre {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.snippet-rectangle {
+    flex: 1 1 calc(50% - 0.5rem);
 }
 
 .snippet-content {
@@ -416,19 +447,13 @@ pre {
     display: block;
 }
 
-
-
-
-
 .icon-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-}
-
-.icon {
-    font-size: 2rem;
+    padding: 1rem 0;
     cursor: pointer;
+
 }
 
 .tooltip {
@@ -439,7 +464,7 @@ pre {
     color: var(--text-color);
     text-align: center;
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.25rem;
     position: absolute;
     z-index: 1;
     width: max-content;
@@ -447,17 +472,13 @@ pre {
     right: 100%;
     transform: translateX(-1rem) translateY(-50%);
     box-shadow: var(--text-color) 0px 1px 3px;
+    font-size: 0.75rem;
 }
 
 .icon-wrapper:hover .tooltip {
     visibility: visible;
 }
 
-.nav-icon {
-    width: 36px;
-    height: 36px;
-    object-fit: cover;
-}
 
 .white-png {
     filter: invert(100%) sepia(0%) saturate(3569%) hue-rotate(10deg) brightness(115%) contrast(110%);
@@ -519,5 +540,11 @@ pre {
         content: '\2630'; /* Unicode for hamburger menu icon */
         font-size: 24px;
         color: var(--text-color);
+    }
+}
+
+@media (max-width: 600px) {
+    .snippet-rectangle {
+        flex: 1 1 100%; /* Su schermi stretti, gli elementi occuperanno il 100% della larghezza */
     }
 }
