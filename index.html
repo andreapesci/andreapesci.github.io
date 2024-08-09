@@ -109,11 +109,12 @@
                             </div>
                             <p style="opacity: 0.8;" x-text="content.description"></p>
                             <template x-for="(section, sectionIndex) in content.sections" :key="section.title">
-                                <div>
-                                    <div class="rectangle">
-                                        <span x-text="section.title" @click="toggleSection(section.title)"
-                                            class="rectangle-text"></span>
-                                        <i class="fa-solid fa-chevron-down rectangle-icon"></i>
+                                <div class="rectangle-section">
+                                    <div class="rectangle-content" @click="toggleSection(section.title)">
+                                        <span x-text="section.title" class="rectangle-text"></span>
+                                        <i :class="{'fa-chevron-down': !section.isOpen, 'fa-chevron-up': section.isOpen}"
+                                            class="fa-solid rectangle-icon"></i>
+
 
                                     </div>
                                     <div x-show="section.isOpen" class="section-details" x-transition.duration.500ms>
@@ -178,7 +179,7 @@
                 <button @click="navigateProject('next')">&#9654;</button>
             </div>
         </div>
-        <div x-show="currentPage === 'form' && !loading">
+        <!-- <div x-show="currentPage === 'form' && !loading">
             <h1>Compila il Form</h1>
             <form>
                 <label for="name">Nome:</label>
@@ -189,7 +190,7 @@
                 <textarea id="message" name="message"></textarea><br><br>
                 <input type="submit" value="Invia">
             </form>
-        </div>
+        </div> -->
 
         <div class="nav" x-show="!loading">
             <div class="nav-upper-section">
