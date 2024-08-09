@@ -148,6 +148,15 @@ body {
     justify-content: space-around;
 }
 
+.social-links a {
+   padding: 0.25rem;
+   border-bottom: solid 1px var(--background-lighter);
+}
+
+.social-links a:hover {
+    border-bottom: solid 1px var(--text-color);
+}
+
 
 
 .button-fake-icon {
@@ -218,6 +227,27 @@ hr {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
     box-shadow: var(--text-color) 0px 0px 2px;
+    cursor:pointer;
+}
+
+.rectangle-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-lighter);
+    color: var(--text-color);
+    border-radius: 0.5rem;
+    width: 100%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    box-shadow: var(--text-color) 0px 0px 2px;
+}
+.rectangle-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
     cursor:pointer;
 }
 
@@ -471,7 +501,7 @@ pre {
     top: 50%;
     right: 100%;
     transform: translateX(-1rem) translateY(-50%);
-    box-shadow: var(--text-color) 0px 1px 3px;
+    box-shadow: var(--text-color) 0px 1px 2px;
     font-size: 0.75rem;
 }
 
