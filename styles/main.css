@@ -46,6 +46,10 @@ body {
     color: var(--text-color);
 }
 
+p {
+    font-size:0.825rem;
+}
+
 .container {
     width: calc(100vmin * 1.5);
     height: 95%;

@@ -1,7 +1,7 @@
 {
     "name": "ANDREA PESCI",
     "profession": "GAME PROGRAMMER",
-    "brieflyMe": "Hi! I'm Andrea, a game programmer from Milan (Italy), passionate about games since I was 5. I started learning game development with Unreal Engine in late 2023, and over the past year, I've been working to turn this passion into my daily job. Previously, after earning a degree in Computer Science from the University of Milan, I worked as a software developer for many years. <br><br>Here, you can see some of the projects I've worked on during this period. I always strive to polish my work to achieve the best possible results, and I'm never afraid to take on new challenges or learn new things. <br><br>If you've read this far, I would love to get in touch with you, so feel free to contact me in any way you prefer! And as always, keep gaming!",
+    "brieflyMe": "Hi! I'm Andrea, a game programmer from Milan, Italy, passionate about games since I was 5. I started learning Unreal Engine in late 2023, after using Godot and GDScript for a while.<br>Previously, after earning a degree in Computer Science, I worked as a software developer for many years, during which I had the chance to refine my skills in C++, C#, and Python. Soon after, I became a Project Lead Developer, where I had the opportunity to collaborate with different teams in an Agile environment. This experience allowed me to learn various Scrum software and practices.<br><br>Here, you can see some of the projects I've worked on during this period. I always strive to polish my work to achieve the best possible results, and I'm never afraid to take on new challenges or learn new things.<br><br>If you've read this far, I would love to get in touch with you, so feel free to contact me in any way you prefer! And as always, keep gaming!",
     "skills": ["Skill 1", "Skill 2", "Skill 3"],
     "info": {
         "residence": "Italy",
@@ -11,7 +11,7 @@
     "socials": {
         "github": "https://github.com/andreapesci",
         "linkedin": "https://www.linkedin.com/in/andrea-pesci-027664154/",
-        "email": "mailto:andrea.pesci.x3@gmail.com"
+        "email": "mailto:hello@andreapesci.com"
     },
     "cv": "assets/CV_AndreaPesci.pdf"
 }
