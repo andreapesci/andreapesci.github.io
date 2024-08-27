@@ -1,12 +1,12 @@
 {
     "title": "Captain Bushfire",
-    "description": "Created during an intense game jam, this unique game puts you in the role of a brave koala tasked with defending its group of young koalas from the raging wildfires threatening their forest home. Navigate through the burning landscape, strategize to protect your family, and face the relentless flames with courage and determination. The game combines heart-pounding action with a touching story of survival and resilience, offering an unforgettable experience in the face of nature's fury.",
+    "description": "Created during the GameDev.tv Game Jam 2024, which theme was \"Last Stand\".<br>This unique game puts you in the role of a brave koala tasked with defending its group of young koalas from the raging wildfires threatening their forest home.<br><br>I took the role of Gameplay Developer, implementing many of the game's functionalities, and the most interesting ones are displayed here.<br>The group consisted of 3 Developers, a 3d Artist, a VFX Programmer and a SFX Programmer.<br>This project helped me in applying all the concepts i studied in courses about Unreal Engine 5 and put them in action on a very small period under pressure.",
     "image": "data/project2/project_image.jpg",
     "tags": ["UNREAL ENGINE 5", "GAME JAM", "GAMEPLAY PROGRAMMER"],
     "sections": [
         {
             "title": "Fire Mechanic",
-            "content": "Description and snippets work in progress.",
+            "content": "This fire system simulates realistic fire spread and interaction in a game environment. Fires are triggered at specific locations, complete with visual and audio effects. The fire spreads dynamically based on random chances and timers, creating an unpredictable, realistic behavior. It interacts with various game objects, like characters and trees , applying damage and following natural contours, such as climbing up trees or spreading along branches (handled with splines to make the fire experience more realistic). The system includes sound effects for ignition, spreading, and extinguishing fires, adding to the immersive experience. This dynamic simulation creates a challenging and evolving element in the game, enhancing player engagement.",
             "images": [],
             "videos": [],
             "codeSnippets": [
@@ -14,8 +14,8 @@
             ]
         },
         {
-            "title": "Character Movement (with Enhanced Input)",
-            "content": "Description and snippets work in progress.",
+            "title": "Core Mechanics",
+            "content": "I took part in the development of various different core mechanics, such as:<br><br>- Character Movement (using enhanced input).<br>- Gun and Shooting mechanic and related stuff.<br>- Interfaces and Base item classes.<br>- Splines to handle tree trunks and branches.",
             "images": [],
             "videos": [],
             "codeSnippets": [

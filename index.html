@@ -105,7 +105,7 @@
                                     </template>
                                 </div>
                             </div>
-                            <p style="opacity: 0.8;" x-text="content.description"></p>
+                            <p style="opacity: 0.8;" x-html="content.description"></p>
                             <template x-for="(section, sectionIndex) in content.sections" :key="section.title">
                                 <div class="rectangle-section">
                                     <div class="rectangle-content" @click="toggleSection(section.title)">
@@ -116,7 +116,7 @@
 
                                     </div>
                                     <div x-show="section.isOpen" class="section-details" x-transition.duration.500ms>
-                                        <p x-text="section.content"></p>
+                                        <p x-html="section.content"></p>
                                         <div class="image-container"
                                             x-data="mediaNavigator(section.images, section.videos)">
                                             <template x-for="(mediaItem, index) in combinedMedia" :key="index">

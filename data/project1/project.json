@@ -1,12 +1,12 @@
 {
     "title": "Project Winter",
-    "description": "Embark on a chilling journey in our Survival Horror game, where you step into the shoes of a young child lost in a hostile, snow-covered mountain. Amidst relentless blizzards and treacherous terrain, you must scavenge for remnants of your childhood while evading a relentless, terrifying creature that stalks your every move. The atmosphere is thick with tension and anxiety as you navigate the haunting landscape, piecing together the story of your past. As you fight for survival, uncover hidden truths and face shocking revelations that will keep you on the edge of your seat.",
+    "description": "Created during the Digital Bros Game Academy course, this project involved developing a survival game. In this game, you play as a child living in the mountains, trying to find his lost family while uncovering secrets that shouldn’t be unveiled. He must learn how to survive in such a harsh environment while something (or someone) seems to be hunting him.<br><br>I took on the role of Gameplay and AI Programmer, implementing most of the game's functionalities. Here, you can see the best and most interesting ones. The group consisted of fewer than 10 people in total. This project helped me learn a lot about Unreal Engine 5 and C++ in general, but especially how to write robust, optimized, clean, and self-documented code, as well as researching the best approaches and methodologies to use. In addition, this project taught me how to collaborate with all the other \"departments\", just like in a real game studio, as this was the main goal of the team project.<br><br>Since the project is still under active development, all the content in this page is subject to changes/optimizations.",
     "image": "data/project1/project_image.jpg",
-    "tags": ["UNREAL ENGINE 5", "GROUP PROJECT", "GAMEPLAY/AI PROGRAMMER"],
+    "tags": ["UNREAL ENGINE 5", "GROUP PROJECT", "GAMEPLAY / AI PROGRAMMER", "UNDER DEVELOPMENT"],
     "sections": [
         {
             "title": "Creature AI Behavior",
-            "content": "In the game, I developed an AI-controlled creature inspired by the \"Slender\" game, implementing complex behaviors and interactions with the player. The creature spawns at a variable distance from the player based on the danger level, which changes according to the player's location and playtime. The spawn area is dynamically adjusted, with the creature appearing only within a certain angle behind the player at low danger levels, expanding to 360 degrees as the danger increases. The creature can spawn in the area between two concentric circles around the player and will despawn if the player moves beyond a maximum distance or after a set time. Additionally, the creature triggers various effects such as sounds and visual distortions when the player looks at it for a certain period, adding to the eerie atmosphere. These effects smoothly adjust based on proximity and danger level, ensuring a seamless and immersive experience.",
+            "content": "In the game, I developed an AI-controlled creature inspired by the \"Slender\" game, implementing complex behaviors and interactions with the player. The creature spawns at a variable distance from the player based on the danger level, which changes according to the player's location and playtime. The spawn area is dynamically adjusted based on the areas the player is in and the objects near the spawn area, always trying to play \"hide and seek\" to increase the anxiety it provides to the player. The creature can spawn in the area between two concentric circles around the player and will despawn if the player moves beyond a maximum distance or after a set time. Additionally, the creature triggers various effects, such as sounds and visual distortions, when the player looks at it for a certain period, adding to the eerie atmosphere. These effects smoothly adjust based on proximity and danger level, ensuring a seamless and immersive experience.",
             "images": [
                 "data/project1/project_image_1.jpg"
             ],
@@ -37,8 +37,8 @@
             ]
         },
         {
-            "title": "HuntZone",
-            "content": "The HuntZone system consists of multiple trigger zones placed throughout the game map to define areas where the creature can spawn and interact with the player. These zones are managed by a singleton class, HuntZoneManager, which keeps track of active zones and ensures that the creature spawns only when the player enters these areas. Each zone has a specific danger level influencing the spawn mechanics and behavior of the creature. The system uses Unreal Engine's trigger volumes and custom trace channels to accurately detect the player's presence and manage the lifecycle of the creature. This setup allows for a flexible and scalable approach to defining and adjusting the hunting grounds, enhancing the dynamic and unpredictable nature of the game.",
+            "title": "Hunt Zones",
+            "content": "The HuntZone system consists of multiple trigger zones placed throughout the game map to define areas where the creature can spawn and interact with the player. These zones are managed by a subsystem class, which keeps track of active zones and ensures that the creature spawns only when the player enters these areas. Each zone has a specific danger level that influences the spawn mechanics and behavior of the creature. The system uses Unreal Engine's trigger volumes and custom trace channels to accurately detect the player's presence and manage the lifecycle of the creature. This setup allows for a flexible and scalable approach to defining and adjusting the hunting grounds, enhancing the dynamic and unpredictable nature of the game.",
             "images": [],
             "videos": [],
             "codeSnippets": [
@@ -62,6 +62,24 @@
                     "name": "HuntZoneManager.cpp",
                     "file": "data/project1/HuntZoneManager.cpp"
                 }
+            ]
+        },
+        {
+            "title": "Audio Manager",
+            "content": "The Audio Manager consists of a component in the GameMode that handles all the SFX present in the game. It controls all the logic for deciding when to play audio cues, their volume, and other related parameters, based on different game conditions (such as the creature's presence, its distance from the player, and many other factors).This system ensures that audio effects are dynamically responsive to the in-game situation, adding another layer of immersion by changing the auditory experience based on the player's actions and surroundings.",
+            "images": [],
+            "videos": [],
+            "codeSnippets": [
+
+            ]
+        },
+        {
+            "title": "Miscellaneous",
+            "content": "Aside from the main mechanics, I also helped develop the following features:<br><br>- UI<br>- Player-related features (such as movement, sprinting, stamina control, etc.)",
+            "images": [],
+            "videos": [],
+            "codeSnippets": [
+
             ]
         }
     ]
