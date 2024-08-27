@@ -1,5 +1,5 @@
 {
-    "title": "Project Winter",
+    "title": "PROJECT WINTER",
     "description": "Created during the Digital Bros Game Academy course, this project involved developing a survival game. In this game, you play as a child living in the mountains, trying to find his lost family while uncovering secrets that shouldn’t be unveiled. He must learn how to survive in such a harsh environment while something (or someone) seems to be hunting him.<br><br>I took on the role of Gameplay and AI Programmer, implementing most of the game's functionalities. Here, you can see the best and most interesting ones. The group consisted of fewer than 10 people in total. This project helped me learn a lot about Unreal Engine 5 and C++ in general, but especially how to write robust, optimized, clean, and self-documented code, as well as researching the best approaches and methodologies to use. In addition, this project taught me how to collaborate with all the other \"departments\", just like in a real game studio, as this was the main goal of the team project.<br><br>Since the project is still under active development, all the content in this page is subject to changes/optimizations.",
     "image": "data/project1/project_image.jpg",
     "tags": ["UNREAL ENGINE 5", "GROUP PROJECT", "GAMEPLAY / AI PROGRAMMER", "UNDER DEVELOPMENT"],

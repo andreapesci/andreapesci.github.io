@@ -87,11 +87,13 @@
             <div x-show="currentPage === 'portfolio' && !loading">
 
                 <div class="navigation">
-                    <button @click="navigateProject('prev')">&#9664;</button>
-                    <template x-for="(project, index) in projects" :key="project">
-                        <span :class="{'active': index === projectIndex}" class="dot"></span>
-                    </template>
-                    <button @click="navigateProject('next')">&#9654;</button>
+                    <div>
+                        <button @click="navigateProject('prev')">&#9664;</button>
+                        <template x-for="(project, index) in projects" :key="project">
+                            <span :class="{'active': index === projectIndex}" class="dot"></span>
+                        </template>
+                        <button @click="navigateProject('next')">&#9654;</button>
+                    </div>
                 </div>
                 <div id="swap-content" class="swap-content">
                     <template x-if="content">
@@ -170,11 +172,13 @@
 
             </div>
             <div class="footer">
-                <button @click="navigateProject('prev')">&#9664;</button>
-                <template x-for="(project, index) in projects" :key="project">
-                    <span :class="{'active': index === projectIndex}" class="dot"></span>
-                </template>
-                <button @click="navigateProject('next')">&#9654;</button>
+                <div>
+                    <button @click="navigateProject('prev')">&#9664;</button>
+                    <template x-for="(project, index) in projects" :key="project">
+                        <span :class="{'active': index === projectIndex}" class="dot"></span>
+                    </template>
+                    <button @click="navigateProject('next')">&#9654;</button>
+                </div>
             </div>
         </div>
         <!-- <div x-show="currentPage === 'form' && !loading">
