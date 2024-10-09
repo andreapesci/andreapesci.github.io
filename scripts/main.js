@@ -28,6 +28,21 @@ function removeWhitePngClass() {
     });
 }
 
+function changeBackground(imageUrl) {
+    const bg1 = document.querySelector('.background1');
+    const bg2 = document.querySelector('.background2');
+
+    if (!bg1.classList.contains('active')) {
+        bg2.style.backgroundImage = `url(${imageUrl})`;
+        bg2.classList.add('active');
+        bg1.classList.remove('active');
+    } else {
+        bg1.style.backgroundImage = `url(${imageUrl})`;
+        bg1.classList.add('active');
+        bg2.classList.remove('active');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     switchHighlightTheme(currentTheme);
@@ -120,10 +135,12 @@ function mainData() {
         },
         loadProject() {
             const project = this.projects[this.projectIndex];
+
             fetch(`data/${project}/project.json`)
                 .then(response => response.json())
                 .then(data => {
                     this.content = data;
+                    changeBackground(data.background);
                     this.loadSnippets(data.sections);
                     this.loading = false; // Nasconde lo spinner di caricamento quando i dati sono pronti
 
@@ -131,6 +148,7 @@ function mainData() {
                 .catch(error => console.error('Error loading content:', error));
         },
         loadSnippets(sections) {
+
             sections.forEach(section => {
                 section.activeSnippet = null;
                 section.activeIndex = null;

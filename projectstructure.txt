@@ -1,0 +1,28 @@
+my-portfolio/
+├── index.html
+├── styles/
+│   └── main.css
+├── scripts/
+│   └── main.js
+├── data/
+│   └── about.json
+│   └── projects.json
+│   ├── project1/
+│   │   ├── project_image.jpg
+│   │   ├── project_image_1.jpg
+│   │   ├── project_image_2.jpg
+│   │   ├── snippet1.h
+│   │   ├── snippet1.cpp
+│   │   ├── project.json
+│   ├── project2/
+│   │   ├── project_image.jpg
+│   │   ├── project_image_1.jpg
+│   │   ├── project_image_2.jpg
+│   │   ├── snippet1.h
+│   │   ├── snippet1.cpp
+│   │   ├── project.json
+│   └── ... // Altre cartelle per progetti
+├── assets/
+│   ├── profile.jpg
+│   ├── project1/
+│   │   ├── image1.png

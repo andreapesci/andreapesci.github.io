@@ -22,7 +22,12 @@
 </head>
 
 <body>
+    <div class="background-wrapper"></div>
+    <div class="background1 active"></div>
+    <div class="background2"></div>
+    </div>
     <div class="container" x-data="mainData()" x-init="init()" x-cloak>
+
         <div class="about">
             <div class="about-upper-section">
                 <div class="photo-name-title">
@@ -87,101 +92,114 @@
             <div x-show="currentPage === 'portfolio' && !loading">
 
                 <div class="navigation">
+                    <div @click="navigateProject('prev')" class="navigation-clickable">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path
+                                d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        <p>PREVIOUS PROJECT</p>
+                    </div>
                     <div>
-                        <button @click="navigateProject('prev')">&#9664;</button>
                         <template x-for="(project, index) in projects" :key="project">
                             <span :class="{'active': index === projectIndex}" class="dot"></span>
                         </template>
-                        <button @click="navigateProject('next')">&#9654;</button>
+                    </div>
+                    <div @click="navigateProject('next')" class="navigation-clickable">
+                        <p>NEXT PROJECT</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path
+                                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                            </svg>
                     </div>
                 </div>
-                <div id="swap-content" class="swap-content">
-                    <template x-if="content">
-                        <div class="project">
+            </div>
+            <div id="swap-content" class="swap-content">
+                <template x-if="content">
+                    <div class="project">
+                        <template x-if="content.type === 'image'">
                             <img class="project-img" :src="content.image" alt="Project Image">
-                            <div class="project-title">
-                                <h3 x-text="content.title"></h3>
-                                <div class="tags">
-                                    <template x-for="tag in content.tags" :key="tag">
-                                        <span class="tag" x-text="tag"></span>
-                                    </template>
+                        </template>
+                        <template x-if="content.type === 'video'">
+                            <iframe class="project-video" :src="content.image" frameborder="0">
+                            </iframe>
+                        </template>
+                        <div class="project-title">
+                            <h3 x-text="content.title"></h3>
+                            <div class="tags">
+                                <template x-for="tag in content.tags" :key="tag">
+                                    <span class="tag" x-text="tag"></span>
+                                </template>
+                                <template x-if="content.link">
+                                    <a :href="content.link" target="_blank" class="tag clickable-tag">
+                                        <span>DOWNLOAD</span>
+                                    </a>
+                                </template>
+                            </div>
+                        </div>
+                        <p style="opacity: 0.8;" x-html="content.description"></p>
+                        <template x-for="(section, sectionIndex) in content.sections" :key="section.title">
+                            <div class="rectangle-section">
+                                <div class="rectangle-content" @click="toggleSection(section.title)">
+                                    <span x-text="section.title" class="rectangle-text"></span>
+                                    <i :class="{'fa-chevron-down': !section.isOpen, 'fa-chevron-up': section.isOpen}"
+                                        class="fa-solid rectangle-icon"></i>
+
+
+                                </div>
+                                <div x-show="section.isOpen" class="section-details" x-transition.duration.500ms>
+                                    <p x-html="section.content"></p>
+                                    <div class="image-container"
+                                        x-data="mediaNavigator(section.images, section.videos)">
+                                        <template x-for="(mediaItem, index) in combinedMedia" :key="index">
+                                            <div>
+                                                <template x-if="mediaItem.type === 'image'">
+                                                    <img :src="mediaItem.src"
+                                                        :class="{ 'hidden': currentMediaIndex !== index }"
+                                                        alt="Section Media">
+                                                </template>
+                                                <template x-if="mediaItem.type === 'video'">
+                                                    <iframe :src="mediaItem.src"
+                                                        :class="{ 'hidden': currentMediaIndex !== index }"
+                                                        class="video-container" title="YouTube video player"
+                                                        frameborder="0" autoplay allowfullscreen></iframe>
+                                                </template>
+                                            </div>
+                                        </template>
+                                        <button class="image-nav prev" @click="prevMedia">❮</button>
+                                        <button class="image-nav next" @click="nextMedia">❯</button>
+                                    </div>
+
+                                    <div class="snippet-tabs">
+                                        <template x-for="(snippet, index) in section.codeSnippets" :key="snippet.file">
+                                            <div @click="toggleSnippet(sectionIndex, snippet, index)"
+                                                :class="{'active': section.activeIndex === index}"
+                                                class="rectangle snippet-rectangle">
+                                                <span x-text="snippet.name" class="rectangle-text"></span>
+                                                <i class="fa-solid fa-code rectangle-icon"></i>
+
+                                            </div>
+                                        </template>
+                                    </div>
+                                    <div class="snippet-content" x-show="section.activeSnippet"
+                                        x-transition.duration.500ms>
+                                        <pre><code x-html="section.activeSnippet" class="hljs"></code></pre>
+                                    </div>
                                 </div>
                             </div>
-                            <p style="opacity: 0.8;" x-html="content.description"></p>
-                            <template x-for="(section, sectionIndex) in content.sections" :key="section.title">
-                                <div class="rectangle-section">
-                                    <div class="rectangle-content" @click="toggleSection(section.title)">
-                                        <span x-text="section.title" class="rectangle-text"></span>
-                                        <i :class="{'fa-chevron-down': !section.isOpen, 'fa-chevron-up': section.isOpen}"
-                                            class="fa-solid rectangle-icon"></i>
+                        </template>
 
-
-                                    </div>
-                                    <div x-show="section.isOpen" class="section-details" x-transition.duration.500ms>
-                                        <p x-html="section.content"></p>
-                                        <div class="image-container"
-                                            x-data="mediaNavigator(section.images, section.videos)">
-                                            <template x-for="(mediaItem, index) in combinedMedia" :key="index">
-                                                <div>
-                                                    <template x-if="mediaItem.type === 'image'">
-                                                        <img :src="mediaItem.src"
-                                                            :class="{ 'hidden': currentMediaIndex !== index }"
-                                                            alt="Section Media">
-                                                    </template>
-                                                    <template x-if="mediaItem.type === 'video'">
-                                                        <iframe :src="mediaItem.src"
-                                                            :class="{ 'hidden': currentMediaIndex !== index }"
-                                                            class="video-container" title="YouTube video player"
-                                                            frameborder="0"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                            allowfullscreen></iframe>
-                                                    </template>
-                                                </div>
-                                            </template>
-                                            <button class="image-nav prev" @click="prevMedia">❮</button>
-                                            <button class="image-nav next" @click="nextMedia">❯</button>
-                                        </div>
-
-                                        <div class="snippet-tabs">
-                                            <template x-for="(snippet, index) in section.codeSnippets"
-                                                :key="snippet.file">
-                                                <div @click="toggleSnippet(sectionIndex, snippet, index)"
-                                                    :class="{'active': section.activeIndex === index}"
-                                                    class="rectangle snippet-rectangle">
-                                                    <span x-text="snippet.name" class="rectangle-text"></span>
-                                                    <i class="fa-solid fa-code rectangle-icon"></i>
-
-                                                </div>
-                                            </template>
-                                        </div>
-                                        <div class="snippet-content" x-show="section.activeSnippet"
-                                            x-transition.duration.500ms>
-                                            <pre><code x-html="section.activeSnippet" class="hljs"></code></pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
-
-                        </div>
-                    </template>
-
-
-                </div>
-
+                    </div>
                 </template>
 
+
             </div>
-            <div class="footer">
-                <div>
-                    <button @click="navigateProject('prev')">&#9664;</button>
-                    <template x-for="(project, index) in projects" :key="project">
-                        <span :class="{'active': index === projectIndex}" class="dot"></span>
-                    </template>
-                    <button @click="navigateProject('next')">&#9654;</button>
-                </div>
-            </div>
+
+            </template>
+
         </div>
-        <!-- <div x-show="currentPage === 'form' && !loading">
+
+    </div>
+    <!-- <div x-show="currentPage === 'form' && !loading">
             <h1>Compila il Form</h1>
             <form>
                 <label for="name">Nome:</label>
@@ -194,27 +212,13 @@
             </form>
         </div> -->
 
-        <div class="nav" x-show="!loading">
+    <!-- <div class="nav" x-show="!loading">
             <div class="nav-upper-section">
-                <!-- <div class="icon-wrapper">
-                    <i class="fa-regular fa-address-card fa-lg" alt="Portfolio icon" style="color: var(--text-color);"
-                        <blade
-                        click|%3D%26%2334%3BswitchPage(%26%2339%3Bportfolio%26%2339%3B)%26%2334%3B%3E%3C%2Fi%3E%0D>
-                        <span class="tooltip">PORTFOLIO</span>
-                </div>
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-blog fa-lg" alt="Blog" style="color: var(--text-color);"></i>
-                    <span class="tooltip">BLOG (work in progress)</span>
-                </div> -->
+
 
             </div>
             <div class="nav-lower-section">
-                <!-- <div class="icon-wrapper">
-                    <i id="theme-toggle" class="fa-solid fa-circle-half-stroke fa-lg" alt="Toggle Dark/Light Mode"
-                        style="color: var(--text-color);"></i>
 
-                    <span class="tooltip">TOGGLE THEME</span>
-                </div> -->
                 <div class="icon-wrapper">
                     <i data-social="Toggle Theme" id="theme-toggle" alt="Toggle Dark/Light Mode"
                         style="--accent-color: var(--text-color);">
@@ -227,7 +231,7 @@
                     </i>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="about-icon" onclick="toggleSections()"></div>
     </div>
