@@ -481,9 +481,8 @@ pre {
     flex-shrink: 0;
     overflow-x: auto;
     gap: 1rem;
-
+    padding: 0.5rem;
 }
-
 
 .navigation div {
     display: flex;
@@ -495,6 +494,8 @@ pre {
     font-size: 0.625rem;
     height: 100%;
     color: rgba(var(--text-color-rgb), 0.65);
+    margin: 0;
+    transition: color 0.3s ease;
 }
 
 .nav-project-tab {
@@ -503,28 +504,38 @@ pre {
     cursor: pointer;
     transition: color 0.3s ease;
     white-space: nowrap;
+    padding: 0 0.5rem;
+    border-radius: 0.25rem;
+    background-color: rgba(var(--text-color-rgb), 0.05) ;
 }
 
-.nav-project-tab:hover p{
-    color: rgba(var(--text-color-rgb), 1) !important;
+.nav-project-tab:hover p {
+    color: rgba(var(--text-color-rgb), 1) ;
+}
+.nav-project-tab.active {
+    background-color: rgba(var(--text-color-rgb), 0.2)
 }
 
-
-.nav-project-tab.active p{
-    color: rgba(var(--text-color-rgb), 1) !important;
+.nav-project-tab.active p {
+    color: rgba(var(--text-color-rgb), 1) ;
 
 }
 
 .nav-project-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    object-fit:contain;
-
+    width: 1.5rem;  /* Larghezza fissa */
+    height: 1.5rem; /* Altezza fissa */
+    object-fit: contain; /* Mantiene le proporzioni dell'immagine */
+    object-position: center; /* Centra l'immagine nel box */
+    background-color: transparent; /* Sfondo trasparente */
+    margin-right: 0.5rem; /* Spazio tra l'icona e il testo */
+    opacity: 0.65; /* Corrisponde all'opacità del testo */
+    transition: opacity 0.3s ease;
 }
 
-
-
-
+.nav-project-tab:hover .nav-project-icon,
+.nav-project-tab.active .nav-project-icon {
+    opacity: 1; /* Icona completamente opaca su hover e quando attiva */
+}
 
 /* Stile per la barra di scorrimento orizzontale */
 .navigation::-webkit-scrollbar {
