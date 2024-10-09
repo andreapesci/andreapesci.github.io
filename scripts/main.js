@@ -133,19 +133,33 @@ function mainData() {
         }
             this.loadProject();
         },
+        loadProjectDetails(projectFolder) {
+            return fetch(`data/${projectFolder}/project.json`)
+                .then(response => response.json())
+                .then(projectData => ({
+                    ...projectData,
+                    folder: projectFolder,
+                    icon: projectData.icon || `data/${projectFolder}/icon.png` // Usa l'icona specificata o un percorso predefinito
+                }))
+                .catch(error => {
+                    console.error(`Error loading details for ${projectFolder}:`, error);
+                    return null;
+                });
+        },
+
+        navigateToProject(index) {
+            this.projectIndex = index;
+            this.loadProject();
+        },
+
         loadProject() {
             const project = this.projects[this.projectIndex];
+            if (!project) return;
 
-            fetch(`data/${project}/project.json`)
-                .then(response => response.json())
-                .then(data => {
-                    this.content = data;
-                    changeBackground(data.background);
-                    this.loadSnippets(data.sections);
-                    this.loading = false; // Nasconde lo spinner di caricamento quando i dati sono pronti
-
-                })
-                .catch(error => console.error('Error loading content:', error));
+            this.content = project;
+            changeBackground(project.background);
+            this.loadSnippets(project.sections);
+            this.loading = false;
         },
         loadSnippets(sections) {
 
@@ -183,11 +197,15 @@ function mainData() {
             });
         },
         loadProjects() {
-            fetch('data/projects.json') // Carica la lista dei progetti da un file JSON
+            fetch('data/projects.json')
                 .then(response => response.json())
                 .then(data => {
-                    this.projects = data.projects;
-                    this.loadProject(); // Carica il primo progetto dopo aver caricato la lista dei progetti
+                    // Carica i dettagli per ogni progetto
+                    Promise.all(data.projects.map(this.loadProjectDetails))
+                        .then(detailedProjects => {
+                            this.projects = detailedProjects;
+                            this.loadProject();
+                        });
                 })
                 .catch(error => console.error('Error loading projects:', error));
         },
