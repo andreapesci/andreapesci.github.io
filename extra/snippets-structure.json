@@ -1,0 +1,24 @@
+{
+    "codeSnippets": [
+                {
+                    "language": "C++ Header",
+                    "name": "Creature.h",
+                    "file": "data/project1/Creature.h"
+                },
+                {
+                    "language": "C++ Source",
+                    "name": "Creature.cpp",
+                    "file": "data/project1/Creature.cpp"
+                },
+                {
+                    "language": "C++ Header",
+                    "name": "CreatureManager.h",
+                    "file": "data/project1/CreatureManager.h"
+                },
+                {
+                    "language": "C++ Source",
+                    "name": "CreatureManager.cpp",
+                    "file": "data/project1/CreatureManager.cpp"
+                }
+            ]
+        }
