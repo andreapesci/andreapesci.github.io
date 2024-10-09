@@ -58,25 +58,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function toggleSections() {
     var aboutSection = document.querySelector('.about');
-    var navSection = document.querySelector('.nav');
     var isAboutVisible = aboutSection.classList.contains('show');
-    var isNavVisible = navSection.classList.contains('show');
 
-    if (isAboutVisible && isNavVisible) {
+    if (isAboutVisible ) {
         aboutSection.classList.remove('show');
-        navSection.classList.remove('show');
     } else {
         aboutSection.style.display = 'flex';
-        navSection.style.display = 'flex';
         requestAnimationFrame(() => {
             aboutSection.classList.add('show');
-            navSection.classList.add('show');
         });
     }
 }
 
 document.addEventListener('transitionend', (event) => {
-    if (event.target.classList.contains('about') || event.target.classList.contains('nav')) {
+    if (event.target.classList.contains('about') ) {
         if (!event.target.classList.contains('show')) {
             event.target.style.display = 'none';
         }
@@ -115,6 +110,7 @@ function mainData() {
         sectionIndex: 0,
         projectIndex: 0,
         projects: [], // Lista dinamica dei progetti
+        previewIndex: null,
 
         toggleSection(title) {
             this.content.sections.forEach(section => {
@@ -133,13 +129,23 @@ function mainData() {
         }
             this.loadProject();
         },
+        showPreview(index) {
+            this.previewIndex = index;
+        },
+
+        hidePreview() {
+            this.previewIndex = null;
+        },
+
         loadProjectDetails(projectFolder) {
             return fetch(`data/${projectFolder}/project.json`)
                 .then(response => response.json())
                 .then(projectData => ({
                     ...projectData,
                     folder: projectFolder,
-                    icon: projectData.icon || `data/${projectFolder}/icon.png` // Usa l'icona specificata o un percorso predefinito
+                    icon: projectData.icon || `data/${projectFolder}/icon.png`,
+                    preview: projectData.preview || `data/${projectFolder}/project_image.jpg`,
+                    description: projectData.description || 'No description available'
                 }))
                 .catch(error => {
                     console.error(`Error loading details for ${projectFolder}:`, error);
