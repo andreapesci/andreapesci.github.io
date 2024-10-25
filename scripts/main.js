@@ -43,18 +43,7 @@ function changeBackground(imageUrl) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    switchHighlightTheme(currentTheme);
 
-    const themeToggleButton = document.getElementById('theme-toggle');
-    themeToggleButton.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        switchHighlightTheme(newTheme);
-    });
-});
 
 function toggleSections() {
     var aboutSection = document.querySelector('.about');
@@ -91,6 +80,7 @@ function mainData() {
             name: '',
             profession: '',
             brieflyMe: '',
+            aboutMe: '',
             skills: [],
             info: {
                 residence: '',

@@ -11,12 +11,21 @@
             "title": "Creature AI Behavior",
             "content": "In the game, I developed an AI-controlled creature inspired by the \"<b>Slender</b>\" game, implementing complex behaviors and interactions with the player. The creature spawns at a variable distance from the player based on the danger level, which changes according to the player's location and playtime. The spawn area is dynamically adjusted based on the areas the player is in and the objects near the spawn area, always trying to play \"<b>hide and seek</b>\" to increase the anxiety it provides to the player. The creature can spawn in the area between two concentric circles around the player and will despawn if the player moves beyond a maximum distance or after a set time calculated at random. Additionally, the creature triggers various effects, such as sounds and visual distortions, when the player looks at it for a certain period, adding to the eerie atmosphere. These effects smoothly adjust based on proximity and danger level, ensuring a seamless and immersive experience.<br><br>Code Snippets will be available on project completion.",
             "images": [
-
+"data/project1/project_image_1.jpg"
             ],
             "videos": [],
 
             "codeSnippets": [
-
+                {
+                    "language": "C++ Header",
+                    "name": "Creature.h",
+                    "file": "data/project1/Creature.h"
+                },
+                {
+                    "language": "C++ Source",
+                    "name": "Creature.cpp",
+                    "file": "data/project1/Creature.cpp"
+                }
             ]
         },
         {
