@@ -1,0 +1,8 @@
+{
+    "title": "Progetto A",
+    "description": "Descrizione dettagliata del Progetto A. Questo è un esempio di descrizione che puoi personalizzare per il tuo progetto specifico.",
+    "technologies": ["HTML", "CSS", "JavaScript", "React"],
+    "image": "project_image.png",
+    "demoUrl": "https://esempio.com/demo-progetto-a",
+    "repositoryUrl": "https://github.com/username/progetto-a"
+  }

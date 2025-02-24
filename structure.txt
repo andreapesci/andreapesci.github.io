@@ -1,0 +1,28 @@
+.
+├── README.md
+├── astro.config.mjs
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.svg
+│   ├── progetto-a
+│   │   └── project_image.png
+│   └── progetto-b
+│       └── project_image.png
+├── src
+│   ├── assets
+│   ├── components
+│   │   └── Navbar.astro
+│   ├── data
+│   │   ├── projects
+│   │   │   ├── project-a.json
+│   │   │   └── project-b.json
+│   │   └── projects.json
+│   ├── layouts
+│   │   └── BaseLayout.astro
+│   └── pages
+│       ├── [slug].astro
+│       ├── about.astro
+│       └── index.astro
+└── tsconfig.json
+

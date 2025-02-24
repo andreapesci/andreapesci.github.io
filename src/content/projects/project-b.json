@@ -1,0 +1,8 @@
+{
+    "title": "Progetto B",
+    "description": "Descrizione dettagliata del Progetto B. Questo progetto è un esempio di come strutturare i dati di un progetto nel portfolio.",
+    "technologies": ["TypeScript", "Node.js", "Express", "MongoDB"],
+    "image": "project_image.png",
+    "demoUrl": "https://esempio.com/demo-progetto-b",
+    "repositoryUrl": "https://github.com/username/progetto-b"
+  }

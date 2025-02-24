@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/project.css';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.id },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout title={`${project.data.title} | Il Mio Portfolio`} description={project.data.description}>
+  <div class="project-container">
+    <div class="project-header">
+      <a href="/" class="back-button">← Torna alla Home</a>
+      <h1>{project.data.title}</h1>
+    </div>
+
+    <div class="project-content">
+      <img
+        src={`/${project.id}/${project.data.image}`}
+        alt={project.data.title}
+        class="project-main-image"
+      />
+
+      <div class="project-details">
+        <div class="project-description">
+          <h2>Descrizione</h2>
+          <p>{project.data.description}</p>
+        </div>
+
+        <div class="project-technologies">
+          <h2>Tecnologie Utilizzate</h2>
+          <ul>
+            {project.data.technologies.map(tech => (
+              <li>{tech}</li>
+            ))}
+          </ul>
+        </div>
+
+        {project.data.demoUrl && (
+          <div class="project-links">
+            <a href={project.data.demoUrl} target="_blank" rel="noopener noreferrer" class="project-link">
+              Demo Live
+            </a>
+          </div>
+        )}
+
+        {project.data.repositoryUrl && (
+          <div class="project-links">
+            <a href={project.data.repositoryUrl} target="_blank" rel="noopener noreferrer" class="project-link">
+              Repository
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

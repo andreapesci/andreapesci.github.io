@@ -1,0 +1,30 @@
+---
+import '../styles/navbar.css';
+import { getCollection } from 'astro:content';
+
+// Carica tutti i progetti dalla collection
+const projects = await getCollection('projects');
+---
+
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/about" class="nav-link">About</a>
+    <div class="dropdown">
+      <button class="dropdown-btn">Projects</button>
+      <div class="dropdown-content">
+        {projects.map(project => (
+          <a href={`/${project.id}`}>{project.data.title}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="https://linkedin.com/in/yourprofile" class="social-icon">
+      <span class="icon">LinkedIn</span>
+    </a>
+    <a href="/contact" class="social-icon">
+      <span class="icon">Contact</span>
+    </a>
+  </div>
+</nav>

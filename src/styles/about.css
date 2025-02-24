@@ -1,0 +1,21 @@
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+
+  .about-container h1 {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-text p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
