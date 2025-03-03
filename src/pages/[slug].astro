@@ -61,7 +61,7 @@ const { project } = Astro.props;
       <p>{project.data.description}</p>
     </div>
 
-    <!-- Sezioni togglabili usando solo CSS con immagini (ora dinamiche) -->
+    <!-- Sezioni togglabili usando solo CSS con immagini o video + contenuto sotto -->
     <div class="project-sections">
       {project.data.sections && project.data.sections.map((section, index) => (
         <div class="toggle-section">
@@ -69,6 +69,27 @@ const { project } = Astro.props;
           <label for={`toggle${index + 1}`} class="toggle-label">{section.title}</label>
           <div class="toggle-content">
             <div class="section-content">
+              <!-- Media (immagine o video) posizionato sopra -->
+              {(section.image || section.videoUrl) && (
+                <div class="section-media">
+                  {section.image && !section.videoUrl && (
+                    <img src={`/${project.id}/${section.image}`} alt={section.title} />
+                  )}
+                  {section.videoUrl && (
+                    <div class="video-container">
+                      <iframe
+                        src={section.videoUrl}
+                        title={section.title}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <!-- Contenuto testuale sotto -->
               <div class="section-text">
                 <p>{section.content}</p>
                 {section.listItems && section.listItems.length > 0 && (
@@ -78,9 +99,6 @@ const { project } = Astro.props;
                     ))}
                   </ul>
                 )}
-              </div>
-              <div class="section-image">
-                <img src={`/${project.id}/${section.image}`} alt={section.title} />
               </div>
             </div>
           </div>

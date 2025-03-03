@@ -160,22 +160,55 @@
       padding 0.3s ease-in-out;
   }
 
-  /* Layout delle sezioni con immagini */
+  /* Layout delle sezioni con media e testo in colonna */
   .section-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    align-items: start;
+  }
+
+  .section-media {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .section-media img {
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Stile per container video responsivo */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Rapporto 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
   }
 
   .section-text {
     line-height: 1.6;
   }
 
-  .section-image img {
-    width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  .section-text ul {
+    margin-top: 10px;
+    padding-left: 20px;
+  }
+
+  .section-text li {
+    margin-bottom: 5px;
   }
 
   /* Media query per schermi più piccoli */
@@ -189,13 +222,5 @@
     .project-links-container {
       justify-content: flex-start;
       margin-top: 10px;
-    }
-
-    .section-content {
-      grid-template-columns: 1fr;
-    }
-
-    .section-image {
-      margin-top: 15px;
     }
   }

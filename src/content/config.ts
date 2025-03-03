@@ -15,7 +15,10 @@ const projectsCollection = defineCollection({
         title: z.string(),
         content: z.string(),
         listItems: z.array(z.string()).optional().default([]),
-        image: z.string()
+        // Rendi l'immagine opzionale
+        image: z.string().optional(),
+        // Aggiungi un campo opzionale per il video
+        videoUrl: z.string().optional()
       })
     ).optional().default([])
   })
