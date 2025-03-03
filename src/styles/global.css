@@ -1,26 +1,92 @@
+:root {
+    --background-lighter: #282828;
+    --background-lighter-rgb: 40, 40, 40;
+    --background-normal: #1E1E1E;
+    --background-normal-rgb: 30, 30, 30;
+    --background-darker: #141414;
+    --background-darker-rgb: 20, 20, 20;
+    --text-color: #eeeeee;
+    --text-color-rgb: 238, 238, 238;
+    --accent: #443dff;
+    --accent-rgb: 68, 61, 255;
+    --accent-red: #411313;
+    --accent-red-rgb: 65, 20, 20;
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    --default-spacing: 0.5rem;
+    --navbar-height: 60px;  /* Altezza della navbar */
+    --footer-height: 50px;  /* Altezza del footer */
+}
+
+@supports (font-variation-settings: normal) {
+    :root {
+        font-family: InterVariable, sans-serif;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+    color: var(--text-color);
+}
 
-  body {
-    font-family: 'Arial', sans-serif;
+html, body {
+    height: 100%;
+    overflow: hidden; /* Impedisce lo scroll nella pagina principale */
+    background-color: rgb(var(--background-darker-rgb));
+}
+
+body {
     line-height: 1.6;
-    color: #333;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-  }
+    padding: 0 var(--default-spacing);
+    display: flex;
+    flex-direction: column;
+}
 
-  main {
-    min-height: 80vh;
-    padding: 20px 0;
-  }
+/* Stile per la navbar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navbar-height);
+    background-color: rgb(var(--background-darker-rgb));
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--default-spacing);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: calc(100% - 2 * var(--default-spacing));
+}
 
-  footer {
+main {
+    flex: 1;
+    overflow-y: auto; /* Permette lo scroll solo nel main */
+    padding: var(--default-spacing) 0;
+    margin-top: var(--navbar-height); /* Spazio per la navbar */
+    margin-bottom: var(--footer-height); /* Spazio per il footer */
+    height: calc(100vh - var(--navbar-height) - var(--footer-height));
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--footer-height);
     text-align: center;
-    padding: 20px 0;
-    border-top: 1px solid #eee;
-    margin-top: 40px;
-  }
+    padding: var(--default-spacing) 0;
+    border-top: 1px solid var(--text-color);
+    background-color: rgb(var(--background-darker-rgb));
+    z-index: 1000;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: calc(100% - 2 * var(--default-spacing));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/project.css';
 import { getCollection } from 'astro:content';
-
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
   return projects.map(project => ({
@@ -10,55 +9,83 @@ export async function getStaticPaths() {
     props: { project }
   }));
 }
-
 const { project } = Astro.props;
 ---
-
 <BaseLayout title={`${project.data.title} | Il Mio Portfolio`} description={project.data.description}>
   <div class="project-container">
     <div class="project-header">
-      <a href="/" class="back-button">← Torna alla Home</a>
-      <h1>{project.data.title}</h1>
+      <a href="/" class="back-button">← Home</a>
+      <h1
+      transition:name={`project-title-${project.id}`}
+      >{project.data.title}</h1>
     </div>
 
-    <div class="project-content">
+    <!-- Immagine principale -->
+    <div class="project-image-container">
       <img
         src={`/${project.id}/${project.data.image}`}
         alt={project.data.title}
         class="project-main-image"
+        transition:name={`project-image-${project.id}`}
       />
+    </div>
 
-      <div class="project-details">
-        <div class="project-description">
-          <h2>Descrizione</h2>
-          <p>{project.data.description}</p>
+    <!-- Tecnologie e link sulla stessa riga -->
+    <div class="tech-links-row">
+      <div class="project-technologies">
+        <!-- Lista di tecnologie orizzontale -->
+        <div class="tech-list">
+          {project.data.technologies.map(tech => (
+            <span class="tech-tag">{tech}</span>
+          ))}
         </div>
+      </div>
 
-        <div class="project-technologies">
-          <h2>Tecnologie Utilizzate</h2>
-          <ul>
-            {project.data.technologies.map(tech => (
-              <li>{tech}</li>
-            ))}
-          </ul>
-        </div>
-
+      <div class="project-links-container">
         {project.data.demoUrl && (
-          <div class="project-links">
-            <a href={project.data.demoUrl} target="_blank" rel="noopener noreferrer" class="project-link">
-              Demo Live
-            </a>
-          </div>
+          <a href={project.data.demoUrl} target="_blank" rel="noopener noreferrer" class="project-link">
+            Download
+          </a>
         )}
-
         {project.data.repositoryUrl && (
-          <div class="project-links">
-            <a href={project.data.repositoryUrl} target="_blank" rel="noopener noreferrer" class="project-link">
-              Repository
-            </a>
-          </div>
+          <a href={project.data.repositoryUrl} target="_blank" rel="noopener noreferrer" class="project-link">
+            Repository
+          </a>
         )}
       </div>
+    </div>
+
+    <!-- Descrizione del progetto -->
+    <div class="project-description">
+      <h2>Descrizione</h2>
+      <p>{project.data.description}</p>
+    </div>
+
+    <!-- Sezioni togglabili usando solo CSS con immagini (ora dinamiche) -->
+    <div class="project-sections">
+      {project.data.sections && project.data.sections.map((section, index) => (
+        <div class="toggle-section">
+          <input type="checkbox" id={`toggle${index + 1}`} class="toggle-input">
+          <label for={`toggle${index + 1}`} class="toggle-label">{section.title}</label>
+          <div class="toggle-content">
+            <div class="section-content">
+              <div class="section-text">
+                <p>{section.content}</p>
+                {section.listItems && section.listItems.length > 0 && (
+                  <ul>
+                    {section.listItems.map(item => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div class="section-image">
+                <img src={`/${project.id}/${section.image}`} alt={section.title} />
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </BaseLayout>

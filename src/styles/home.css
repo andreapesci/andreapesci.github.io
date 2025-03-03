@@ -1,40 +1,113 @@
 .hero {
     text-align: center;
-    padding: 50px 0;
+    padding: var(--default-spacing) 0;
   }
 
   .hero h1 {
     font-size: 2.5rem;
-    margin-bottom: 15px;
+    margin-bottom: var(--default-spacing);
   }
 
-  .project-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+
+  .project-gallery  {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--default-spacing);
+    padding: 1rem;
+
+  }
+
+  .project-featured {
+    display: flex;
+    justify-content: center;
+    gap: var(--default-spacing);
+    margin-top: var(--default-spacing);
+    padding: 1rem;
   }
 
   .project-card {
     text-decoration: none;
     color: inherit;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
   }
 
   .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(var(--default-spacing));
+  }
+
+  .project-card h3 {
+    padding: var(--default-spacing);
+    text-align: center;
+  }
+
+
+
+  .project-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .project-image-wrapper:hover .project-tags {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .project-image {
     width: 100%;
-    height: 200px;
+    height: 12.5rem;
     object-fit: cover;
+    position: relative;
+    overflow: hidden;
   }
 
-  .project-card h3 {
-    padding: 15px;
+  .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(var(--background-lighter-rgb), 0.75);
+    color: var(--text-color);
     text-align: center;
+    padding: var(--default-spacing);
+    opacity: 0.8;
+    z-index: 1;
+  }
+
+  .title-tag {
+    display: inline-block;
+    font-size: 0.9rem;
+    background: none;
+  }
+
+  .project-tags {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(var(--background-lighter-rgb), 0.7);
+    color: var(--text-color);
+    text-align: center;
+    padding: var(--default-spacing);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(100%);
+    display: flex;
+    justify-content: left;
+    overflow-y: auto;
+  }
+
+  .tag {
+    flex-wrap: nowrap;
+    display: inline-block;
+    margin: 0 var(--default-spacing);
+    font-size: 0.9rem;
+    background: rgba(var(--background-lighter-rgb), 0.75);
+    padding: 0.25rem 0.25rem;
+    border-radius: 10px;
   }

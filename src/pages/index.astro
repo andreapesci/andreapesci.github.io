@@ -1,28 +1,87 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/home.css';
-import { getCollection } from 'astro:content';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/home.css";
+import { getCollection } from "astro:content";
 
 // Carica tutti i progetti dalla collection
-const projects = await getCollection('projects');
+const projects = await getCollection("projects");
 ---
 
-<BaseLayout title="Il Mio Portfolio" description="Portfolio professionale con progetti e competenze">
-  <div class="hero">
-    <h1>Benvenuto nel mio Portfolio</h1>
-    <p>Esplora i miei progetti</p>
-  </div>
+<BaseLayout
+    title="Il Mio Portfolio"
+    description="Portfolio professionale con progetti e competenze"
+>
+    <div class="hero">
+        <h1>Benvenuto nel mio Portfolio</h1>
+        <p>Esplora i miei progetti</p>
+    </div>
+    <div class="project-featured">
+        {
+            projects
+                .filter((project) => project.data.featured)
+                .map((project) => (
+                    <a href={`/${project.id}`} class="project-card">
+                        <div class="project-image-wrapper">
+                            <div class="project-title">
+                                <span
+                                    class="title-tag"
+                                    transition:name={`project-title-${project.id}`}
+                                    >
+                                        {project.data.title}
+                                    </span>
+                            </div>
+                            <img
+                                src={`/${project.id}/${project.data.image}`}
+                                alt={project.data.title}
+                                class="project-image"
+                                transition:name={`project-image-${project.id}`}
+                            />
+                            <div class="project-tags">
+                                {project.data.technologies.map((tag) => (
+                                    <span class="tag">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </a>
+                ))
+        }
+    </div>
 
-  <div class="project-gallery">
-    {projects.map(project => (
-      <a href={`/${project.id}`} class="project-card">
-        <img
-          src={`/${project.id}/${project.data.image}`}
-          alt={project.data.title}
-          class="project-image"
-        />
-        <h3>{project.data.title}</h3>
-      </a>
-    ))}
-  </div>
+    <div class="project-gallery">
+        {
+            projects
+                .filter((project) => !project.data.featured)
+                .map((project) => (
+                    <a href={`/${project.id}`} class="project-card">
+                        <div class="project-image-wrapper">
+                            <div class="project-title">
+                                <span
+                                    class="title-tag"
+                                    transition:name={`project-title-${project.id}`}>
+                                        {project.data.title}
+                                    </span>
+                            </div>
+                            <img
+                                src={`/${project.id}/${project.data.image}`}
+                                alt={project.data.title}
+                                class="project-image"
+                                transition:name={`project-image-${project.id}`}
+                            />
+                            <div class="project-tags">
+                                {project.data.technologies.map((tag) => (
+                                    <span class="tag">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+
+                    </a>
+                ))
+        }
+    </div>
 </BaseLayout>
+
+<style>
+    @view-transition {
+      navigation: auto; /* enabled! */
+    }
+  </style>
