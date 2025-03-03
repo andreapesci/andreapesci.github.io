@@ -3,6 +3,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    scroll-behavior: smooth; /* Abilita lo scroll smooth per tutta la pagina */
   }
 
   .project-header {
@@ -174,6 +175,8 @@
 
   .section-media img {
     width: 100%;
+    max-height: 400px; /* Altezza massima ridotta per l'immagine */
+    object-fit: contain; /* Mantiene le proporzioni senza ritagliare */
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
@@ -181,10 +184,11 @@
   /* Stile per container video responsivo */
   .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* Rapporto 16:9 */
+    padding-bottom: 40%; /* Ridotto da 56.25% per rendere il video meno alto */
     height: 0;
     overflow: hidden;
     max-width: 100%;
+    max-height: 400px; /* Imposta un'altezza massima */
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
@@ -222,5 +226,9 @@
     .project-links-container {
       justify-content: flex-start;
       margin-top: 10px;
+    }
+
+    .video-container {
+      padding-bottom: 56.25%; /* Ripristina il rapporto standard per schermi piccoli */
     }
   }
