@@ -4,25 +4,37 @@
 ├── package-lock.json
 ├── package.json
 ├── public
-│   ├── favicon.svg
-│   ├── progetto-a
+│   ├── babel-bubble
 │   │   └── project_image.png
-│   └── progetto-b
+│   ├── captain-bushfire
+│   │   └── project_image.png
+│   ├── favicon.ico
+│   └── the-shattered-peak
+│       ├── feature-image.png
 │       └── project_image.png
 ├── src
 │   ├── assets
 │   ├── components
-│   │   └── Navbar.astro
+│   │   ├── Navbar.astro
+│   │   └── ProjectCard.astro
+│   ├── content
+│   │   ├── config.ts
+│   │   ├── cv.md
+│   │   └── projects
+│   │       ├── babel-bubble.json
+│   │       ├── captain-bushfire.json
+│   │       └── the-shattered-peak.json
 │   ├── data
-│   │   ├── projects
-│   │   │   ├── project-a.json
-│   │   │   └── project-b.json
-│   │   └── projects.json
 │   ├── layouts
 │   │   └── BaseLayout.astro
-│   └── pages
-│       ├── [slug].astro
-│       ├── about.astro
-│       └── index.astro
+│   ├── pages
+│   │   ├── [slug].astro
+│   │   ├── about.astro
+│   │   └── index.astro
+│   └── styles
+│       ├── about.css
+│       ├── global.css
+│       ├── home.css
+│       ├── navbar.css
+│       └── project.css
 └── tsconfig.json
-

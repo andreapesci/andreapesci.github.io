@@ -7,6 +7,10 @@
     "repositoryUrl": "https://github.com/username/progetto-a",
     "featured": true,
     "sections": [
+        {
+            "title": "Trailer",
+            "videoUrl": "https://www.youtube-nocookie.com/embed/VrLsMUiefgw?mute=1&si=A3VNQlIW30Zdx9as&amp"
+          },
       {
         "title": "Caratteristiche Principali",
         "content": "Qui puoi inserire le caratteristiche principali del progetto...",
@@ -17,12 +21,7 @@
         ],
         "image": "feature-image.png"
       },
-      {
-        "title": "Sviluppo e Implementazione",
-        "content": "Qui puoi inserire dettagli sul processo di sviluppo...",
-        "listItems": [],
-        "videoUrl": "https://www.youtube-nocookie.com/embed/VrLsMUiefgw?mute=1&si=A3VNQlIW30Zdx9as&amp"
-      },
+
       {
         "title": "Sfide e Soluzioni",
         "content": "Qui puoi parlare delle sfide affrontate durante lo sviluppo e come le hai risolte...",

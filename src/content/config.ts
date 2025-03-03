@@ -13,17 +13,51 @@ const projectsCollection = defineCollection({
     sections: z.array(
       z.object({
         title: z.string(),
-        content: z.string(),
+        content: z.string().optional(),
         listItems: z.array(z.string()).optional().default([]),
-        // Rendi l'immagine opzionale
         image: z.string().optional(),
-        // Aggiungi un campo opzionale per il video
         videoUrl: z.string().optional()
       })
     ).optional().default([])
   })
 });
 
+const aboutCollection = defineCollection({
+    type: 'data',
+    schema: z.object({
+      title: z.string(),
+      subtitle: z.string(),
+      intro: z.string(),
+      heroText: z.string(),
+      shortBio: z.string(),
+      skills: z.array(z.string()),
+      experience: z.array(
+        z.object({
+          company: z.string(),
+          role: z.string(),
+          period: z.string(),
+          description: z.string()
+        })
+      ),
+      education: z.array(
+        z.object({
+          institution: z.string(),
+          degree: z.string(),
+          year: z.string()
+        })
+      ),
+      contacts: z.object({
+        email: z.string(),
+        github: z.string().optional(),
+        linkedin: z.string().optional()
+      }),
+      featuredImage: z.string().optional()
+    })
+  });
+
+  console.log(aboutCollection)
+
 export const collections = {
-  'projects': projectsCollection
+  projects: projectsCollection,
+  about: aboutCollection
 };

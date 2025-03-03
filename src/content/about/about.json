@@ -1,0 +1,41 @@
+{
+    "title": "Andrea Pesci",
+    "subtitle": "Game Programmer",
+    "intro": "Ciao, sono Andrea! Sviluppatore web appassionato di tecnologie frontend e UI/UX.",
+    "heroText": "Andrea Pesci",
+    "shortBio": "Mi occupo di creare soluzioni web moderne ed efficienti, con particolare attenzione all'esperienza utente e alle performance.",
+    "skills": [
+      "Frontend Development",
+      "JavaScript/TypeScript",
+      "React",
+      "Astro",
+      "UI/UX Design"
+    ],
+    "experience": [
+      {
+        "company": "Nome Azienda",
+        "role": "Frontend Developer",
+        "period": "2022 - Presente",
+        "description": "Sviluppo di applicazioni web e interfacce utente per clienti in diversi settori."
+      },
+      {
+        "company": "Nome Azienda Precedente",
+        "role": "Web Developer",
+        "period": "2020 - 2022",
+        "description": "Creazione e manutenzione di siti web e piattaforme e-commerce."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Università di ...",
+        "degree": "Laurea in Informatica",
+        "year": "2020"
+      }
+    ],
+    "contacts": {
+      "email": "example@email.com",
+      "github": "https://github.com/tuo-username",
+      "linkedin": "https://linkedin.com/in/tuo-username"
+    },
+    "featuredImage": "/path-to-your-profile-image.jpg"
+  }

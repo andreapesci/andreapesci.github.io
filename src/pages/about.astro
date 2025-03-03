@@ -1,16 +1,60 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/about.css';
----
+import { getCollection } from "astro:content";
 
-<BaseLayout title="About Me" description="Informazioni sul mio background professionale e competenze">
+// Carica le informazioni about
+const aboutData = await getCollection("about");
+const about = aboutData[0];
+console.log(aboutData)
+---
+<BaseLayout title="About Me" description={about.data.shortBio}>
   <div class="about-container">
-    <h1>Chi Sono</h1>
+    <h1>{about.data.title}</h1>
+    <h2>{about.data.subtitle}</h2>
     <div class="about-content">
       <div class="about-text">
-        <p>Benvenuto nella mia pagina About. Qui puoi inserire informazioni sul tuo background, esperienza, competenze e altro.</p>
-        <p>Personalizza questa sezione con dettagli su di te, la tua formazione, le tue capacità e i tuoi obiettivi professionali.</p>
+        <p>{about.data.shortBio}</p>
+
+        <h3>Skills</h3>
+        <div class="skills-container">
+          {about.data.skills.map((skill) => (
+            <span class="skill-tag">{skill}</span>
+          ))}
+        </div>
+
+        <h3>Esperienza</h3>
+        {about.data.experience.map((exp) => (
+          <div class="experience-item">
+            <h4>{exp.role} @ {exp.company}</h4>
+            <span class="period">{exp.period}</span>
+            <p>{exp.description}</p>
+          </div>
+        ))}
+
+        <h3>Formazione</h3>
+        {about.data.education.map((edu) => (
+          <div class="education-item">
+            <h4>{edu.degree}</h4>
+            <p>{edu.institution}, {edu.year}</p>
+          </div>
+        ))}
+
+        <h3>Contatti</h3>
+        <p>Email: <a href={`mailto:${about.data.contacts.email}`}>{about.data.contacts.email}</a></p>
+        {about.data.contacts.github &&
+          <p>GitHub: <a href={about.data.contacts.github} target="_blank">GitHub Profile</a></p>
+        }
+        {about.data.contacts.linkedin &&
+          <p>LinkedIn: <a href={about.data.contacts.linkedin} target="_blank">LinkedIn Profile</a></p>
+        }
       </div>
+
+      {about.data.featuredImage &&
+        <div class="about-image">
+          <img src={about.data.featuredImage} alt={about.data.title} />
+        </div>
+      }
     </div>
   </div>
 </BaseLayout>

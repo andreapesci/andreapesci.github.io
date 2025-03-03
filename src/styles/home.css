@@ -1,11 +1,17 @@
 .hero {
-    text-align: center;
-    padding: var(--default-spacing) 0;
+    display: flex;
+    flex-direction: column;
+    text-align:center ;
+    gap: 0.5rem;
   }
 
   .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: var(--default-spacing);
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .hero h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
 
@@ -13,15 +19,15 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: var(--default-spacing);
-    padding: 1rem;
+    gap: calc(var(--default-spacing) * 2) var(--default-spacing);
+
 
   }
 
   .project-featured {
     display: flex;
     justify-content: center;
-    gap: var(--default-spacing);
+    gap: 1rem;
     margin-top: var(--default-spacing);
     padding: 1rem;
   }
@@ -31,7 +37,7 @@
     color: inherit;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--text-color) 0px 0px 4px;
     transition: transform 0.3s ease;
   }
 
@@ -49,7 +55,7 @@
   .project-image-wrapper {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 13rem;
     overflow: hidden;
   }
 
@@ -60,7 +66,7 @@
 
   .project-image {
     width: 100%;
-    height: 12.5rem;
+    height: 13rem;
     object-fit: cover;
     position: relative;
     overflow: hidden;
