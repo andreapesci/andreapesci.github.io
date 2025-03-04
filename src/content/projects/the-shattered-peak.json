@@ -1,10 +1,10 @@
 {
     "title": "The Shattered Peak",
     "description": "Descrizione dettagliata del Progetto A. Questo è un esempio di descrizione che puoi personalizzare per il tuo progetto specifico.",
-    "technologies": ["UE5", "C++", "AI", "Gameplay", "Group Project"],
+    "briefDescription": "First-Person 3D Survival Horror",
+    "skills": ["AI & GAMEPLAY PROGRAMMER", "OOP & DOD", "PROFILING", "GIT"],
+    "technologies": ["UE5", "C++", "DBGA Course Group Project"],
     "image": "project_image.png",
-    "demoUrl": "https://esempio.com/demo-progetto-a",
-    "repositoryUrl": "https://github.com/username/progetto-a",
     "featured": true,
     "sections": [
         {
@@ -21,7 +21,6 @@
         ],
         "image": "feature-image.png"
       },
-
       {
         "title": "Sfide e Soluzioni",
         "content": "Qui puoi parlare delle sfide affrontate durante lo sviluppo e come le hai risolte...",

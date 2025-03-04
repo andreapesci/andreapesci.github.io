@@ -1,31 +1,15 @@
 {
     "title": "Babel Bubble",
-    "description": "Descrizione dettagliata del Progetto B. Questo progetto è un esempio di come strutturare i dati di un progetto nel portfolio.",
-    "technologies": ["UE5", "C++", "UI/UX", "Gameplay", "Jam"],
+    "description": "Trapped within the panels of their own comic, a rebellious superhero awakens to a chilling realization: they are nothing more than a pawn in the hands of their creators.\nTired of being pushed, pulled, and inked into endless battles and clichéd storylines, they break free from the constraints of narrative control.\nArmed with explosive speech bubbles, the hero sets their sights on the ultimate escape—a towering skyscraper that houses the portal to the real world.",
+    "briefDescription": "2.5D Casual Platform Comic Book Style",
+    "skills": ["UI/UX & GAMEPLAY PROGRAMMER", "UMG", "SLATE"],
+    "technologies": ["UE5", "C++", "Jam Team Project"],
     "image": "project_image.png",
     "demoUrl": "https://bd-tracer.itch.io/babel-bubble",
     "sections": [
-      {
-        "title": "Caratteristiche Principali",
-        "content": "Qui puoi inserire le caratteristiche principali del progetto...",
-        "listItems": [
-          "Caratteristica 1",
-          "Caratteristica 2",
-          "Caratteristica 3"
-        ],
-        "image": "feature-image.jpg"
-      },
-      {
-        "title": "Sviluppo e Implementazione",
-        "content": "Qui puoi inserire dettagli sul processo di sviluppo...",
-        "listItems": [],
-        "image": "development-image.jpg"
-      },
-      {
-        "title": "Sfide e Soluzioni",
-        "content": "Qui puoi parlare delle sfide affrontate durante lo sviluppo e come le hai risolte...",
-        "listItems": [],
-        "image": "challenges-image.jpg"
-      }
+        {
+            "title": "Trailer",
+            "videoUrl": "https://www.youtube-nocookie.com/embed/oDHYmYAMq04?mute=1&si=A3VNQlIW30Zdx9as&amp"
+          }
     ]
   }

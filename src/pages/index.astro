@@ -6,69 +6,81 @@ const projects = await getCollection("projects");
 const aboutData = await getCollection("about");
 const about = aboutData[0];
 ---
-<BaseLayout
-    title={about.data.title}
-    description={about.data.shortBio}
->
+
+<BaseLayout title={about.data.title} description={about.data.shortBio}>
     <div class="hero">
         <p>{about.data.intro}<a href="/about">click here...</a></p>
-
-
     </div>
 
-    {projects.filter((project) => project.data.featured).length > 0 && (
-        <div class="projects-section">
-            <h2 class="section-title">Highlighted Projects</h2>
-            <div class="project-featured">
-                {
-                    projects
+    {
+        projects.filter((project) => project.data.featured).length > 0 && (
+            <div class="projects-section">
+                <h2 class="section-title">Highlighted Projects</h2>
+                <div class="project-featured">
+                    {projects
                         .filter((project) => project.data.featured)
                         .map((project) => (
-                            <a href={`/${project.id}`} class="project-card featured-card">
-                                <div class="project-image-wrapper featured-image-wrapper">
-                                    <div class="project-title">
-                                        <span
-                                            class="title-tag featured-title"
-                                            transition:name={`project-title-${project.id}`}
+                            <div class="project">
+                                <a
+                                    href={`/${project.id}`}
+                                    class="project-card featured-card"
+                                >
+                                    <div class="project-image-wrapper featured-image-wrapper">
+                                        <div class="project-title">
+                                            <span
+                                                class="title-tag featured-title"
+                                                transition:name={`project-title-${project.id}`}
                                             >
                                                 {project.data.title}
                                             </span>
+                                        </div>
+                                        <img
+                                            src={`/${project.id}/${project.data.image}`}
+                                            alt={project.data.title}
+                                            class="project-image"
+                                            transition:name={`project-image-${project.id}`}
+                                        />
                                     </div>
-                                    <img
-                                        src={`/${project.id}/${project.data.image}`}
-                                        alt={project.data.title}
-                                        class="project-image"
-                                        transition:name={`project-image-${project.id}`}
-                                    />
-                                    <div class="project-tags">
-                                        {project.data.technologies.map((tag) => (
-                                            <span class="tag">{tag}</span>
-                                        ))}
-                                    </div>
+                                </a>
+                                <div class="project-tags">
+                                    {project.data.technologies.map((tag) => (
+                                        <span class="tag">{tag}</span>
+                                    ))}
                                 </div>
-                            </a>
-                        ))
-                }
+                                <p class="project-brief-description">
+                                    {project.data.briefDescription}
+                                </p>
+                                <h3 class="skills-title">Role and Skills:</h3>
+                                <ul class="skills-list">
+                                    {project.data.skills.map((tag) => (
+                                        <li class="skills-item">{tag}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                </div>
             </div>
-        </div>
-    )}
+        )
+    }
 
-    {projects.filter((project) => !project.data.featured).length > 0 && (
-        <div class="projects-section other-projects">
-            <h2 class="section-title">Other Projects</h2>
-            <div class="project-gallery">
-                {
-                    projects
+    {
+        projects.filter((project) => !project.data.featured).length > 0 && (
+            <div class="projects-section other-projects">
+                <h2 class="section-title">Other Projects</h2>
+                <div class="project-gallery">
+                    {projects
                         .filter((project) => !project.data.featured)
                         .map((project) => (
+                            <div class="project">
                             <a href={`/${project.id}`} class="project-card">
                                 <div class="project-image-wrapper">
                                     <div class="project-title">
                                         <span
                                             class="title-tag"
-                                            transition:name={`project-title-${project.id}`}>
-                                                {project.data.title}
-                                            </span>
+                                            transition:name={`project-title-${project.id}`}
+                                        >
+                                            {project.data.title}
+                                        </span>
                                     </div>
                                     <img
                                         src={`/${project.id}/${project.data.image}`}
@@ -77,20 +89,37 @@ const about = aboutData[0];
                                         transition:name={`project-image-${project.id}`}
                                     />
                                     <div class="project-tags">
-                                        {project.data.technologies.map((tag) => (
-                                            <span class="tag">{tag}</span>
-                                        ))}
+                                        {project.data.technologies.map(
+                                            (tag) => (
+                                                <span class="tag">{tag}</span>
+                                            )
+                                        )}
                                     </div>
                                 </div>
                             </a>
-                        ))
-                }
+                            <div class="project-tags">
+                                    {project.data.technologies.map((tag) => (
+                                        <span class="tag">{tag}</span>
+                                    ))}
+                                </div>
+                                <p class="project-brief-description">
+                                    {project.data.briefDescription}
+                                </p>
+                                <h3 class="skills-title">Role and Skills:</h3>
+                                <ul class="skills-list">
+                                    {project.data.skills.map((tag) => (
+                                        <li class="skills-item">{tag}</li>
+                                    ))}
+                                </ul>
+                        </div>
+                        ))}
+                </div>
             </div>
-        </div>
-    )}
+        )
+    }
 </BaseLayout>
 <style>
     @view-transition {
-      navigation: auto; /* enabled! */
+        navigation: auto; /* enabled! */
     }
-  </style>
+</style>

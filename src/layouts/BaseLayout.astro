@@ -20,11 +20,15 @@ const { title, description } = Astro.props;
     <ClientRouter fallback="swap" />
     <title>{title || "Andrea's Portfolio"}</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   </head>
   <body>
     <Navbar />
     <main>
-      <slot />
+
+            <slot />
+
     </main>
     <footer>
       <p>&copy; {new Date().getFullYear()} Il Mio Portfolio</p>

@@ -29,12 +29,14 @@
     padding: 0;
     box-sizing: border-box;
     color: var(--text-color);
+
 }
 
 html, body {
     height: 100%;
     overflow: hidden; /* Impedisce lo scroll nella pagina principale */
     background-color: rgb(var(--background-darker-rgb));
+
 }
 
 body {
@@ -44,6 +46,7 @@ body {
     padding: 0 var(--default-spacing);
     display: flex;
     flex-direction: column;
+
 }
 
 /* Stile per la navbar */
@@ -71,6 +74,10 @@ main {
     height: calc(100vh - var(--navbar-height) - var(--footer-height));
 }
 
+p {
+    white-space: pre-line;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -88,4 +95,15 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Nasconde la scrollbar per Chrome, Safari e Opera */
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* Nasconde la scrollbar per Internet Explorer, Edge e Firefox */
+* {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }

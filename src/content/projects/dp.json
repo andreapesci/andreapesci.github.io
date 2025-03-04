@@ -1,31 +1,8 @@
 {
-    "title": "Babel Bubble",
-    "description": "Descrizione dettagliata del Progetto B. Questo progetto è un esempio di come strutturare i dati di un progetto nel portfolio.",
-    "technologies": ["UE5", "C++", "UI/UX", "Gameplay", "Jam"],
-    "image": "project_image.png",
-    "demoUrl": "https://bd-tracer.itch.io/babel-bubble",
-    "sections": [
-      {
-        "title": "Caratteristiche Principali",
-        "content": "Qui puoi inserire le caratteristiche principali del progetto...",
-        "listItems": [
-          "Caratteristica 1",
-          "Caratteristica 2",
-          "Caratteristica 3"
-        ],
-        "image": "feature-image.jpg"
-      },
-      {
-        "title": "Sviluppo e Implementazione",
-        "content": "Qui puoi inserire dettagli sul processo di sviluppo...",
-        "listItems": [],
-        "image": "development-image.jpg"
-      },
-      {
-        "title": "Sfide e Soluzioni",
-        "content": "Qui puoi parlare delle sfide affrontate durante lo sviluppo e come le hai risolte...",
-        "listItems": [],
-        "image": "challenges-image.jpg"
-      }
-    ]
+    "title": "NDA Title",
+    "description": "Every detail about this project is currently under NDA .",
+    "briefDescription": "Third-Person 3D Game",
+    "skills": ["GAMEPLAY PROGRAMMER", "DOD", "PROFILING"],
+    "technologies": ["UE5", "C++", "Professional Project", "Under Development"],
+    "image": "project_image.png"
   }

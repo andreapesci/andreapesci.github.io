@@ -14,7 +14,7 @@
     display: inline-block;
     margin-bottom: 15px;
     text-decoration: none;
-    color: #555;
+    color: rgba(var(--text-color-rgb), 0.6);
   }
 
   /* Immagine principale */
@@ -46,35 +46,36 @@
     gap: 10px;
   }
 
-  .tech-tag {
-    display: inline-block;
-    padding: 6px 12px;
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #333;
-  }
-
   .project-links-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    align-items: center;
-    justify-content: flex-end;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: var(--background-lighter-rgb);
+    box-shadow: var(--text-color) 0px 0px 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text-color);
   }
 
   .project-link {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
+    padding: 6px 12px;
+    background-color: rgba(var(--accent-red-rgb), 0.6);
+    box-shadow: var(--text-color) 0px 0px 4px;
     border-radius: 4px;
+    font-size: 14px;
+    color: var(--text-color);
+    text-decoration: none;
     transition: background-color 0.3s ease;
   }
 
   .project-link:hover {
-    background-color: #555;
+    background-color: var(--accent-red);
   }
 
   /* Descrizione del progetto */
@@ -92,12 +93,14 @@
     flex-direction: column;
     gap: 15px;
     margin-top: 40px;
+
   }
 
   .toggle-section {
-    border: 1px solid #ddd;
+    box-shadow: var(--text-color) 0px 0px 4px;
     border-radius: 6px;
     overflow: hidden;
+
   }
 
   /* Nascondi il checkbox */
@@ -110,7 +113,7 @@
     display: block;
     width: 100%;
     padding: 15px;
-    background-color: #f5f5f5;
+    background-color: var(--background-lighter-rgb);
     font-weight: bold;
     cursor: pointer;
     position: relative;
@@ -118,7 +121,7 @@
   }
 
   .toggle-label:hover {
-    background-color: #e9e9e9;
+    background-color: rgba(var(--accent-red-rgb), 0.8);
   }
 
   /* Aggiungi il simbolo + */
