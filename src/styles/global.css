@@ -14,8 +14,8 @@
     font-family: Inter, sans-serif;
     font-feature-settings: 'liga' 1, 'calt' 1;
     --default-spacing: 0.5rem;
-    --navbar-height: 60px;  /* Altezza della navbar */
-    --footer-height: 50px;  /* Altezza del footer */
+    --navbar-height: 3.75rem;
+    --footer-height: 1.5rem;
 }
 
 @supports (font-variation-settings: normal) {
@@ -95,6 +95,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 0.75rem;
 }
 
 /* Nasconde la scrollbar per Chrome, Safari e Opera */

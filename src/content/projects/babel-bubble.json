@@ -5,6 +5,14 @@
     "skills": ["UI/UX & GAMEPLAY PROGRAMMER", "UMG", "SLATE"],
     "technologies": ["UE5", "C++", "Jam Team Project"],
     "image": "project_image.png",
+    "order": 1,
+    "additionalInfo": {
+        "Project Type": "Game Jam Project (GlobalGameJam)",
+        "Team Size": "~8 people",
+        "Software Used": "Unreal Engine 5",
+        "Languages Used": "C++, Blueprints",
+        "Primary Role(s)": "Gameplay & UI Programmer"
+    },
     "demoUrl": "https://bd-tracer.itch.io/babel-bubble",
     "sections": [
         {

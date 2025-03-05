@@ -4,6 +4,7 @@ const projectsCollection = defineCollection({
   type: 'data',
   schema: z.object({
     title: z.string(),
+    dropdownTitle: z.string().optional(),
     description: z.string(),
     briefDescription: z.string(),
     skills: z.array(z.string()),
@@ -12,6 +13,8 @@ const projectsCollection = defineCollection({
     demoUrl: z.string().optional(),
     repositoryUrl: z.string().optional(),
     featured: z.boolean().optional(),
+    additionalInfo: z.record(z.string()).optional(),
+    order: z.number().optional().default(0),
     sections: z.array(
       z.object({
         title: z.string(),
@@ -31,27 +34,14 @@ const aboutCollection = defineCollection({
       subtitle: z.string(),
       intro: z.string(),
       heroText: z.string(),
-      shortBio: z.string(),
+      shortBio: z.string().transform((str) =>
+        str.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")),
       skills: z.array(z.string()),
-      experience: z.array(
-        z.object({
-          company: z.string(),
-          role: z.string(),
-          period: z.string(),
-          description: z.string()
-        })
-      ),
-      education: z.array(
-        z.object({
-          institution: z.string(),
-          degree: z.string(),
-          year: z.string()
-        })
-      ),
       contacts: z.object({
         email: z.string(),
         github: z.string().optional(),
-        linkedin: z.string().optional()
+        linkedin: z.string().optional(),
+        itchio: z.string().optional()
       }),
       featuredImage: z.string().optional()
     })

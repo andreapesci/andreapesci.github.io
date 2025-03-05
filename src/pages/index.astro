@@ -2,7 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/home.css";
 import { getCollection } from "astro:content";
-const projects = await getCollection("projects");
+//const projects = await getCollection("projects");
+const unsortedProjects = await getCollection('projects');
+
+// Poi ordina
+const projects = unsortedProjects.sort((a, b) =>
+  (a.data.order || 0) - (b.data.order || 0));
 const aboutData = await getCollection("about");
 const about = aboutData[0];
 ---
@@ -118,8 +123,3 @@ const about = aboutData[0];
         )
     }
 </BaseLayout>
-<style>
-    @view-transition {
-        navigation: auto; /* enabled! */
-    }
-</style>

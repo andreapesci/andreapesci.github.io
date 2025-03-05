@@ -55,9 +55,19 @@ const { project } = Astro.props;
       </div>
     </div>
 
+    {project.data.additionalInfo && (
+        <div class="additional-info">
+          {Object.entries(project.data.additionalInfo).map(([key, value]) => (
+            <div class="info-item">
+              <strong>{key}:</strong> {value}
+            </div>
+          ))}
+        </div>
+      )}
+
     <!-- Descrizione del progetto -->
     <div class="project-description">
-      <h2>Descrizione</h2>
+      <h3>About {project.data.dropdownTitle || project.data.title}</h3>
       <p>{project.data.description}</p>
     </div>
 

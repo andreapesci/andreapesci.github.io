@@ -26,12 +26,10 @@ const { title, description } = Astro.props;
   <body>
     <Navbar />
     <main>
-
             <slot />
-
     </main>
     <footer>
-      <p>&copy; {new Date().getFullYear()} Il Mio Portfolio</p>
+      <p>Copyright &copy; {new Date().getFullYear()} by Andrea Pesci | All content used with permission</p>
     </footer>
   </body>
 </html>

@@ -15,7 +15,16 @@
     gap: 30px;
   }
 
-  .about-text p {
-    margin-bottom: 20px;
+  .about-text p,li,a {
+    color: rgba(var(--text-color-rgb), 0.85);
     line-height: 1.8;
+  }
+
+  .small-titles {
+    margin-top: 1rem;
+  }
+
+  .skills-container {
+    list-style-type: disc;
+    padding-left: 2rem;
   }

@@ -1,0 +1,17 @@
+{
+    "title": "NDA Title - (AI Generated Placeholder image)",
+    "dropdownTitle": "NDA Title",
+    "description": "Every detail about this project is currently under NDA .",
+    "briefDescription": "Third-Person 3D Game",
+    "skills": ["GAMEPLAY PROGRAMMER", "DOD", "PROFILING"],
+    "technologies": ["UE5", "C++", "Professional Project", "Under Development"],
+    "image": "project_image.jpg",
+    "order": 2,
+    "additionalInfo": {
+        "Project Type": "Indie Project",
+        "Software Used": "Unreal Engine 5",
+        "Languages Used": "C++, Blueprints",
+        "Primary Role(s)": "Gameplay Programmer",
+        "Project Status": "Under Development"
+    }
+  }

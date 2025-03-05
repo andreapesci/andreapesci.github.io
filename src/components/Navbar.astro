@@ -3,8 +3,13 @@ import '../styles/global.css';
 import '../styles/navbar.css';
 import { getCollection } from 'astro:content';
 
-// Carica tutti i progetti dalla collection
-const projects = await getCollection('projects');
+const aboutData = await getCollection("about");
+const about = aboutData[0];
+const unsortedProjects = await getCollection('projects');
+
+// Poi ordina
+const projects = unsortedProjects.sort((a, b) =>
+  (a.data.order || 0) - (b.data.order || 0));
 ---
 
 <nav class="navbar">
@@ -15,18 +20,18 @@ const projects = await getCollection('projects');
       <button class="dropdown-btn">Projects</button>
       <div class="dropdown-content">
         {projects.map(project => (
-          <a href={`/${project.id}`}>{project.data.title}</a>
+          <a href={`/${project.id}`}>{project.data.dropdownTitle || project.data.title}</a>
         ))}
       </div>
     </div>
   </div>
   <h1 class="navbar-title">ANDREA PESCI</h1>
   <div class="nav-right">
-    <a href="/src/content/cv.md" download target="_blank" class="nav-link">Resume</a>
-    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="nav-link">
+    <a href="/src/content/AndreaPesci_Resume.pdf" download target="_blank" class="nav-link">Resume</a>
+    <a href={about.data.contacts.linkedin} target="_blank" rel="noopener noreferrer" class="nav-link">
       LinkedIn
     </a>
-    <a href="mailto:hello@andreapesci.com" class="nav-link">
+    <a href={`mailto:${about.data.contacts.email}`} class="nav-link">
       Mail Me!
     </a>
   </div>

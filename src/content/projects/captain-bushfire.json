@@ -1,9 +1,35 @@
 {
     "title": "Captain Bushfire",
-    "description": "Descrizione dettagliata del Progetto B. Questo progetto è un esempio di come strutturare i dati di un progetto nel portfolio.",
+    "description": "This project was created during the GameDev.tv Game Jam 2024, which theme was \"Last Stand\".This was also my first Jam and my first project developed in Unreal Engine.\n\nThis unique game puts you in the role of a brave koala tasked with defending its group of young koalas from the raging wildfires threatening their forest home.\n\nI took the role of Gameplay Programmer, implementing many of the game's functionalities, and the most interesting ones are displayed here.\nThe group consisted of 3 Developers, a 3d Artist, a VFX Programmer and a SFX Designer.\nThis project helped me in applying all the concepts i studied in courses about Unreal Engine 5 and put them in action on a very small period under pressure.",
+    "order": 99,
     "briefDescription": "Third-Person 3D Arena Frenetic Shooter",
-    "skills": ["GAMEPLAY PROGRAMMER", "CHARACTER MOVEMENT & SHOOTING"],
-    "technologies": ["UE5", "C++", "Jam Team Project"],
+    "skills": [
+        "GAMEPLAY PROGRAMMER",
+        "CHARACTER MOVEMENT & SHOOTING",
+        "FIRST REAL PROJECT MADE IN UE5"
+    ],
+    "technologies": [
+        "UE5",
+        "C++",
+        "Jam Team Project"
+    ],
     "image": "project_image.png",
-    "demoUrl": "https://pouyad.itch.io/captain-bushfire"
-  }
+    "demoUrl": "https://pouyad.itch.io/captain-bushfire",
+    "additionalInfo": {
+        "Project Type": "Game Jam Project (GameDev.tv)",
+        "Team Size": "~4 people",
+        "Software Used": "Unreal Engine 5",
+        "Languages Used": "C++, Blueprints",
+        "Primary Role(s)": "Gameplay Programmer"
+    },
+    "sections": [
+        {
+            "title": "Fire Mechanic",
+            "content": "This fire system simulates realistic fire spread and interaction in a game environment. Fires are triggered at specific locations, complete with visual and audio effects. The fire spreads dynamically based on random chances and timers, creating an unpredictable, realistic behavior. It interacts with various game objects, like characters and trees , applying damage and following natural contours, such as climbing up trees or spreading along branches (handled with splines to make the fire experience more realistic). The system includes sound effects for ignition, spreading, and extinguishing fires, adding to the immersive experience. This dynamic simulation creates a challenging and evolving element in the game, enhancing player engagement."
+          },
+          {
+            "title": "Core Game Mechanics",
+            "content": "I took part in the development of various different core mechanics, that built the foundation of the game.\n\nFor example I implemented the player movement (built from scratch using the Enhanced Input) and the shooting mechanic, which serves as the only tool to extinguish fire in order to buy time to the player to rescue the koalas.\n\nI also managed the version control using Git, adopting the Git flow branching strategy and handling the conflicts rising during merges."
+          }
+    ]
+}

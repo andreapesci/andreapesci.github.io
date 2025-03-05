@@ -47,7 +47,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    min-width: 160px;
+    min-width: 15rem;
     box-shadow: var(--text-color) 0px 0px 4px;
     z-index: 1;
     border-radius: 5px;

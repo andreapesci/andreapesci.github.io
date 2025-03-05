@@ -3,39 +3,16 @@
     "subtitle": "Game Programmer",
     "intro": "Hi! I'm Andrea, a game programmer from Milan, Italy, and I've been passionate about games since I was 5. I've always wanted to be part of this world, creating amazing, unique, and life-changing experiences! \nIf you want to know more about me, ",
     "heroText": "Andrea Pesci",
-    "shortBio": "Mi occupo di creare soluzioni web moderne ed efficienti, con particolare attenzione all'esperienza utente e alle performance.",
+    "shortBio": "Hi! I'm Andrea, a **game programmer** from Milan, Italy, and I've been passionate about games since I was 5.\nI've always wanted to be part of this world, creating amazing, unique, and life-changing experiences!\n\nAfter earning a degree in Computer Science and working as a Software Developer and then as a Project Lead Developer, the time to pursue my life's goal has finally come! As Professor Oak always says, “There's a time and place for everything!”\n\nI started learning Unreal Engine in late 2023, after spending some time with Godot and GDScript.\n\nDuring my previous work experience, I had the chance to refine my skills in C++, C#, and Python, while improving my soft skills by collaborating with different teams in an Agile environment allowing me to learn various Scrum tools and practices.\n\nFeel free to look around! On this site, you'll find some projects I've worked on. I hope you enjoy them as much as I enjoyed working on them!\n\nIf you find my profile interesting and want to know more about me — or simply because you've read this far — I would love to get in touch with you, so feel free to contact me in any way you prefer!\n\nAnd as always, keep gaming!",
     "skills": [
-      "Frontend Development",
-      "JavaScript/TypeScript",
-      "React",
-      "Astro",
-      "UI/UX Design"
-    ],
-    "experience": [
-      {
-        "company": "Nome Azienda",
-        "role": "Frontend Developer",
-        "period": "2022 - Presente",
-        "description": "Sviluppo di applicazioni web e interfacce utente per clienti in diversi settori."
-      },
-      {
-        "company": "Nome Azienda Precedente",
-        "role": "Web Developer",
-        "period": "2020 - 2022",
-        "description": "Creazione e manutenzione di siti web e piattaforme e-commerce."
-      }
-    ],
-    "education": [
-      {
-        "institution": "Università di ...",
-        "degree": "Laurea in Informatica",
-        "year": "2020"
-      }
+      "Game Engines: Unreal Engine 5, Godot",
+      "Languages: C++, Python, C#, GDScript, Javascript",
+      "Roles: Gameplay, UI, AI",
+      "Other tools: Version Control (GIT), Docker"
     ],
     "contacts": {
-      "email": "example@email.com",
-      "github": "https://github.com/tuo-username",
-      "linkedin": "https://linkedin.com/in/tuo-username"
-    },
-    "featuredImage": "/path-to-your-profile-image.jpg"
+      "email": "hello@andreapesci.com",
+      "linkedin": "https://www.linkedin.com/in/andrea-pesci-027664154/",
+      "itchio": "https://shinygami.itch.io/"
+    }
   }

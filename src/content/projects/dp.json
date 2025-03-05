@@ -1,8 +1,0 @@
-{
-    "title": "NDA Title",
-    "description": "Every detail about this project is currently under NDA .",
-    "briefDescription": "Third-Person 3D Game",
-    "skills": ["GAMEPLAY PROGRAMMER", "DOD", "PROFILING"],
-    "technologies": ["UE5", "C++", "Professional Project", "Under Development"],
-    "image": "project_image.png"
-  }

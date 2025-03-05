@@ -64,7 +64,7 @@
     flex-wrap: wrap;
     gap: 2rem;
     margin-top: 0.5rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
   }
   .project-gallery .project {
     min-width: 20rem;

@@ -2,30 +2,39 @@
     "title": "The Shattered Peak",
     "description": "Descrizione dettagliata del Progetto A. Questo è un esempio di descrizione che puoi personalizzare per il tuo progetto specifico.",
     "briefDescription": "First-Person 3D Survival Horror",
-    "skills": ["AI & GAMEPLAY PROGRAMMER", "OOP & DOD", "PROFILING", "GIT"],
+    "skills": ["AI & GAMEPLAY PROGRAMMER", "OOP", "ENEMY LOGIC WITH C++ STATE MACHINE", "STATE TREE", "GIT"],
     "technologies": ["UE5", "C++", "DBGA Course Group Project"],
     "image": "project_image.png",
+    "additionalInfo": {
+        "Project Type": "Course Group Project",
+        "Team Size": "~8 people",
+        "Software Used": "Unreal Engine 5",
+        "Languages Used": "C++, Blueprints",
+        "Primary Role(s)": "Lead Programmer, Gameplay & AI",
+        "Duration": "~5 months"
+    },
     "featured": true,
+    "order": 0,
     "sections": [
         {
             "title": "Trailer",
             "videoUrl": "https://www.youtube-nocookie.com/embed/VrLsMUiefgw?mute=1&si=A3VNQlIW30Zdx9as&amp"
           },
       {
-        "title": "Caratteristiche Principali",
-        "content": "Qui puoi inserire le caratteristiche principali del progetto...",
-        "listItems": [
-          "Caratteristica 1",
-          "Caratteristica 2",
-          "Caratteristica 3"
-        ],
-        "image": "feature-image.png"
+        "title": "Creature AI Behavior",
+        "content": "In the game, I developed an AI-controlled creature inspired by the \"Slender\" game, implementing complex behaviors and interactions with the player. The creature spawns at a variable distance from the player based on the danger level, which changes according to the player's location and playtime. The spawn area is dynamically adjusted based on the areas the player is in and the objects near the spawn area, always trying to play \"hide and seek\" to increase the anxiety it provides to the player. The creature can spawn in the area between two concentric circles around the player and will despawn if the player moves beyond a maximum distance or after a set time calculated at random. Additionally, the creature triggers various effects, such as sounds and visual distortions, when the player looks at it for a certain period, adding to the eerie atmosphere. These effects smoothly adjust based on proximity and danger level, ensuring a seamless and immersive experience.\n\nCode Snippets will be available on project completion."
       },
       {
-        "title": "Sfide e Soluzioni",
-        "content": "Qui puoi parlare delle sfide affrontate durante lo sviluppo e come le hai risolte...",
-        "listItems": [],
-        "image": "challenges-image.jpg"
+        "title": "Audio Manager",
+        "content": "The Audio Manager consists of a component in the GameMode that handles all the SFX present in the game. It controls all the logic for deciding when to play audio cues, their volume, and other related parameters, based on different game conditions (such as the creature's presence, its distance from the player, and many other factors).This system ensures that audio effects are dynamically responsive to the in-game situation, adding another layer of immersion by changing the auditory experience based on the player's actions and surroundings.\nDesigners are able to customize every detail of the sound to be played. If it should be spatial or not, it's location, if it should loop and many other features that were thought together with the designers, in order to give them the power to express themselves."
+      },
+      {
+        "title": "Other Mechanics",
+        "content": "HuntZone system\nThis system consists of multiple trigger zones placed throughout the game map to define areas where the creature can spawn and interact with the player. These zones are managed by a subsystem class, which keeps track of active zones and ensures that the creature spawns only when the player enters these areas. Each zone has a specific danger level that influences the spawn mechanics and behavior of the creature. The system uses Unreal Engine's trigger volumes and custom trace channels to accurately detect the player's presence and manage the lifecycle of the creature. This setup allows for a flexible and scalable approach to defining and adjusting the hunting grounds, enhancing the dynamic and unpredictable nature of the game.\n\nFlashLight\nThe flashlight is the player's main tool for seeing in the dark and hostile environment. In certain areas and under specific conditions, it helps reveal important parts of the story. However, only the most observant players will be able to discover all the hidden secrets.\n\nTeddyBear\nThe teddy bear is the key item to fight off the Creature in the later stages of the game when its presence is strongest. Since the main character is a child, we wanted his most powerful tool to be his trusted companion. When used, the teddy bear repels the Creature and lights up the surroundings, but only for a short time, giving the player a brief moment of relief and a chance to find safety.\n\nIn addition to developing these mechanics, I also contributed to other areas of the game, including:\n- Player Features: Implemented player-related mechanics, such as movement, sprinting, and stamina management.\n- Subsystems: Worked on various underlying systems to support gameplay functionality.\n- UI: I developed some of the in-game widgets, keeping with the diegetic UI style.\n- VFX and Camera Effects: Contributed to visual effects and camera interactions.\n- Version Control: Managing version control was crucial for a project of this size. As one of the more experienced developers in this area, I co-managed the Git repository, using the Git Flow branching strategy. Our instructor was very satisfied for how well-organized we kept the project, which made us really proud."
+      },
+      {
+        "title": "Personal Considerations",
+        "content": "Working on this project was an amazing experience. I loved getting to know so many talented people who shared my interests and dedication. Balancing this project with my regular job was a real challenge, but I'm so glad I took it on. I can't even count how much I've learned during this time, and I'm excited to keep learning more every day.\n\nI won't lie — there were some tough moments, especially trying to meet all the deadlines with limited time, while still delivering results we could be proud of. Some of us gave up all our free time to make this happen, and I feel really lucky to have worked with such dedicated people through all those hours. I look forward to continuing to work with them even after this course is over."
       }
     ]
   }
