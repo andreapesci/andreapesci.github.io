@@ -1,0 +1,31 @@
+{
+  "slug": "captain-bushfire",
+  "title": "Captain Bushfire",
+  "tagline": "Be the werekoala saving the baby koalas in Australia!",
+  "status": "released",
+  "featured": false,
+  "engine": "Unreal Engine 5",
+  "platforms": ["Windows"],
+  "genres": ["Shooter", "Action", "3D"],
+  "tags": ["game-jam", "gamedev-tv-2024", "c++", "blueprints", "singleplayer"],
+  "coverImage": "/images/projects/captain-bushfire/cover.png",
+  "thumbnailImage": "/images/projects/captain-bushfire/thumb.png",
+  "screenshots": [],
+  "description": "Created during the GameDev.tv Game Jam 2024 (theme: \"Last Stand\"). Play as a brave koala defending its young from raging wildfires. My first jam and first project in Unreal Engine.",
+  "longDescription": "This project was created during the **GameDev.tv Game Jam 2024**, with the theme **\"Last Stand\"**. This was also my first jam and my first project developed in Unreal Engine.\n\nThis unique game puts you in the role of a brave koala tasked with defending its group of young koalas from the raging wildfires threatening their forest home.\n\n## My Role\n\nI took the role of **Gameplay Programmer**, implementing many of the game's core functionalities. The group consisted of 3 Developers, a 3D Artist and a SFX Designer.\n\nThis project helped me apply all the concepts I studied in courses about Unreal Engine 5 and put them in action in a very short period under pressure.\n\n## Fire Mechanic\n\nThis fire system simulates realistic fire spread and interaction in the game environment. Fires are triggered at specific locations, complete with visual and audio effects. The fire spreads dynamically based on random chances and timers, creating unpredictable, realistic behavior.\n\nIt interacts with various game objects like characters and trees, applying damage and following natural contours — climbing up trees or spreading along branches (handled with splines to make the fire experience more realistic). The system includes sound effects for ignition, spreading, and extinguishing fires, adding to the immersive experience.\n\n## Core Game Mechanics\n\nI took part in the development of various core mechanics that built the foundation of the game.\n\nI implemented the **player movement** (built from scratch using Enhanced Input) and the **shooting mechanic**, which serves as the only tool to extinguish fire in order to buy time for the player to rescue the koalas.\n\nI also managed **version control** using Git, adopting the Git Flow branching strategy and handling conflicts during merges.",
+  "links": {
+    "itch": "https://pouyad.itch.io/captain-bushfire",
+    "steam": null,
+    "github": null,
+    "playable": null
+  },
+  "techHighlights": [
+    "Dynamic fire spread system with spline-based propagation",
+    "Player movement built from scratch with Enhanced Input",
+    "Water-shooting combat mechanic"
+  ],
+  "codeSnippets": [],
+  "role": "Gameplay Programmer - Team of ~5",
+  "duration": "5 Days",
+  "publishedAt": "2024-10-09"
+}

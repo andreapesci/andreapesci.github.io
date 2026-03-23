@@ -1,0 +1,37 @@
+{
+  "name": "Andrea",
+  "handle": "ANDREA PESCI",
+  "title": "Indie Game Developer",
+  "tagline": "Game Programmer from Milan, born in 1993.",
+  "bio": "A passionate indie game developer crafting unique experiences. From roguelites to platformers, every project is a new adventure in code and creativity.",
+  "avatar": "/images/avatar.jpg",
+  "location": "City, Country",
+  "openToWork": false,
+  "openToWorkMessage": "",
+  "links": {
+    "itch": "https://shinygami.itch.io/",
+    "github": null,
+    "twitter": null,
+    "bluesky": null,
+    "email": "andreapescidev@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/andrea-pesci-027664154/"
+  },
+  "skills": [
+    { "label": "Godot", "category": "engine" },
+    { "label": "Unreal Engine", "category": "engine" },
+    { "label": "C++", "category": "language" },
+    { "label": "Python", "category": "language" },
+    { "label": "Rust", "category": "language" },
+    { "label": "Git", "category": "tool" },
+    { "label": "Perforce", "category": "tool" }
+  ],
+  "footer": {
+    "copyright": "Andrea Pesci, Game Programmer"
+  },
+  "seo": {
+    "siteTitle": "Andrea Pesci | Indie Game Developer | Game Programmer",
+    "siteDescription": "Portfolio of an indie game developer — roguelites, platformers, and creative experiments.",
+    "siteUrl": "https://andreapesci.github.io",
+    "twitterHandle": null
+  }
+}

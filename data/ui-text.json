@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "items": [
+      { "label": "Home", "href": "/" },
+      { "label": "About", "href": "/about/" }
+    ],
+    "logoFallback": "portfolio"
+  },
+  "hero": {
+    "greeting": "Hi, I'm"
+  },
+  "featured": {
+    "title": "Featured Work",
+    "subtitle": null,
+    "emptyState": "No featured projects yet."
+  },
+  "projects": {
+    "title": null,
+    "filterAll": "All",
+    "emptyFilters": "No projects match the selected filters.",
+    "statusStyle": "dot"
+  },
+  "skills": {
+    "categories": {
+      "engine": "Engines",
+      "language": "Languages",
+      "tool": "Tools"
+    }
+  },
+  "footer": {
+    "projectsButton": "View All Projects"
+  },
+  "projectDetail": {
+    "backLink": "← Back to projects",
+    "labels": {
+      "status": "Status",
+      "engine": "Engine",
+      "platforms": "Platforms",
+      "role": "Role",
+      "duration": "Duration",
+      "released": "Released",
+      "genres": "Genres",
+      "links": "Links"
+    },
+    "linkLabels": {
+      "itch": "itch.io",
+      "steam": "Steam",
+      "github": "GitHub",
+      "playable": "Play Now"
+    },
+    "sections": {
+      "techHighlights": "Technical Highlights",
+      "codeSnippets": "Mechanics",
+      "media": "Media",
+      "screenshots": "Screenshots",
+      "video": "Video"
+    },
+    "loading": "Loading content... Refresh the page if this takes too long",
+    "loadError": "Failed to load project content."
+  },
+  "about": {
+    "backLink": "← Back home",
+    "title": "About Me",
+    "placeholder": "Full about page coming soon. In the meantime, check out my projects on the",
+    "homepageLink": "homepage"
+  },
+  "notFound": {
+    "terminalTitle": "system.log",
+    "lines": [
+      { "text": "$ navigate --to requested_page", "type": "dim" },
+      { "text": "ERROR 404: target not found", "type": "error" },
+      { "text": "$ scan --nearby", "type": "dim" },
+      { "text": "0 results. the void is empty here.", "type": "normal" },
+      { "text": "$ suggest --action", "type": "dim" }
+    ],
+    "returnText": "return to",
+    "returnLink": "known coordinates",
+    "backgroundCode": "404"
+  },
+  "accentPicker": {
+    "title": "// EQUIP THEME",
+    "equippedLabel": "EQUIPPED",
+    "defaultName": "—",
+    "customName": "Custom",
+    "colors": [
+      { "name": "Void Violet", "value": "#7c3aed", "rarity": "epic" },
+      { "name": "Phantom Blue", "value": "#3b82f6", "rarity": "rare" },
+      { "name": "Cyber Teal", "value": "#14b8a6", "rarity": "rare" },
+      { "name": "Emerald Shard", "value": "#10b981", "rarity": "uncommon" },
+      { "name": "Solar Gold", "value": "#eab308", "rarity": "legendary" },
+      { "name": "Neon Rose", "value": "#f43f5e", "rarity": "epic" },
+      { "name": "Hot Magenta", "value": "#ec4899", "rarity": "rare" },
+      { "name": "Arctic Frost", "value": "#06b6d4", "rarity": "uncommon" },
+      { "name": "Ember Orange", "value": "#f97316", "rarity": "uncommon" },
+      { "name": "Blood Moon", "value": "#dc2626", "rarity": "legendary" }
+    ]
+  }
+}
