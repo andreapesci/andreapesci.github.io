@@ -15,9 +15,10 @@
     "emptyState": "No featured projects yet."
   },
   "projects": {
-    "title": "All Projects",
+    "title": null,
     "filterAll": "All",
-    "emptyFilters": "No projects match the selected filters."
+    "emptyFilters": "No projects match the selected filters.",
+    "statusStyle": "dot"
   },
   "skills": {
     "categories": {
@@ -49,7 +50,7 @@
     },
     "sections": {
       "techHighlights": "Technical Highlights",
-      "codeSnippets": "Code Snippets",
+      "codeSnippets": "Mechanics",
       "media": "Media",
       "screenshots": "Screenshots",
       "video": "Video"
