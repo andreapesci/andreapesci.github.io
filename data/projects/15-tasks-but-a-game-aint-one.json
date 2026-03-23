@@ -1,0 +1,31 @@
+{
+  "slug": "15-tasks-but-a-game-aint-one",
+  "title": "Fifteen Tasks But a Game Ain't One!",
+  "tagline": "Escape the loop of your boring job... and chase your dreams!",
+  "status": "released",
+  "featured": false,
+  "engine": "Godot 4",
+  "platforms": ["Web"],
+  "genres": ["Casual", "Comedy", "2D"],
+  "tags": ["game-jam", "gmtk-2025", "short", "singleplayer"],
+  "coverImage": "/images/projects/15-tasks-but-a-game-aint-one/cover.png",
+  "thumbnailImage": "/images/projects/15-tasks-but-a-game-aint-one/thumb.png",
+  "screenshots": [],
+  "description": "A GMTK 2025 jam entry. Play as an employee stuck in a loop of mundane tasks — click and drag to do your job, but sneak in job applications on your phone when the boss isn't looking.",
+  "longDescription": "**Fifteen Tasks But a Game Ain't One!** was made for the **GMTK 2025 Game Jam**.\n\n## Concept\n\nYou play as an employee trapped in the repetitive loop of a boring office job. Each day you're assigned tasks to complete — click and drag objects to get the work done. But secretly, you're applying for your dream job.\n\nPress **Spacebar** to pull out your smartphone and submit job applications, but be careful — if the boss catches you, your freedom meter drops. Balance completing mundane duties with chasing your dreams.\n\n## How It Works\n\nThe core tension comes from managing two competing goals:\n- **Complete your assigned tasks** to keep your job\n- **Sneak in job applications** on your phone without getting caught\n\nThe \"freedom\" meter tracks your progress — fail too many applications and you're stuck in the loop forever.\n\n## Team\n\nBuilt by a team of 3: ShinyGami, mai.michael.dev, and DarthPoppo.",
+  "links": {
+    "itch": "https://shinygami.itch.io/15-tasks-but-a-game-aint-one",
+    "steam": null,
+    "github": null,
+    "playable": "https://shinygami.itch.io/15-tasks-but-a-game-aint-one"
+  },
+  "techHighlights": [
+    "Click-and-drag task interaction system",
+    "Stealth mechanic — boss detection for phone usage",
+    "Freedom meter tracking player progress"
+  ],
+  "codeSnippets": [],
+  "role": "Game Programmer - Team of 3",
+  "duration": "48 hours",
+  "publishedAt": "2025-08-03"
+}

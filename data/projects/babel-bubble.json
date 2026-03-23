@@ -1,0 +1,32 @@
+{
+  "slug": "babel-bubble",
+  "title": "Babel Bubble",
+  "tagline": "2.5D Casual Platform Comic Book Style",
+  "status": "released",
+  "featured": true,
+  "featuredOrder": 2,
+  "engine": "Unreal Engine 5",
+  "platforms": ["Windows"],
+  "genres": ["Platformer", "Casual", "2.5D"],
+  "tags": ["comic-book", "game-jam", "global-game-jam", "c++", "blueprints"],
+  "coverImage": "/images/projects/babel-bubble/cover.jpg",
+  "thumbnailImage": "/images/projects/babel-bubble/thumb.jpg",
+  "screenshots": [],
+  "videoEmbed": { "type": "youtube", "id": "oDHYmYAMq04" },
+  "description": "Trapped within the panels of their own comic, a rebellious superhero awakens to a chilling realization: they are nothing more than a pawn in the hands of their creators.",
+  "longDescription": "Trapped within the panels of their own comic, a rebellious superhero awakens to a chilling realization: they are nothing more than a pawn in the hands of their creators.\n\nTired of being pushed, pulled, and inked into endless battles and clichéd storylines, they break free from the constraints of narrative control.\n\nArmed with **explosive speech bubbles**, the hero sets their sights on the ultimate escape — a towering skyscraper that houses the portal to the real world.\n\n## Project Details\n\n- **Project Type:** Game Jam (Global Game Jam)\n- **Team Size:** ~8 people\n- **Languages:** C++, Blueprints\n\n## My Role\n\n**Gameplay & UI Programmer** — responsible for UI/UX implementation using UMG and Slate, as well as gameplay programming.\n\n## Team\n\nBuilt by a team of ~8: BD_Tracer, DarthPoppo, Stello02, Aurora.RFFA, Emanuele Luigi Andolfi, mai.michael.dev, and ShinyGami.",
+  "links": {
+    "itch": "https://bd-tracer.itch.io/babel-bubble",
+    "steam": null,
+    "github": null,
+    "playable": null
+  },
+  "techHighlights": [
+    "UI/UX built with UMG & Slate",
+    "Gameplay programming in C++ and Blueprints"
+  ],
+  "codeSnippets": [],
+  "role": "Gameplay & UI Programmer - Team of ~8",
+  "duration": "7 Days",
+  "publishedAt": "2025-01-31"
+}
