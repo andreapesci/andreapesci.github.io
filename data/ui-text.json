@@ -18,7 +18,8 @@
     "title": null,
     "filterAll": "All",
     "emptyFilters": "No projects match the selected filters.",
-    "statusStyle": "dot"
+    "statusStyle": "dot",
+    "featuredRibbon": "Featured"
   },
   "skills": {
     "categories": {
