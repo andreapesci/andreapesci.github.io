@@ -54,6 +54,11 @@ void UHuntZoneSubsystem::RecalculateDanger()
 
 void UHuntZoneSubsystem::SuppressDangerFor(float Duration)
 {
+	if (Duration <= 0.0f)
+	{
+		return;
+	}
+
 	bZonesSuppressed = true;
 	CurrentDanger = 0.0f;
 	OnDangerLevelChanged.Broadcast(CurrentDanger);

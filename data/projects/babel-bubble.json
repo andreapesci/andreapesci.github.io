@@ -2,7 +2,7 @@
   "slug": "babel-bubble",
   "title": "Babel Bubble",
   "tagline": "2.5D Casual Platform Comic Book Style",
-  "status": "in progress",
+  "status": "in-progress",
   "featured": true,
   "featuredOrder": 2,
   "engine": "Unreal Engine 5",
@@ -13,8 +13,8 @@
   "thumbnailImage": "/images/projects/babel-bubble/thumb.jpg",
   "screenshots": [],
   "videoEmbed": { "type": "youtube", "id": "oDHYmYAMq04" },
-  "description": "Trapped within the panels of their own comic, a rebellious superhero awakens to a chilling realization: they are nothing more than a pawn in the hands of their creators.",
-  "longDescription": "Trapped within the panels of their own comic, a rebellious superhero awakens to a chilling realization: they are nothing more than a pawn in the hands of their creators.\n\nTired of being pushed, pulled, and inked into endless battles and clichéd storylines, they break free from the constraints of narrative control.\n\nArmed with **explosive speech bubbles**, the hero sets their sights on the ultimate escape — a towering skyscraper that houses the portal to the real world.\n\n## Project Details\n\n- **Project Type:** Game Jam (Global Game Jam)\n- **Team Size:** ~8 people\n- **Languages:** C++, Blueprints\n\n## My Role\n\n**Gameplay & UI Programmer** — responsible for UI/UX implementation using UMG and Slate, as well as gameplay programming.\n\n## Team\n\nBuilt by a team of ~8: BD_Tracer, DarthPoppo, Stello02, Aurora.RFFA, Emanuele Luigi Andolfi, mai.michael.dev, and ShinyGami.",
+  "description": "A 2.5D comic-book platformer created for Global Game Jam. A rebellious superhero breaks free from the panels controlling their story and climbs a skyscraper using explosive speech-bubble abilities.",
+  "longDescription": "## Concept\n\nTrapped inside the panels of their own comic, a rebellious superhero realizes they are being pushed, pulled, and inked into someone else's story. Armed with explosive speech bubbles, they climb a towering skyscraper toward a portal leading to the real world.\n\n## My Role\n\nAs **Gameplay & UI Programmer** on a team of approximately eight, I implemented the complete shipped interface and connected it to the game. This included the main menu, gameplay HUD, ability feedback, tutorial messaging, pause and settings navigation, quit flow, hover states, widget composition, and the handoff between gameplay and UI input.\n\nI also contributed to gameplay, particularly the character's movement around the tower and the bubble-ability integration.\n\n## UI Under Jam Constraints\n\nI initially studied and prototyped with **Slate** to better understand Unreal's lower-level UI framework. Early in the jam, I deliberately moved the production interface to **UMG**: Widget Blueprints allowed much faster layout and visual iteration, while C++ remained responsible for widget lifecycle, menu state, input modes, gameplay events, and dynamic feedback.\n\nThis was a scope decision rather than an abandoned feature. The seven-day deadline made iteration speed more valuable than owning a fully custom Slate layer, and UMG still provided the C++ seams needed to keep gameplay and presentation connected.\n\n## Movement Around the Tower\n\nThe platforming path wraps around a central skyscraper rather than following a straight side-scrolling plane. A reusable orbit component models that path as a superellipse derived from the tower bounds. Character input advances an angle around the curve, calculates the next world position, faces the character along the tangent, and keeps the camera oriented toward the building.\n\n## Bubble Abilities\n\nDifferent speech bubbles support traversal and combat roles, including sturdy and explosive variants. My contribution connected parts of this gameplay flow and exposed bubble events to the HUD, allowing newly unlocked abilities, tutorial prompts, and cooldown feedback to react to gameplay without being polled every frame.\n\n## Team\n\nBuilt by a team of approximately eight: BD_Tracer, DarthPoppo, Stello02, Aurora.RFFA, Emanuele Luigi Andolfi, mai.michael.dev, and ShinyGami.",
   "links": {
     "itch": "https://bd-tracer.itch.io/babel-bubble",
     "steam": null,
@@ -22,11 +22,75 @@
     "playable": null
   },
   "techHighlights": [
-    "UI/UX built with UMG & Slate",
-    "Gameplay programming in C++ and Blueprints"
+    "Complete UMG interface suite with C++ widget and input coordination",
+    "Gameplay-driven ability HUD with dynamic-material cooldown feedback",
+    "Main, pause, settings, and quit flows",
+    "Superellipse-based movement around a 3D tower",
+    "C++ and Blueprint integration for speech-bubble abilities"
   ],
-  "codeSnippets": [],
-  "role": "Gameplay & UI Programmer - Team of ~8",
-  "duration": "7 Days",
+  "codeSnippets": [
+    {
+      "title": "UMG Interface Suite",
+      "description": "I implemented and assembled the complete shipped interface: main menu, gameplay HUD, ability icons, tutorial messages, pause and settings panels, quit flow, and hover-reactive buttons.\n\nC++ creates and coordinates widgets, switches input between game and UI modes, binds gameplay events, and drives responsive feedback; UMG Widget Blueprints own the visual hierarchy and asset placement.\n\nThe brief Slate investigation informed the approach, but UMG was the production choice because it supported faster iteration during the jam."
+    },
+    {
+      "title": "Gameplay-Driven Ability HUD",
+      "description": "The HUD is connected to gameplay rather than maintaining a separate polling loop. Unlocking an ability reveals its icon and tutorial message, while bubble-use delegates start cooldown feedback on the corresponding widget.\n\nEach icon creates a dynamic material instance and updates a normalized progress parameter, allowing the comic-style cooldown treatment to remain art-directable in UMG. These excerpts condense and rename the production C++.",
+      "codeFiles": [
+        {
+          "name": "GameHUD.h",
+          "src": "/code/projects/babel-bubble/game-hud.h",
+          "language": "cpp"
+        },
+        {
+          "name": "AbilityIcon.h",
+          "src": "/code/projects/babel-bubble/ability-icon.h",
+          "language": "cpp"
+        },
+        {
+          "name": "AbilityIcon.cpp",
+          "src": "/code/projects/babel-bubble/ability-icon.cpp",
+          "language": "cpp"
+        },
+        {
+          "name": "GGJProjectGameMode.cpp",
+          "src": "/code/projects/babel-bubble/game-mode-ui.cpp",
+          "language": "cpp"
+        }
+      ]
+    },
+    {
+      "title": "Superellipse Tower Movement",
+      "description": "The character moves around a 3D skyscraper while preserving the readability of a side-scroller. A reusable component converts an angle into a point on a designer-tunable superellipse fitted to the tower bounds.\n\nCharacter input advances along that curve, movement follows its tangent, and the camera continually faces the tower center. Separating the geometry from the character keeps the path reusable for other orbiting actors.\n\nThese excerpts condense and rename the production C++.",
+      "codeFiles": [
+        {
+          "name": "SuperellipseOrbitComponent.h",
+          "src": "/code/projects/babel-bubble/superellipse-orbit-component.h",
+          "language": "cpp"
+        },
+        {
+          "name": "SuperellipseOrbitComponent.cpp",
+          "src": "/code/projects/babel-bubble/superellipse-orbit-component.cpp",
+          "language": "cpp"
+        },
+        {
+          "name": "DynamicSideScrollerCharacter.h",
+          "src": "/code/projects/babel-bubble/dynamic-side-scroller-character.h",
+          "language": "cpp"
+        },
+        {
+          "name": "DynamicSideScrollerCharacter.cpp",
+          "src": "/code/projects/babel-bubble/dynamic-side-scroller-character.cpp",
+          "language": "cpp"
+        }
+      ]
+    },
+    {
+      "title": "Bubble Ability Integration",
+      "description": "Speech bubbles serve different gameplay roles, including sturdy traversal support and explosive interactions.\n\nI contributed to connecting this gameplay with the character and UI layers: bubble actions emit Blueprint-compatible events, newly available abilities are introduced through tutorial feedback, and use events drive the corresponding HUD cooldowns.\n\nThe ability implementations themselves live primarily in Blueprint assets that are not part of the supplied source, so this section remains descriptive rather than presenting incomplete C++."
+    }
+  ],
+  "role": "Gameplay & UI Programmer — Team of ~8",
+  "duration": "7 days",
   "publishedAt": "2025-01-31"
 }

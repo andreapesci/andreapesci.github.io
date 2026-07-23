@@ -34,7 +34,7 @@
   "codeSnippets": [
     {
       "title": "Creature AI Behavior",
-      "description": "The creature AI is divided between two responsibilities. CreatureManager controls its lifecycle: danger reshapes spawn timing, distance, and the possible angle around the player; repeated encounters pull the radius closer; and collision queries place the creature behind nearby cover before projecting it onto valid ground. Creature handles the encounter itself: it measures the player's camera alignment and proximity over time, shortens both attack delays as danger rises, and broadcasts gaze and attack events to the audio and visual systems. Together, the four files show how one shared danger value drives both spatial spawning and moment-to-moment pressure. The excerpts condense and rename the production C++ so the complete behavior can be read without unrelated Unreal setup and debugging code.",
+      "description": "The creature AI is divided between two responsibilities.\n\nCreatureManager controls its lifecycle: danger reshapes spawn timing, distance, and the possible angle around the player; repeated encounters pull the radius closer; and collision queries place the creature behind nearby cover before projecting it onto valid ground.\n\nCreature handles the encounter itself: it measures the player's camera alignment and proximity over time, shortens both attack delays as danger rises, and broadcasts gaze and attack events to the audio and visual systems.\n\nTogether, the four files show how one shared danger value drives both spatial spawning and moment-to-moment pressure. The excerpts condense and rename the production C++ so the complete behavior can be read without unrelated Unreal setup and debugging code.",
       "codeFiles": [
         {
           "name": "CreatureManager.h",
@@ -64,13 +64,13 @@
     },
     {
       "title": "Audio Manager",
-      "description": "A GameMode component centralizes event-driven SFX for the creature, environment, player actions, and items. The heartbeat is one focused example: HuntZone events set designer-authored pitch and volume targets, then the manager interpolates toward them as danger changes. The full system exposes its tuning values through Unreal rather than hard-coding the final feel. This excerpt isolates and renames that production path for portfolio readability.",
+      "description": "A GameMode component centralizes event-driven SFX for the creature, environment, player actions, and items.\n\nThe heartbeat is one focused example: HuntZone events set designer-authored pitch and volume targets, then the manager interpolates toward them as danger changes. The full system exposes its tuning values through Unreal rather than hard-coding the final feel.\n\nThis excerpt isolates and renames that production path for portfolio readability.",
       "codeFile": "/code/projects/the-shattered-peak/danger-responsive-audio.cpp",
       "language": "cpp"
     },
     {
       "title": "HuntZone System",
-      "description": "Designer-placed trigger volumes feed a world subsystem that tracks every zone currently overlapping the player. When zones overlap, the subsystem resolves them to one normalized danger value and broadcasts changes to independent AI and audio consumers. The same boundary supports temporary suppression by the teddy bear without coupling that item to every affected system. This excerpt condenses and renames the production C++.",
+      "description": "Designer-placed trigger volumes feed a world subsystem that tracks every zone currently overlapping the player.\n\nWhen zones overlap, the subsystem resolves them to one normalized danger value and broadcasts changes to independent AI and audio consumers. The same boundary supports temporary suppression by the teddy bear without coupling that item to every affected system.\n\nThis excerpt condenses and renames the production C++.",
       "codeFiles": [
         {
           "name": "HuntZoneSubsystem.h",
@@ -86,11 +86,11 @@
     },
     {
       "title": "Flashlight",
-      "description": "The player's main tool for navigating the dark environment. In certain areas and under specific conditions, it reveals important story elements. Only the most observant players will discover all the hidden secrets."
+      "description": "The player's main tool for navigating the dark environment.\n\nIn certain areas and under specific conditions, it reveals important story elements. Only the most observant players will discover all the hidden secrets."
     },
     {
       "title": "Teddy Bear",
-      "description": "The key item to fight off the Creature in later stages when its presence is strongest. Since the main character is a child, his most powerful tool is his trusted companion. When used, the teddy bear repels the Creature and lights up the surroundings for a short time, giving the player a brief moment of relief and a chance to find safety."
+      "description": "The key item to fight off the Creature in later stages when its presence is strongest. Since the main character is a child, his most powerful tool is his trusted companion.\n\nWhen used, the teddy bear repels the Creature and lights up the surroundings for a short time, giving the player a brief moment of relief and a chance to find safety."
     }
   ],
   "role": "Lead Programmer, Gameplay & AI - Team of ~8",

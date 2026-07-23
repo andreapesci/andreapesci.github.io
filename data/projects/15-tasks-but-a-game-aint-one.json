@@ -29,7 +29,7 @@
   "codeSnippets": [
     {
       "title": "Core Task State Machine",
-      "description": "The complete work routine is represented as a cycle of connected states. Each state defines which objects are active, where they should appear, and which interaction advances the sequence. Completing the final packaging task returns the state machine to its initial state, allowing the workflow to repeat without rebuilding or manually resetting the scene.",
+      "description": "The complete work routine is represented as a cycle of connected states. Each state defines which objects are active, where they should appear, and which interaction advances the sequence.\n\nCompleting the final packaging task returns the state machine to its initial state, allowing the workflow to repeat without rebuilding or manually resetting the scene.",
       "diagram": {
         "label": "The six stages of the repeating work loop",
         "nodes": [
@@ -45,23 +45,23 @@
     },
     {
       "title": "State-Gated Object Interactions",
-      "description": "Workplace objects share a reusable interaction layer that distinguishes clicks from drag operations and validates drops against the current task. The same framework supports boxes, computers, USB drives, cutting tools, and tape while allowing each object to implement its own multi-step behaviour. This excerpt has been condensed and renamed for portfolio readability.",
+      "description": "Workplace objects share a reusable interaction layer that distinguishes clicks from drag operations and validates drops against the current task.\n\nThe same framework supports boxes, computers, USB drives, cutting tools, and tape while allowing each object to implement its own multi-step behaviour. This excerpt has been condensed and renamed for portfolio readability.",
       "language": "gdscript",
       "codeFile": "/code/projects/15-tasks-but-a-game-aint-one/state-gated-object.gd"
     },
     {
       "title": "Adaptive Boss Pressure",
-      "description": "The boss alternates between randomized waiting, walking, and inspection phases. A separate difficulty system monitors whether the player is progressing through the work loop. Remaining in the same state increases the frequency of appearances and the probability of being inspected, turning hesitation into additional pressure. This excerpt combines and renames the relevant jam code so the complete rule can be read in one place.",
+      "description": "The boss alternates between randomized waiting, walking, and inspection phases. A separate difficulty system monitors whether the player is progressing through the work loop.\n\nRemaining in the same state increases the frequency of appearances and the probability of being inspected, turning hesitation into additional pressure. This excerpt combines and renames the relevant jam code so the complete rule can be read in one place.",
       "language": "gdscript",
       "codeFile": "/code/projects/15-tasks-but-a-game-aint-one/adaptive-boss-pressure.gd"
     },
     {
       "title": "Phone and Freedom System",
-      "description": "Holding Space slides the phone into view. Each successful application increases Freedom, rotates the displayed job listing, and temporarily disables the Apply button. The phone communicates with the boss system through signals; if an inspection begins while it is visible, the attempt to escape is exposed and the run ends."
+      "description": "Holding Space slides the phone into view. Each successful application increases Freedom, rotates the displayed job listing, and temporarily disables the Apply button.\n\nThe phone communicates with the boss system through signals; if an inspection begins while it is visible, the attempt to escape is exposed and the run ends."
     },
     {
       "title": "Multi-Step Computer Preparation",
-      "description": "Preparing each computer is a smaller state sequence: unpacking it, inserting the USB drive, opening and booting the machine, waiting for installation, closing it, removing the drive, and placing it back in the box. Visual states, timed transitions, audio feedback, and object signals make the process feel like a physical desk task rather than a simple progress bar."
+      "description": "Preparing each computer is a smaller state sequence: unpacking it, inserting the USB drive, opening and booting the machine, waiting for installation, closing it, removing the drive, and placing it back in the box.\n\nVisual states, timed transitions, audio feedback, and object signals make the process feel like a physical desk task rather than a simple progress bar."
     }
   ],
   "role": "Game Programmer — Team of 3",
