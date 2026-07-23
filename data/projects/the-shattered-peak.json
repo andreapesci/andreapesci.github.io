@@ -34,7 +34,29 @@
   "codeSnippets": [
     {
       "title": "Creature AI Behavior",
-      "description": "An AI-controlled creature inspired by Slender. It spawns at a variable distance based on danger level, which changes with the player's location and playtime. The spawn area is dynamically adjusted between two concentric circles around the player, using nearby objects to play \"hide and seek\". The creature despawns if the player moves beyond a maximum distance or after a randomized timer. Looking at the creature triggers sound and visual distortions that smoothly scale with proximity and danger level.",
+      "description": "The creature AI is divided between two responsibilities. CreatureManager controls its lifecycle: danger reshapes spawn timing, distance, and the possible angle around the player; repeated encounters pull the radius closer; and collision queries place the creature behind nearby cover before projecting it onto valid ground. Creature handles the encounter itself: it measures the player's camera alignment and proximity over time, shortens both attack delays as danger rises, and broadcasts gaze and attack events to the audio and visual systems. Together, the four files show how one shared danger value drives both spatial spawning and moment-to-moment pressure. The excerpts condense and rename the production C++ so the complete behavior can be read without unrelated Unreal setup and debugging code.",
+      "codeFiles": [
+        {
+          "name": "CreatureManager.h",
+          "src": "/code/projects/the-shattered-peak/creature-manager.h",
+          "language": "cpp"
+        },
+        {
+          "name": "CreatureManager.cpp",
+          "src": "/code/projects/the-shattered-peak/adaptive-creature-spawning.cpp",
+          "language": "cpp"
+        },
+        {
+          "name": "Creature.h",
+          "src": "/code/projects/the-shattered-peak/creature.h",
+          "language": "cpp"
+        },
+        {
+          "name": "Creature.cpp",
+          "src": "/code/projects/the-shattered-peak/creature.cpp",
+          "language": "cpp"
+        }
+      ],
       "media": {
         "type": "image",
         "src": "/images/projects/the-shattered-peak/screenshots/01.png"
@@ -42,13 +64,25 @@
     },
     {
       "title": "Audio Manager",
-      "description": "A GameMode component that handles all in-game SFX. It controls when to play audio cues, their volume, and related parameters based on game conditions — creature presence, distance from the player, and other factors. Audio effects are dynamically responsive to the situation. Designers can customize every detail: spatial or non-spatial playback, location, looping, and many other parameters designed in collaboration with the design team.",
-      "codeFile": "/code/projects/the-shattered-peak/wall_jump.gd",
-      "language": "gdscript"
+      "description": "A GameMode component centralizes event-driven SFX for the creature, environment, player actions, and items. The heartbeat is one focused example: HuntZone events set designer-authored pitch and volume targets, then the manager interpolates toward them as danger changes. The full system exposes its tuning values through Unreal rather than hard-coding the final feel. This excerpt isolates and renames that production path for portfolio readability.",
+      "codeFile": "/code/projects/the-shattered-peak/danger-responsive-audio.cpp",
+      "language": "cpp"
     },
     {
       "title": "HuntZone System",
-      "description": "Trigger zones placed throughout the map define areas where the creature can spawn and interact with the player. A subsystem class tracks active zones and ensures the creature spawns only when the player enters these areas. Each zone has a specific danger level that influences spawn mechanics and creature behavior."
+      "description": "Designer-placed trigger volumes feed a world subsystem that tracks every zone currently overlapping the player. When zones overlap, the subsystem resolves them to one normalized danger value and broadcasts changes to independent AI and audio consumers. The same boundary supports temporary suppression by the teddy bear without coupling that item to every affected system. This excerpt condenses and renames the production C++.",
+      "codeFiles": [
+        {
+          "name": "HuntZoneSubsystem.h",
+          "src": "/code/projects/the-shattered-peak/hunt-zone-subsystem.h",
+          "language": "cpp"
+        },
+        {
+          "name": "HuntZoneSubsystem.cpp",
+          "src": "/code/projects/the-shattered-peak/hunt-zone-danger.cpp",
+          "language": "cpp"
+        }
+      ]
     },
     {
       "title": "Flashlight",
