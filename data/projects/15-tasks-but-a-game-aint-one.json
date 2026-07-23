@@ -1,7 +1,7 @@
 {
   "slug": "15-tasks-but-a-game-aint-one",
   "title": "Fifteen Tasks But a Game Ain't One!",
-  "tagline": "Escape the loop of your boring job... and chase your dreams!",
+  "tagline": "Escape the loop of your boring job—and chase your dreams.",
   "status": "released",
   "featured": false,
   "engine": "Godot 4",
@@ -11,8 +11,8 @@
   "coverImage": "/images/projects/15-tasks-but-a-game-aint-one/cover.png",
   "thumbnailImage": "/images/projects/15-tasks-but-a-game-aint-one/thumb.png",
   "screenshots": [],
-  "description": "A GMTK 2025 jam entry. Play as an employee stuck in a loop of mundane tasks — click and drag to do your job, but sneak in job applications on your phone when the boss isn't looking.",
-  "longDescription": "**Fifteen Tasks But a Game Ain't One!** was made for the **GMTK 2025 Game Jam**.\n\n## Concept\n\nYou play as an employee trapped in the repetitive loop of a boring office job. Each day you're assigned tasks to complete — click and drag objects to get the work done. But secretly, you're applying for your dream job.\n\nPress **Spacebar** to pull out your smartphone and submit job applications, but be careful — if the boss catches you, your freedom meter drops. Balance completing mundane duties with chasing your dreams.\n\n## How It Works\n\nThe core tension comes from managing two competing goals:\n- **Complete your assigned tasks** to keep your job\n- **Sneak in job applications** on your phone without getting caught\n\nThe \"freedom\" meter tracks your progress — fail too many applications and you're stuck in the loop forever.\n\n## Team\n\nBuilt by a team of 3: ShinyGami, mai.michael.dev, and DarthPoppo.",
+  "description": "Created for the GMTK 2025 Game Jam, *Fifteen Tasks But a Game Ain't One!* is a workplace comedy about an employee trapped in an endless routine. Complete a repeating sequence of office tasks while secretly applying for a better job on your phone. Every application brings you closer to freedom—but if the boss catches the phone in view, the run ends.",
+  "longDescription": "## Concept\n\nThe game was created around the GMTK 2025 theme **Loop**. We interpreted it as the repetitive routine of an unfulfilling job: receive a computer, prepare it, package it, send it away, and immediately begin again.\n\nWhile completing this routine, the player can hold **Spacebar** to bring out a phone and apply for other jobs. This creates the central tension of the game: continue working to appear productive, or risk being caught while trying to escape.\n\n## My Role\n\nAs a **Game Programmer** on a team of three, I worked across the gameplay codebase, with a particular focus on the core work loop, its state machine, object interactions, progression rules, boss behaviour, and escalating difficulty.\n\nWorking within a short game-jam timeframe meant building systems that were quick to author while remaining flexible enough to support the complete sequence of tasks.\n\n## The Work Loop\n\nEach work cycle is composed of a fixed sequence of physical interactions:\n\n- Receive and position a package\n- Cut and open the box\n- Remove the computer\n- Insert the USB drive\n- Boot and prepare the machine\n- Remove the USB drive\n- Repack the computer\n- Close and tape the box\n- Move the completed package onto the conveyor belt\n\nOnce the package leaves the workstation, the entire sequence begins again.\n\nBehind the scenes, a state machine controls the active step, positions the required objects, accepts only the correct interaction, and advances the loop when the expected action is completed.\n\n## Work or Freedom\n\nThe Freedom meter represents the player's chance of escaping the job. Submitting applications from the phone increases Freedom, while time and the continued routine create pressure to act.\n\nReaching maximum Freedom means finding a new job and escaping the loop. Letting it fall to zero leaves the player trapped. The phone is therefore both the player's progression tool and their greatest risk.\n\n## The Boss\n\nThe boss periodically walks past the workstation and may stop to inspect the player. His movement timing, inspection timing, and probability of checking are randomized. If the phone is visible during an inspection, the player is caught immediately.\n\nThe pressure increases when the player remains on the same task for too long. The difficulty system gradually raises both the boss's appearance intensity and the probability of an inspection, preventing the player from waiting indefinitely for a perfectly safe moment.",
   "links": {
     "itch": "https://shinygami.itch.io/15-tasks-but-a-game-aint-one",
     "steam": null,
@@ -20,12 +20,51 @@
     "playable": "https://shinygami.itch.io/15-tasks-but-a-game-aint-one"
   },
   "techHighlights": [
-    "Click-and-drag task interaction system",
-    "Stealth mechanic — boss detection for phone usage",
-    "Freedom meter tracking player progress"
+    "Cyclic, data-configured task state machine",
+    "Reusable state-gated click-and-drag interaction framework",
+    "Multi-step objects with their own internal states",
+    "Randomized boss movement with adaptive inspection pressure",
+    "Risk-and-reward phone application and Freedom system"
   ],
-  "codeSnippets": [],
-  "role": "Game Programmer - Team of 3",
+  "codeSnippets": [
+    {
+      "title": "Core Task State Machine",
+      "description": "The complete work routine is represented as a cycle of connected states. Each state defines which objects are active, where they should appear, and which interaction advances the sequence. Completing the final packaging task returns the state machine to its initial state, allowing the workflow to repeat without rebuilding or manually resetting the scene.",
+      "diagram": {
+        "label": "The six stages of the repeating work loop",
+        "nodes": [
+          "Receive package",
+          "Open box",
+          "Prepare computer",
+          "Repack computer",
+          "Seal package",
+          "Move to conveyor"
+        ],
+        "loopLabel": "Return to Receive package"
+      }
+    },
+    {
+      "title": "State-Gated Object Interactions",
+      "description": "Workplace objects share a reusable interaction layer that distinguishes clicks from drag operations and validates drops against the current task. The same framework supports boxes, computers, USB drives, cutting tools, and tape while allowing each object to implement its own multi-step behaviour. This excerpt has been condensed and renamed for portfolio readability.",
+      "language": "gdscript",
+      "codeFile": "/code/projects/15-tasks-but-a-game-aint-one/state-gated-object.gd"
+    },
+    {
+      "title": "Adaptive Boss Pressure",
+      "description": "The boss alternates between randomized waiting, walking, and inspection phases. A separate difficulty system monitors whether the player is progressing through the work loop. Remaining in the same state increases the frequency of appearances and the probability of being inspected, turning hesitation into additional pressure. This excerpt combines and renames the relevant jam code so the complete rule can be read in one place.",
+      "language": "gdscript",
+      "codeFile": "/code/projects/15-tasks-but-a-game-aint-one/adaptive-boss-pressure.gd"
+    },
+    {
+      "title": "Phone and Freedom System",
+      "description": "Holding Space slides the phone into view. Each successful application increases Freedom, rotates the displayed job listing, and temporarily disables the Apply button. The phone communicates with the boss system through signals; if an inspection begins while it is visible, the attempt to escape is exposed and the run ends."
+    },
+    {
+      "title": "Multi-Step Computer Preparation",
+      "description": "Preparing each computer is a smaller state sequence: unpacking it, inserting the USB drive, opening and booting the machine, waiting for installation, closing it, removing the drive, and placing it back in the box. Visual states, timed transitions, audio feedback, and object signals make the process feel like a physical desk task rather than a simple progress bar."
+    }
+  ],
+  "role": "Game Programmer — Team of 3",
   "duration": "48 hours",
   "publishedAt": "2025-08-03"
 }

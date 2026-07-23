@@ -80,11 +80,12 @@
   },
   "accentPicker": {
     "title": "// EQUIP THEME",
+    "triggerLabel": "Customize color and typography",
     "equippedLabel": "EQUIPPED",
     "defaultName": "—",
     "customName": "Custom",
     "colors": [
-      { "name": "Void Violet", "value": "#7c3aed", "rarity": "epic" },
+      { "name": "Crimson Atmosphere", "value": "#a51d24", "rarity": "epic" },
       { "name": "Phantom Blue", "value": "#3b82f6", "rarity": "rare" },
       { "name": "Cyber Teal", "value": "#14b8a6", "rarity": "rare" },
       { "name": "Emerald Shard", "value": "#10b981", "rarity": "uncommon" },
@@ -94,6 +95,14 @@
       { "name": "Arctic Frost", "value": "#06b6d4", "rarity": "uncommon" },
       { "name": "Ember Orange", "value": "#f97316", "rarity": "uncommon" },
       { "name": "Blood Moon", "value": "#dc2626", "rarity": "legendary" }
-    ]
+    ],
+    "fontPicker": {
+      "title": "// EQUIP FONT",
+      "equippedLabel": "EQUIPPED",
+      "options": [
+        { "id": "classic", "name": "Original Portfolio", "preview": "Aa" },
+        { "id": "gears", "name": "Share Tech Mono", "preview": "Aa" }
+      ]
+    }
   }
 }
